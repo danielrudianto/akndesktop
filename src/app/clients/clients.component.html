@@ -1,0 +1,77 @@
+<div class="jumbotron">
+  <div class="container-fluid">
+    <div class="row justify-content-center p-5">
+      <div class="col-12 mb-3">
+        <h2 class="text-white fr-text mb-3">Clients</h2>
+        <button class="default-button" (click)="openAddClient()">
+          Add
+        </button>
+      </div>
+      <div class="col-12 text-center">
+        <mat-progress-spinner
+                              *ngIf="isFetching"
+                              style="margin:0 auto;" 
+                              mode="indeterminate">
+        </mat-progress-spinner>
+        <table class="table table-dark"
+               *ngIf="!isFetching">
+          <thead>
+            <tr>
+              <th scope="col">Name</th>
+              <th scope="col">Address</th>
+              <th scope="col">City</th>
+              <th scope="col">TaxIdentificationNumber</th>
+              <th scope="col">Action</th>
+            </tr>
+          </thead>
+          <tbody *ngIf="clients.length == 0">
+            <tr>
+              <td colspan="5">There is no client found.</td>
+            </tr>
+          </tbody>
+          <tbody *ngIf="clients.length > 0">
+            <tr *ngFor="let client of clients">
+              <td>{{ client.Name }}</td>
+              <td [ngSwitch]="true">
+                <span *ngSwitchCase="client.Address.length < 1"><i>Not available</i></span>
+                <span *ngSwitchDefault>{{ client.Address }}</span>
+              </td>
+              <td [ngSwitch]="true">
+                <span *ngSwitchCase="client.City.length < 1"><i>Not available</i></span>
+                <span *ngSwitchDefault>{{ client.City }}</span>
+              </td>
+              <td [ngSwitch]="true">
+                <span *ngSwitchCase="client.TaxIdentificationNumber == null || client.TaxIdentificationNumber.length < 15"><i>Not available</i></span>
+                <span *ngSwitchDefault>{{ client.TaxIdentificationNumber | mask: '00.000.000.0-000.000' }}</span>
+              </td>
+              <td>
+                <button
+                        mat-icon-button
+                        (click)="openEditForm(client)"
+                        aria-label="Edit button">
+                  <mat-icon>edit</mat-icon>
+                </button>
+                <button mat-icon-button aria-label="Delete button" class="text-alpha">
+                  <mat-icon>delete</mat-icon>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <td colspan="5">
+                <mat-paginator [length]="records"
+                               style="color:white;background-color:transparent"
+                               pageSize="25"
+                               [pageIndex]="pageNumber - 1"
+                               (page)="updatePage($event)">
+                </mat-paginator>
+              </td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<app-sidenav></app-sidenav>

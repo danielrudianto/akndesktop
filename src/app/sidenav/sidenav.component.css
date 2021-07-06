@@ -1,0 +1,39 @@
+.sideNav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 8rem;
+  background-color: #242424;
+  padding: 1rem;
+}
+
+.sideNav > img
+{
+    width:4rem;
+    margin-left:1rem;
+}
+
+.sideNav > .menuWrapper{
+    position:absolute;
+    top:50%;
+    left:50%;
+    width:4rem;
+    transform:translate(-50%, -50%);
+    text-align:center;
+}
+
+.menuWrapper > a{
+    text-decoration:none!important;
+}
+
+.icon{
+    color:white;
+    font-size:2rem;
+    display:block;
+    margin-left:1rem;
+    margin-bottom:3rem;
+}
+
+.active > .icon {
+  color: #ED811E!important;
+}

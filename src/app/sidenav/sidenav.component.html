@@ -1,0 +1,42 @@
+<div class="sideNav h-100">
+  <img src="assets/images/logoAlpha.png" />
+  <div class="menuWrapper">
+    <a
+       routerLink="/"
+       [routerLinkActiveOptions]="{exact: true}"
+       routerLinkActive="active"
+       matTooltip="Dashboard"
+       matTooltipShowDelay="0"
+       matTooltipClass="custom-tooltip"
+       matTooltipPosition="right">
+      <mat-icon class="icon">dashboard</mat-icon>
+    </a>
+    <a
+       routerLink="/Clients"
+       routerLinkActive="active"
+       matTooltip="Clients"
+       matTooltipShowDelay="0"
+       matTooltipClass="custom-tooltip"
+       matTooltipPosition="right">
+      <mat-icon class="icon">supervised_user_circle</mat-icon>
+    </a>
+    <a
+       routerLink="/Projects"
+       routerLinkActive="active"
+       matTooltip="Projects"
+       matTooltipShowDelay="0"
+       matTooltipClass="custom-tooltip"
+       matTooltipPosition="right">
+      <mat-icon class="icon">list</mat-icon>
+    </a>
+    <a
+       routerLink="/Settings"
+       routerLinkActive="active"
+       matTooltip="Appplication Settings"
+       matTooltipShowDelay="0"
+       matTooltipClass="custom-tooltip"
+       matTooltipPosition="right">
+      <mat-icon class="icon">settings</mat-icon>
+    </a>
+  </div>
+</div>

@@ -1,0 +1,16 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\src",
+    "\\src\\app",
+    "\\src\\app\\clients",
+    "\\src\\app\\dashboard\\side-profile",
+    "\\src\\app\\interfaces",
+    "\\src\\app\\login",
+    "\\src\\app\\services",
+    "\\src\\assets",
+    "\\src\\assets\\icons"
+  ],
+  "SelectedNode": "\\package.json",
+  "PreviewInSolutionExplorer": false
+}

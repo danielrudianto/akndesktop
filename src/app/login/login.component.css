@@ -1,0 +1,12 @@
+.jumbotron
+{
+    background-color:white;
+}
+
+#imageBackground {
+  background-image: url("/assets/images/background.png");
+  background-size: cover;
+  background-position-x:center;
+  background-position-y:bottom;
+  width:300px;
+}
