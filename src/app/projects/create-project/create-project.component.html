@@ -1,0 +1,68 @@
+<div class="row">
+  <div class="col-12">
+    <h4 class="text-white fr-text mb-3">Create Project</h4>
+    <mat-stepper
+                 [linear]="true">
+      <mat-step [stepControl]="generalProjectForm">
+        <form [formGroup]="generalProjectForm">
+          <ng-template matStepLabel>
+            <span
+                  [ngStyle]="{'color': generalProjectForm.valid ? 'white' : 'red'}">
+              General Information</span>
+          </ng-template>
+          <mat-form-field class="w-100">
+            <mat-label>Name</mat-label>
+            <input
+                   matInput
+                   formControlName="name"
+                   placeholder="Project name">
+          </mat-form-field>
+          <mat-form-field class="w-100">
+            <mat-label>Address</mat-label>
+            <input style="color:white"
+                   matInput
+                   formControlName="address"
+                   placeholder="Project address">
+          </mat-form-field>
+          <div>
+            <button mat-raised-button
+                    [disabled]="!generalProjectForm.valid"
+                    color="primary"
+                    matStepperNext>
+              Next
+            </button>
+          </div>
+        </form>
+      </mat-step>
+      <mat-step [stepControl]="generalProjectForm">
+        <form [formGroup]="generalProjectForm">
+          <ng-template matStepLabel>
+            <span [ngStyle]="{'color': !generalProjectForm.valid ? 'white' : 'red'}">General Information</span>
+          </ng-template>
+          <mat-form-field class="w-100">
+            <mat-label>Name</mat-label>
+            <input style="color:white"
+                   matInput
+                   formControlName="name"
+                   placeholder="Project name" required>
+          </mat-form-field>
+          <mat-form-field class="w-100">
+            <mat-label>Address</mat-label>
+            <input style="color:white"
+                   matInput
+                   formControlName="name"
+                   placeholder="Project address" required>
+          </mat-form-field>
+          <div>
+            <button mat-raised-button
+                    [disabled]="!generalProjectForm.valid"
+                    color="primary"
+                    matStepperNext>
+              Next
+            </button>
+          </div>
+        </form>
+      </mat-step>
+    </mat-stepper>
+  </div>
+</div>

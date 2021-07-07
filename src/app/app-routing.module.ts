@@ -3,6 +3,13 @@ import { RouterModule, Routes } from '@angular/router';
 import { ClientsComponent } from './clients/clients.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { LoginComponent } from './login/login.component';
+import { ConfirmProjectDetailComponent } from './projects/confirm-project-detail/confirm-project-detail.component';
+import { ConfirmProjectComponent } from './projects/confirm-project/confirm-project.component';
+import { CreateProjectComponent } from './projects/create-project/create-project.component';
+import { EditProjectComponent } from './projects/edit-project/edit-project.component';
+import { ProjectDetailComponent } from './projects/project-detail/project-detail.component';
+import { ProjectsMainComponent } from './projects/projects-main/projects-main.component';
+import { ProjectsComponent } from './projects/projects.component';
 import { AuthGuardService } from './services/auth-guard.service';
 import { SettingsComponent } from './settings/settings.component';
 import { TasksComponent } from './settings/tasks/tasks.component';
@@ -15,48 +22,85 @@ const routes: Routes = [
     path: "",
     component: DashboardComponent,
     pathMatch: "full",
-    canActivate: [AuthGuardService],
+    //canActivate: [AuthGuardService],
   },
   {
     path: "Login",
     component: LoginComponent,
-    data: { state: 'Login' }
   },
   {
     path: "Clients",
     component: ClientsComponent,
-    canActivate: [AuthGuardService]
+    //canActivate: [AuthGuardService]
   },
   {
     path: "Settings",
     component: SettingsComponent,
-    canActivate: [AuthGuardService],
+    //canActivate: [AuthGuardService],
     children: [
       {
         path: "Users",
         component: UsersComponent,
-        canActivate: [AuthGuardService],
+        //canActivate: [AuthGuardService],
         children: [
           {
             path: "",
             component: UsersMainComponent,
-            canActivate: [AuthGuardService]
+            //canActivate: [AuthGuardService]
           },
           {
             path: ":email",
             component: UsersDetailComponent,
-            canActivate: [AuthGuardService]
+            //canActivate: [AuthGuardService]
           }
         ]
       },
       {
         path: "Tasks",
         component: TasksComponent,
-        canActivate: [AuthGuardService]
+        //canActivate: [AuthGuardService]
       },
       {
         path: "**",
         redirectTo: "Users"
+      }
+    ]
+  },
+  {
+    path: "Projects",
+    component: ProjectsComponent,
+    //canActivate: [AuthGuardService],
+    children: [
+      {
+        path: "",
+        pathMatch: "full",
+        component: ProjectsMainComponent,
+        //canActivate: [AuthGuardService]
+      },
+      {
+        path: "Create",
+        component: CreateProjectComponent,
+        //canActivate: [AuthGuardService]
+      },
+      {
+        path: "Edit",
+        component: EditProjectComponent,
+        //canActivate: [AuthGuardService]
+      },
+      {
+        path: "Confirm",
+        component: ConfirmProjectComponent,
+        //canActivate: [AuthGuardService]
+      },
+      {
+        path: "Confirm/:projectId",
+        component: ConfirmProjectDetailComponent,
+        //canActivate: [AuthGuardService]
+      },
+      {
+        path: "Detail/:projectId",
+        component: ProjectDetailComponent,
+        //canActivate: [AuthGuardService]
       }
     ]
   }

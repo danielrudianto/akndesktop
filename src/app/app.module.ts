@@ -24,6 +24,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatStepperModule } from '@angular/material/stepper';
 
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -37,6 +38,12 @@ import { UsersDetailComponent } from './settings/users/users-detail/users-detail
 import { UsersComponent } from './settings/users/users.component';
 
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { CreateProjectComponent } from './projects/create-project/create-project.component';
+import { ProjectsMainComponent } from './projects/projects-main/projects-main.component';
+import { EditProjectComponent } from './projects/edit-project/edit-project.component';
+import { ConfirmProjectComponent } from './projects/confirm-project/confirm-project.component';
+import { ConfirmProjectDetailComponent } from './projects/confirm-project-detail/confirm-project-detail.component';
+import { ProjectDetailComponent } from './projects/project-detail/project-detail.component';
 
 @NgModule({
   declarations: [
@@ -63,7 +70,13 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
     UsersMainComponent,
     ContactAddComponent,
     ContactEditComponent,
-    ContactDeleteComponent
+    ContactDeleteComponent,
+    CreateProjectComponent,
+    ProjectsMainComponent,
+    EditProjectComponent,
+    ConfirmProjectComponent,
+    ConfirmProjectDetailComponent,
+    ProjectDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -87,6 +100,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
     MatDialogModule,
     MatPaginatorModule,
     MatSlideToggleModule,
+    MatStepperModule,
     NgxMaskModule.forRoot(),
     
   ],
