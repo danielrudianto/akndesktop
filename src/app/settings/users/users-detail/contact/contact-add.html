@@ -1,0 +1,26 @@
+<form
+      [formGroup]="contactForm"
+      (ngSubmit)="onSubmit()">
+  <mat-form-field class="w-100">
+    <mat-label>Phone Number</mat-label>
+    <input
+           type="text"
+           formControlName="phoneNumber"
+           matInput />
+  </mat-form-field>
+
+  <mat-slide-toggle formControlName="whatsappAvailable"
+                    [disabled]="isSubmitting">
+    Whatsapp Available
+  </mat-slide-toggle>
+
+  <mat-dialog-actions align="end">
+    <button
+            mat-button
+            (click)="closeDialog()"
+            type="button"
+            [disabled]="isSubmitting">Cancel</button>
+    <button type="submit" mat-button [disabled]="!contactForm.valid || isSubmitting">Submit</button>
+  </mat-dialog-actions>
+</form>
+

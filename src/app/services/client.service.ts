@@ -28,4 +28,8 @@ export class ClientService {
   putClient(client: Client) {
     return this.http.put(global.url + "/client", client);
   }
+
+  deleteClient(client: number) {
+    return this.http.delete(global.url + "/client/" + client.toString());
+  }
 }

@@ -80,6 +80,23 @@ export class ClientsComponent implements OnInit {
     });
   }
 
+  openDeleteForm(client: Client) {
+    const dialog = this.dialog.open(ClientsDeleteComponent, {
+      disableClose: true,
+      data: client
+    })
+
+    dialog.afterClosed().subscribe(data => {
+      if (data != null && data.error) {
+        this.snackBar.open(data.message, "Close", {
+          duration: 2000
+        });
+      } else if (data != null && !data.error) {
+        this.fetchClients();
+      }
+    })
+  }
+
 }
 
 @Component({
@@ -175,6 +192,32 @@ export class ClientsEditComponent {
 
   closeDialog() {
     this.dialogRef.close(null);
+  }
+}
+
+@Component({
+  selector: 'clients-delete',
+  templateUrl: 'clients-delete.html'
+})
+export class ClientsDeleteComponent {
+  constructor(
+    private dialogRef: MatDialogRef<ClientsDeleteComponent>,
+    private clientService: ClientService,
+    @Inject(MAT_DIALOG_DATA) public data: Client
+  ) { }
+
+  isSubmitting: boolean = false;
+  confirmation: string = "";
+
+  submit() {
+    this.isSubmitting = true;
+    this.clientService.deleteClient(this.data.Id!).subscribe(response => {
+      this.isSubmitting = false;
+      this.dialogRef.close({ error: false });
+    }, error => {
+        this.isSubmitting = false;
+        this.dialogRef.close({ error: true, message: error.message });
+    })
   }
 }
 

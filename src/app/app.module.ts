@@ -15,9 +15,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { SettingsComponent } from './settings/settings.component';
-import { ClientsAddComponent, ClientsComponent, ClientsEditComponent } from './clients/clients.component';
+import { ClientsAddComponent, ClientsComponent, ClientsDeleteComponent, ClientsEditComponent } from './clients/clients.component';
 import { ProjectsComponent } from './projects/projects.component';
-import { UsersComponent } from './settings/users/users.component';
 import { TasksComponent } from './settings/tasks/tasks.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
@@ -30,6 +29,14 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthInterceptorService } from './services/auth-interceptor.service';
 import { NgxMaskModule } from 'ngx-mask';
+
+import { UsersMainComponent, UsersEditComponent, UsersDeleteComponent, UsersAddComponent } from './settings/users/users-main/users-main.component';
+import { PositionComponent } from './settings/users/users-detail/position/position.component';
+import { ContactAddComponent, ContactComponent, ContactDeleteComponent, ContactEditComponent } from './settings/users/users-detail/contact/contact.component';
+import { UsersDetailComponent } from './settings/users/users-detail/users-detail.component';
+import { UsersComponent } from './settings/users/users.component';
+
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 @NgModule({
   declarations: [
@@ -45,7 +52,18 @@ import { NgxMaskModule } from 'ngx-mask';
     UsersComponent,
     TasksComponent,
     ClientsAddComponent,
-    ClientsEditComponent
+    ClientsEditComponent,
+    ClientsDeleteComponent,
+    UsersEditComponent,
+    UsersAddComponent,
+    UsersDeleteComponent,
+    PositionComponent,
+    ContactComponent,
+    UsersDetailComponent,
+    UsersMainComponent,
+    ContactAddComponent,
+    ContactEditComponent,
+    ContactDeleteComponent
   ],
   imports: [
     BrowserModule,
@@ -68,12 +86,20 @@ import { NgxMaskModule } from 'ngx-mask';
     MatButtonModule,
     MatDialogModule,
     MatPaginatorModule,
+    MatSlideToggleModule,
     NgxMaskModule.forRoot(),
     
   ],
   entryComponents: [
     ClientsAddComponent,
-    ClientsEditComponent
+    ClientsEditComponent,
+    ClientsDeleteComponent,
+    UsersEditComponent,
+    UsersAddComponent,
+    UsersDeleteComponent,
+    ContactAddComponent,
+    ContactEditComponent,
+    ContactDeleteComponent
   ],
   providers: [
     {

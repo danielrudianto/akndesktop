@@ -1,0 +1,60 @@
+<div class="col-12 mb-3">
+  <h4 class="text-white fr-text mb-3">Contacts</h4>
+  <button class="default-button" (click)="openAddContact()">
+    Add
+  </button>
+</div>
+<div class="col-12 mb-3">
+  <mat-progress-spinner *ngIf="isFetching"
+                        style="margin:0 auto;"
+                        mode="indeterminate">
+  </mat-progress-spinner>
+  <table class="table table-dark"
+         *ngIf="!isFetching">
+    <thead>
+      <tr>
+        <th class="text-center" scope="col">Phone Number</th>
+        <th class="text-center" scope="col">Whatsapp Available</th>
+        <th class="text-center" scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody *ngIf="contacts.length == 0">
+      <tr>
+        <td colspan="3">There is no contacts found.</td>
+      </tr>
+    </tbody>
+    <tbody *ngIf="contacts.length > 0">
+      <tr *ngFor="let contact of contacts">
+        <td class="text-center">{{ contact.PhoneNumber }}</td>
+        <td class="text-center">
+          <mat-icon *ngIf="contact.WhatsappAvailable">check_circle_outline</mat-icon>
+        </td>
+        <td class="text-center">
+          <button mat-icon-button
+                  (click)="openEditContact(contact)"
+                  aria-label="Edit button">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-icon-button
+                  (click)="openDeleteContact(contact)"
+                  aria-label="Delete button"
+                  class="text-alpha">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="5">
+          <mat-paginator [length]="records"
+                         style="color:white;background-color:transparent"
+                         pageSize="25"
+                         [pageIndex]="pageNumber - 1"
+                         (page)="updatePage($event)">
+          </mat-paginator>
+        </td>
+      </tr>
+    </tfoot>
+  </table>
+</div>
