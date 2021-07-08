@@ -9,10 +9,18 @@ html, body {
   background-color: #3E3E3E;
   color:white;
 }
-body {
-    margin: 0;
-    font-family: Roboto, "Helvetica Neue", sans-serif;
 
+mat-dialog-container {
+  background-color: #3E3E3E !important;
+}
+
+.darkDialog{
+    background-color:#3E3E3E;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 .custom-tooltip {
   font-family: "Francois One";

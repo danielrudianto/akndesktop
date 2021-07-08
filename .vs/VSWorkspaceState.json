@@ -3,14 +3,11 @@
     "",
     "\\src",
     "\\src\\app",
+    "\\src\\app\\projects\\create-project",
     "\\src\\app\\settings",
     "\\src\\app\\settings\\users",
-    "\\src\\app\\settings\\users\\users-detail",
-    "\\src\\app\\settings\\users\\users-detail\\contact",
-    "\\src\\app\\settings\\users\\users-detail\\position",
-    "\\src\\app\\settings\\users\\users-main",
-    "\\src\\assets\\icons"
+    "\\src\\assets"
   ],
-  "SelectedNode": "\\src\\app\\clients\\clients-edit.html",
+  "SelectedNode": "\\src\\app\\settings\\settings.component.html",
   "PreviewInSolutionExplorer": false
 }

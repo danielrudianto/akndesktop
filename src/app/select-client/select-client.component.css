@@ -1,0 +1,12 @@
+.title
+{
+    font-family:"Francois One";
+    font-size:1rem;
+    color:black;
+}
+
+.sub-title{
+    font-family:"Francois One";
+    font-size:0.8rem;
+    color:rgba(0, 0, 0, .54);
+}

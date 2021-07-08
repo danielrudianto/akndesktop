@@ -32,4 +32,8 @@ export class ClientService {
   deleteClient(client: number) {
     return this.http.delete(global.url + "/client/" + client.toString());
   }
+
+  getClientsAutocomplete(search: string) {
+    return this.http.get<Client[]>(global.url + "/client?search=" + search);
+  }
 }

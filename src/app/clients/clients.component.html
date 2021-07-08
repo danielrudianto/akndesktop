@@ -3,6 +3,11 @@
     <div class="row justify-content-center p-5">
       <div class="col-12 mb-3">
         <h2 class="text-white fr-text mb-3">Clients</h2>
+
+        <button mat-icon-button
+                (click)="fetchClients()">
+          <mat-icon>refresh</mat-icon>
+        </button>
         <button class="default-button" (click)="openAddClient()">
           Add
         </button>

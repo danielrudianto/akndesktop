@@ -1,0 +1,21 @@
+<form [formGroup]="selectClientForm">
+  <mat-form-field>
+    <mat-label>Filter</mat-label>
+    <input matInput
+           placeholder="Search client"
+           style="color:white"
+           type="text"
+           formControlName="search" />
+  </mat-form-field>
+</form>
+<mat-nav-list>
+  <div
+       (click)="selectClient(client)"
+       mat-list-item
+       class="text-white"
+       *ngFor="let client of clients">
+    <p class="mb-0" mat-line>{{ client.Name }}</p>
+    <p mat-line *ngIf="client.City == '' || client.City == null"><i>Not available</i></p>
+    <p mat-line *ngIf="client.City == '' || client.City == null">{{ client.City }}</p>
+  </div>
+</mat-nav-list>
