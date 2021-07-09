@@ -3,11 +3,14 @@
     "",
     "\\src",
     "\\src\\app",
+    "\\src\\app\\clients",
+    "\\src\\app\\interfaces",
+    "\\src\\app\\projects",
+    "\\src\\app\\projects\\confirm-project-detail",
     "\\src\\app\\projects\\create-project",
-    "\\src\\app\\settings",
-    "\\src\\app\\settings\\users",
-    "\\src\\assets"
+    "\\src\\app\\projects\\projects-main",
+    "\\src\\app\\sidenav"
   ],
-  "SelectedNode": "\\src\\app\\settings\\settings.component.html",
+  "SelectedNode": "\\src\\app\\gantt-chart",
   "PreviewInSolutionExplorer": false
 }

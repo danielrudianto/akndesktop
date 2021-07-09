@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ConfirmProjectComponent } from './confirm-project.component';
+import { GanttChartComponent } from './gantt-chart.component';
 
-describe('ConfirmProjectComponent', () => {
-  let component: ConfirmProjectComponent;
-  let fixture: ComponentFixture<ConfirmProjectComponent>;
+describe('GanttChartComponent', () => {
+  let component: GanttChartComponent;
+  let fixture: ComponentFixture<GanttChartComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ConfirmProjectComponent ]
+      declarations: [ GanttChartComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ConfirmProjectComponent);
+    fixture = TestBed.createComponent(GanttChartComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -1,1 +1,108 @@
-<p>confirm-project-detail works!</p>
+<div class="row">
+  <div class="col-12">
+    <h4 class="text-white fr-text mb-3">Confirm Project</h4>
+  </div>
+  <div class="col-12 text-center">
+    <mat-progress-spinner *ngIf="isFetching"
+                          style="margin:0 auto;"
+                          mode="indeterminate">
+    </mat-progress-spinner>
+  </div>
+  <div class="col-12">
+    <div *ngIf="!isFetching">
+      <mat-form-field class="w-100">
+        <mat-label>Name</mat-label>
+        <input
+               style="color:white"
+               disabled
+               matInput
+               [value]="project.Name">
+      </mat-form-field>
+      <mat-form-field class="w-100">
+        <mat-label>Address</mat-label>
+        <input style="color:white"
+               disabled
+               matInput
+               [value]="project.Address">
+      </mat-form-field>
+
+      <mat-form-field class="w-100">
+        <mat-label>Client</mat-label>
+        <input style="color:white"
+               disabled
+               matInput
+               [value]="project.Client.Name">
+      </mat-form-field>
+
+      <mat-form-field class="w-100">
+        <mat-label>Contract Document</mat-label>
+        <input style="color:white"
+               disabled
+               matInput
+               [value]="project.DocumentName">
+      </mat-form-field>
+
+      <app-gantt-chart
+                       [isViewOnly]="true"></app-gantt-chart>
+
+      <table class="table table-dark">
+        <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Position</th>
+          </tr>
+        </thead>
+        <tbody *ngIf="project.CodeProjectUser.length == 0">
+          <tr>
+            <td colspan="2">There is no user found.</td>
+          </tr>
+        </tbody>
+        <tbody *ngIf="project.CodeProjectUser.length > 0">
+          <tr *ngFor="let user of project.CodeProjectUser">
+            <td>{{ user.User.FirstName }} {{ user.User.LastName }}</td>
+            <td>
+              <div [ngSwitch]="user.User.UserPosition[0].Position">
+                <span *ngSwitchCase="1">Site Engineer</span>
+                <span *ngSwitchCase="2">Site Manager</span>
+                <span *ngSwitchCase="3">Project Manager</span>
+                <span *ngSwitchCase="4">Director</span>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <table class="table table-dark">
+        <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody *ngIf="project.CodeProjectDocument.length == 0">
+          <tr>
+            <td colspan="2">There is no document found.</td>
+          </tr>
+        </tbody>
+        <tbody *ngIf="project.CodeProjectDocument.length > 0">
+          <tr *ngFor="let document of project.CodeProjectDocument">
+            <td>{{ document.Name }}</td>
+            <td>
+              <button type="button"
+                      (click)="deleteDocument(document)"
+                      mat-icon-button>
+                <mat-icon>delete</mat-icon>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <button [disabled]="isSubmitting"
+              type="submit"
+              class="default-button">
+        Submit
+      </button>
+    </div>
+  </div>
+</div>

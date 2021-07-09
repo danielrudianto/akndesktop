@@ -1,0 +1,39 @@
+::ng-deep .mat-focused .mat-form-field-label {
+  /*change color of label*/
+  color: white !important;
+}
+
+::ng-deep.mat-form-field-underline {
+  /*change color of underline*/
+  background-color: white !important;
+}
+
+mat-label {
+  color: white;
+}
+
+::ng-deep .mat-form-field-placeholder {
+  color: white;
+}
+
+::ng-deep .mat-focused .mat-form-field-placeholder {
+  color: white !important;
+}
+
+th:first-child, td:first-child {
+  position: sticky;
+  min-width:10rem;
+  max-width:12rem;
+  left: 0px;
+  z-index: 1;
+}
+
+.circle{
+    border-radius:50%;
+    width:30px;
+    height:30px;
+    border:none;
+    position:absolute;
+    left:50%;
+    transform:translateX(-50%);
+}

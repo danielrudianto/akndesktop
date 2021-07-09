@@ -1,5 +1,47 @@
+import { Client } from './client';
+import { User } from './user';
+
+export interface CodeProjectForm {
+  Id?: number;
+  Name: string;
+  ClientId: number;
+  CreatedBy?: number;
+  CreatedDate?: Date;
+  ConfirmedDate?: Date;
+  ConfirmedBy?: number;
+  Address: string;
+  DocumentName: string;
+  IsCompleted: boolean;
+  CompletedDate?: Date;
+  CompletedBy?: number;
+  IsDelete: boolean;
+  Tasks: TaskFormGroup[];
+  Users: CodeProjectUser[];
+}
+
 export interface CodeProject {
   Id?: number;
+  Name: string;
+  CreatedBy?: number;
+  CreatedDate?: Date;
+  ConfirmedDate?: Date;
+  ConfirmedBy?: string;
+  Address: string;
+  DocumentName: string;
+  IsCompleted: boolean;
+  CompletedDate?: Date;
+  CompletedBy?: number;
+  IsDelete: boolean;
+  Tasks: TaskFormGroup[];
+  CodeProjectUser: CodeProjectUser[];
+  CodeProjectDocument: CodeProjectDocument[];
+  Client: Client;
+}
+
+export interface CodeProjectDocument {
+  Id?: number;
+  Name: string;
+  Url: string;
 }
 
 export interface Task {
@@ -15,6 +57,13 @@ export interface Task {
   Timeline?: number;
   End?: number;
   Unit: string;
+}
+
+export interface CodeProjectUser {
+  Id?: number;
+  UserId: number;
+  CodeProjectId?: number;
+  User?: User;
 }
 
 export interface TaskForm {

@@ -1,4 +1,12 @@
 <div class="col-lg-8 col-md-8 col-sm-10 col-12">
   <h2>Dashboard</h2>
-  
+  <swiper [slidesPerView]="1"
+          [spaceBetween]="50">
+    <ng-template swiperSlide *ngFor="let project of projects">
+      <div>
+        {{ project.Name }}
+        {{ project.Address }}
+      </div>
+    </ng-template>
+  </swiper>
 </div>

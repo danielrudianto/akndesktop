@@ -1,1 +1,23 @@
-<p>select-user works!</p>
+<div class="col-12 text-center">
+  <form [formGroup]="selectUserForm">
+    <mat-form-field class="w-100">
+      <mat-label>Users</mat-label>
+      <input matInput
+             placeholder="Search user"
+             style="color:white"
+             type="text"
+             formControlName="search" />
+    </mat-form-field>
+  </form>
+  <mat-nav-list>
+    <div (click)="selectUser(user)"
+         mat-list-item
+         class="text-white"
+         *ngFor="let user of users">
+      <div class="d-inline-block">
+
+      </div>
+      <p class="inline-block mb-0" mat-line>{{ user.FirstName }} {{ user.LastName }}</p>
+    </div>
+  </mat-nav-list>
+</div>

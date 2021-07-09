@@ -25,7 +25,6 @@ import { MainComponent } from './dashboard/main/main.component';
 import { SideProfileComponent } from './dashboard/side-profile/side-profile.component';
 import { LoginComponent } from './login/login.component';
 import { ConfirmProjectDetailComponent } from './projects/confirm-project-detail/confirm-project-detail.component';
-import { ConfirmProjectComponent } from './projects/confirm-project/confirm-project.component';
 import { CreateProjectComponent } from './projects/create-project/create-project.component';
 import { EditProjectComponent } from './projects/edit-project/edit-project.component';
 import { ProjectDetailComponent } from './projects/project-detail/project-detail.component';
@@ -47,6 +46,8 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { SettingsMainComponent } from './settings/settings-main/settings-main.component';
 import { MatMenuModule } from '@angular/material/menu';
 import { SelectUserComponent } from './select-user/select-user.component';
+import { GanttChartViewComponent } from './gantt-chart-view/gantt-chart-view.component';
+import { SwiperModule } from 'swiper/angular';
 
 
 @NgModule({
@@ -78,7 +79,6 @@ import { SelectUserComponent } from './select-user/select-user.component';
     CreateProjectComponent,
     ProjectsMainComponent,
     EditProjectComponent,
-    ConfirmProjectComponent,
     ConfirmProjectDetailComponent,
     ProjectDetailComponent,
     SelectClientComponent,
@@ -90,7 +90,8 @@ import { SelectUserComponent } from './select-user/select-user.component';
     GanttEditGroupComponent,
     GanttDetailGroupComponent,
     SettingsMainComponent,
-    SelectUserComponent
+    SelectUserComponent,
+    GanttChartViewComponent
   ],
   imports: [
     BrowserModule,
@@ -119,6 +120,7 @@ import { SelectUserComponent } from './select-user/select-user.component';
     MatNativeDateModule,
     MatCheckboxModule,
     MatMenuModule,
+    SwiperModule,
     NgxMaskModule.forRoot(),
     
   ],
