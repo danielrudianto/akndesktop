@@ -106,7 +106,14 @@ const routes: Routes = [
   {
     path: "Feeds/:projectId",
     component: FeedsComponent,
-    canActivate: [AuthGuardService]
+    canActivate: [AuthGuardService],
+    children: [
+      {
+        path: "Create/:report",
+        component: FeedsComponent,
+        canActivate: [AuthGuardService]
+      }
+    ]
   }
 ];
 

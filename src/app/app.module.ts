@@ -51,6 +51,15 @@ import { UsersAddComponent, UsersDeleteComponent, UsersEditComponent, UsersMainC
 import { UsersComponent } from './settings/users/users.component';
 import { SidenavComponent } from './sidenav/sidenav.component';
 import { FeedsComponent } from './feeds/feeds.component';
+import { MainFeedComponent } from './feeds/main-feed/main-feed.component';
+import { SideFeedComponent } from './feeds/side-feed/side-feed.component';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { ReportMaterialComponent } from './feeds/report-material/report-material.component';
+import { ReportToolComponent } from './feeds/report-tool/report-tool.component';
+import { ReportAttendanceComponent } from './feeds/report-attendance/report-attendance.component';
+import { ReportDailyComponent } from './feeds/report-daily/report-daily.component';
+import { ReportProgressComponent } from './feeds/report-progress/report-progress.component';
+import { ReportWeatherComponent } from './feeds/report-weather/report-weather.component';
 
 
 @NgModule({
@@ -100,7 +109,15 @@ import { FeedsComponent } from './feeds/feeds.component';
     PositionDetailComponent,
     GanttViewDetailComponent,
     GanttViewDetailGroupComponent,
-    FeedsComponent
+    FeedsComponent,
+    MainFeedComponent,
+    SideFeedComponent,
+    ReportMaterialComponent,
+    ReportToolComponent,
+    ReportAttendanceComponent,
+    ReportDailyComponent,
+    ReportProgressComponent,
+    ReportWeatherComponent
   ],
   imports: [
     BrowserModule,
@@ -132,6 +149,7 @@ import { FeedsComponent } from './feeds/feeds.component';
     SwiperModule,
     MatCardModule,
     MatSelectModule,
+    MatSidenavModule,
     NgxMaskModule.forRoot(),
     
   ],

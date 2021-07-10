@@ -1,12 +1,108 @@
-<div class="jumbotron">
-  <div class="container-fluid">
-    <div class="row p-5">
-      <div class="col-lg-6 col-md-8">
-        <mat-card>
-          <p>Start adding report..</p>
-        </mat-card>
+<mat-drawer-container
+   class="drawer-container">
+  <div class="jumbotron h-100">
+    <div class="container-fluid">
+      <div class="row p-5 h-100">
+        <div style="position:relative"
+             class="col-lg-6 col-md-8">
+          <app-main-feed></app-main-feed>
+        </div>
+        <div class="col-lg-6 col-md-4">
+          <app-side-feed></app-side-feed>
+        </div>
       </div>
     </div>
   </div>
+  <mat-drawer
+              class="report-drawer"
+              [opened]="true"
+              [position]="'end'"
+              #drawer
+              mode="over">
+    <p>Test</p>
+  </mat-drawer>
+  <div [class.opened]="menuOpened"
+       class="menu-wrapper">
+    <button
+            (click)="openReport('Attendance')"
+            matTooltip="Attendance Report"
+            matTooltipShowDelay="0"
+            matTooltipClass="custom-tooltip"
+            matTooltipPosition="above"
+            mat-button>
+      <img width="40"
+           height="40"
+           src="assets/icons/Attendance.png" />
+    </button>
+    <button
+            (click)="openReport('Tool')"
+            matTooltip="Tool Report"
+            matTooltipShowDelay="0"
+            matTooltipClass="custom-tooltip"
+            matTooltipPosition="above"
+            mat-button>
+      <img width="40"
+           height="40"
+           src="assets/icons/Tools.png" />
+    </button>
+    <button
+            (click)="openReport('Material')"
+            matTooltip="Material Report"
+            matTooltipShowDelay="0"
+            matTooltipClass="custom-tooltip"
+            matTooltipPosition="above"
+            mat-button>
+      <img width="40"
+           height="40"
+           src="assets/icons/Material.png" />
+    </button>
+    <button
+            (click)="openReport('Weather')"
+            matTooltip="Weather Report"
+            matTooltipShowDelay="0"
+            matTooltipClass="custom-tooltip"
+            matTooltipPosition="above"
+            mat-button>
+      <img width="40"
+           height="40"
+           src="assets/icons/Weather.png" />
+    </button>
+    <button
+            (click)="openReport('RFI')"
+            matTooltip="Request For Information"
+            matTooltipShowDelay="0"
+            matTooltipClass="custom-tooltip"
+            matTooltipPosition="above"
+            mat-button>
+      <img width="40"
+           height="40"
+           src="assets/icons/RFI.png" />
+    </button>
+    <button
+            (click)="openReport('Progress')"
+            matTooltip="Progress Report"
+            matTooltipShowDelay="0"
+            matTooltipClass="custom-tooltip"
+            matTooltipPosition="above"
+            mat-button>
+      <img width="40"
+           height="40"
+           src="assets/icons/Progress.png" />
+    </button>
+    <button
+            (click)="openReport('Daily')"
+            matTooltip="Daily Report"
+            matTooltipShowDelay="0"
+            matTooltipClass="custom-tooltip"
+            matTooltipPosition="above"
+            mat-button>
+      <img width="40"
+           height="40"
+           src="assets/icons/Daily.png" />
+    </button>
+  </div>
+</mat-drawer-container>
+<div class="example-sidenav-content">
+  
 </div>
 <app-sidenav></app-sidenav>
