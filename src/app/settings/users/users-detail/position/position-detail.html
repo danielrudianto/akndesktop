@@ -1,0 +1,12 @@
+<div class="text-center" [ngSwitch]="data.Position">
+  <h4 class="fr-text text-alpha">
+    <span *ngSwitchCase="1">Site Engineer</span>
+    <span *ngSwitchCase="2">Site Manager</span>
+    <span *ngSwitchCase="3">Project Manager</span>
+    <span *ngSwitchCase="4">Director</span>
+  </h4>
+  <hr class="my-3" style="border-bottom:2px solid white" />
+  <p class="text-white">Effective since {{ data.EffectiveDate | date:'dd MMM YY' }}</p>
+  <p class="text-white">Assigned by {{ data.User4.FirstName }} {{ data.User4.LastName }}</p>
+</div>
+

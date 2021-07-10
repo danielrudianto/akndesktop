@@ -1,8 +1,8 @@
 <h5 class="fr-text text-white" mat-dialog-header>Are you sure to delete this data?</h5>
 <mat-dialog-content>
-  <p class="text-white">Please type in <span class="text-alpha">{{ data.PhoneNumber }}</span> to delete this data permanently.</p>
+  <p class="text-white">Please type in <span class="text-alpha">{{ confirmationText }}</span> to delete this data permanently.</p>
   <mat-form-field class="w-100">
-    <mat-label>Phone Number</mat-label>
+    <mat-label>Confirmation</mat-label>
     <input matInput
            style="color:white"
            type="text"
@@ -12,7 +12,7 @@
   <button type="button"
           mat-raised-button
           color="primary"
-          [disabled]="confirmation != data.PhoneNumber || isSubmitting"
+          [disabled]="confirmation != confirmationText || isSubmitting"
           (click)="onSubmit()">
     Submit
   </button>

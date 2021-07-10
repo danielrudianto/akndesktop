@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ClientsComponent } from './clients/clients.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { FeedsComponent } from './feeds/feeds.component';
 import { LoginComponent } from './login/login.component';
 import { ConfirmProjectDetailComponent } from './projects/confirm-project-detail/confirm-project-detail.component';
 import { CreateProjectComponent } from './projects/create-project/create-project.component';
@@ -101,6 +102,11 @@ const routes: Routes = [
         redirectTo:""
       }
     ]
+  },
+  {
+    path: "Feeds/:projectId",
+    component: FeedsComponent,
+    canActivate: [AuthGuardService]
   }
 ];
 

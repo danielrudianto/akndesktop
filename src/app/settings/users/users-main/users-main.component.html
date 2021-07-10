@@ -2,6 +2,10 @@
   <div class="row justify-content-center p-5">
     <div class="col-12 mb-3">
       <h2 class="text-white fr-text mb-3">Users</h2>
+      <button mat-icon-button
+              (click)="fetchUsers()">
+        <mat-icon>refresh</mat-icon>
+      </button>
       <button class="default-button" (click)="openAddUser()">
         Add
       </button>
@@ -40,18 +44,16 @@
                 <span *ngSwitchCase="3">Project Manager</span>
                 <span *ngSwitchCase="4">Director</span>
               </div>
-              <button mat-icon-button>
-                <mat-icon>settings_input_component</mat-icon>
-              </button>
+
             </td>
             <td>
               {{ user.UserContact!.length }} contacts
-              <button mat-icon-button
-                      (click)="openContact(user)">
-                <mat-icon>list</mat-icon>
-              </button>
             </td>
             <td>
+              <button mat-icon-button
+                      (click)="openContact(user)">
+                <mat-icon>details</mat-icon>
+              </button>
               <button mat-icon-button
                       (click)="openEditForm(user)"
                       aria-label="Edit button">

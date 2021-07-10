@@ -3,14 +3,14 @@
     "",
     "\\src",
     "\\src\\app",
-    "\\src\\app\\clients",
-    "\\src\\app\\interfaces",
-    "\\src\\app\\projects",
-    "\\src\\app\\projects\\confirm-project-detail",
-    "\\src\\app\\projects\\create-project",
-    "\\src\\app\\projects\\projects-main",
-    "\\src\\app\\sidenav"
+    "\\src\\app\\dashboard",
+    "\\src\\app\\dashboard\\side-profile",
+    "\\src\\app\\feeds",
+    "\\src\\assets",
+    "\\src\\assets\\fonts",
+    "\\src\\assets\\icons",
+    "\\src\\assets\\images"
   ],
-  "SelectedNode": "\\src\\app\\gantt-chart",
+  "SelectedNode": "\\src\\app\\dashboard\\side-profile\\side-profile.component.ts",
   "PreviewInSolutionExplorer": false
 }

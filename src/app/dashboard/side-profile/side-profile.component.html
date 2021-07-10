@@ -1,3 +1,30 @@
-<div class="col-lg-4 col-md-4 col-sm-2 col-12 d-sm-block d-none">
-  Profile
+<h3 class="text-white fr-text">Profile</h3>
+
+<div class="text-center">
+  <input
+         id="file"
+         type="file"
+         accept="image/png, image/gif, image/jpeg" 
+         class="d-none"
+         (change)="uploadProfilePicture($event)"/>
+  <label for="file">
+    <img
+         [src]="imageUrl == null ? '/assets/images/Profile.png' : imageUrl"
+         class="profileImage" />
+  </label>
+  
 </div>
+
+<mat-form-field class="w-100">
+  <mat-label>Name</mat-label>
+  <input readonly
+         [(ngModel)]="name"
+         matInput />
+</mat-form-field>
+
+<mat-form-field class="w-100">
+  <mat-label>Name</mat-label>
+  <input readonly
+         [(ngModel)]="email"
+         matInput />
+</mat-form-field>

@@ -1,6 +1,73 @@
 <div class="col-12 mb-3">
   <h4 class="text-white fr-text mb-3">Positions</h4>
+
+  <button
+          (click)="fetchPositions()"
+          mat-icon-button>
+    <mat-icon>refresh</mat-icon>
+  </button>
   <button class="default-button" (click)="openAddPosition()">
     Add
   </button>
+</div>
+<div class="col-12 mb-3">
+  <mat-progress-spinner *ngIf="isFetching"
+                        style="margin:0 auto;"
+                        mode="indeterminate">
+  </mat-progress-spinner>
+  <table class="table table-dark"
+         *ngIf="!isFetching">
+    <thead>
+      <tr>
+        <th class="text-center" scope="col">Position</th>
+        <th class="text-center" scope="col">Effective Date</th>
+        <th class="text-center" scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody *ngIf="positions.length == 0">
+      <tr>
+        <td colspan="3">There is no positions found.</td>
+      </tr>
+    </tbody>
+    <tbody *ngIf="positions.length > 0">
+      <tr *ngFor="let position of positions">
+        <td class="text-center">
+          <div [ngSwitch]="position.Position">
+            <span *ngSwitchCase="1">Site Engineer</span>
+            <span *ngSwitchCase="2">Site Manager</span>
+            <span *ngSwitchCase="3">Project Manager</span>
+            <span *ngSwitchCase="4">Director</span>
+          </div>
+        </td>
+        <td class="text-center">
+          {{ position.EffectiveDate | date:'dd MMM YY' }}
+        </td>
+        <td class="text-center">
+          <button mat-icon-button
+                  (click)="openPositionInfo(position)"
+                  aria-label="Detail button">
+            <mat-icon>details</mat-icon>
+          </button>
+          <button mat-icon-button
+                  (click)="openDeletePosition(position)"
+                  aria-label="Delete button"
+                  class="text-alpha">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="5">
+          <mat-paginator [length]="records"
+                         style="color:white;background-color:transparent"
+                         pageSize="25"
+                         [pageIndex]="pageNumber - 1"
+                         (page)="updatePage($event)">
+          </mat-paginator>
+        </td>
+      </tr>
+    </tfoot>
+  </table>
 </div>

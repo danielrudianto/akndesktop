@@ -14,6 +14,7 @@ import SwiperCore, {
   Thumbs,
   Controller
 } from "swiper/core";
+import { Router } from '@angular/router';
 
 // install Swiper components
 SwiperCore.use([
@@ -37,7 +38,8 @@ export class MainComponent implements OnInit {
   projects: CodeProject[] = [];
 
   constructor(
-    private projectService: ProjectService
+    private projectService: ProjectService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -48,6 +50,16 @@ export class MainComponent implements OnInit {
     this.projectService.getProjectsByUser().subscribe((responseData: CodeProject[]) => {
       this.projects = responseData;
     })
+  }
+
+  breakpoints = {
+    640: { slidesPerView: 1, spaceBetween: 20 },
+    768: { slidesPerView: 2, spaceBetween: 40 },
+    1024: { slidesPerView: 2.2, spaceBetween: 50 }
+  };
+
+  goToProject(project: CodeProject) {
+    this.router.navigate(["/Feeds/" + project.Id]);
   }
 
 }

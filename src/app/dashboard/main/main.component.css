@@ -1,0 +1,17 @@
+.swiper-slide{
+    height:auto;
+}
+
+.card{
+    aspect-ratio:2;
+    position:relative;
+    background-color:white;
+    cursor:pointer;
+    padding:1rem;
+}
+
+.card > div{
+    position:absolute;
+    top:50%;
+    transform:translateY(-50%);
+}

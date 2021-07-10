@@ -12,8 +12,7 @@
     <div *ngIf="!isFetching">
       <mat-form-field class="w-100">
         <mat-label>Name</mat-label>
-        <input
-               style="color:white"
+        <input style="color:white"
                disabled
                matInput
                [value]="project.Name">
@@ -42,8 +41,7 @@
                [value]="project.DocumentName">
       </mat-form-field>
 
-      <app-gantt-chart
-                       [isViewOnly]="true"></app-gantt-chart>
+      <app-gantt-chart-view [data]="project.Project"></app-gantt-chart-view>
 
       <table class="table table-dark">
         <thead>
@@ -88,20 +86,23 @@
           <tr *ngFor="let document of project.CodeProjectDocument">
             <td>{{ document.Name }}</td>
             <td>
-              <button type="button"
-                      (click)="deleteDocument(document)"
-                      mat-icon-button>
-                <mat-icon>delete</mat-icon>
-              </button>
+              
             </td>
           </tr>
         </tbody>
       </table>
 
       <button [disabled]="isSubmitting"
-              type="submit"
+              type="button"
+              (click)="confirmProject()"
+              class="default-button me-3">
+        Delete
+      </button>
+      <button [disabled]="isSubmitting"
+              type="button"
+              (click)="confirmProject()"
               class="default-button">
-        Submit
+        Confirm
       </button>
     </div>
   </div>

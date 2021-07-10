@@ -32,7 +32,7 @@ export interface CodeProject {
   CompletedDate?: Date;
   CompletedBy?: number;
   IsDelete: boolean;
-  Tasks: TaskFormGroup[];
+  Project: TaskFormGroup[];
   CodeProjectUser: CodeProjectUser[];
   CodeProjectDocument: CodeProjectDocument[];
   Client: Client;

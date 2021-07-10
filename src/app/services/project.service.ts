@@ -47,4 +47,10 @@ export class ProjectService {
   getProjectsByUser() {
     return this.http.get<CodeProject[]>(global.url + "/project?email=" + this.authService.getEmail());
   }
+
+  confirmProject(id: number) {
+    return this.http.post(global.url + '/project/confirm', {
+      id: id
+    })
+  }
 }

@@ -82,7 +82,6 @@ export class ClientsComponent implements OnInit {
 
   openDeleteForm(client: Client) {
     const dialog = this.dialog.open(ClientsDeleteComponent, {
-      disableClose: true,
       data: client
     })
 

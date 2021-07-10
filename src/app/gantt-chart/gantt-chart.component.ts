@@ -124,7 +124,7 @@ export class GanttChartComponent implements OnInit {
 
     this.maxTimeline = 0;
     this.tasks.forEach(task => {
-      task.Tasks.forEach(x => {
+      task.Tasks.forEach((x: any) => {
         if ((x.Timeline! + x.EstimatedDuration!) > this.maxTimeline) {
           this.maxTimeline = (x.Timeline! + x.EstimatedDuration!);
         }
@@ -165,7 +165,7 @@ export class GanttChartComponent implements OnInit {
     this.tasks.splice(groupIndex, 1);
     this.maxTimeline = 0;
     this.tasks.forEach(task => {
-      task.Tasks.forEach(x => {
+      task.Tasks.forEach((x: any) => {
         if ((x.Timeline! + x.EstimatedDuration!) > this.maxTimeline) {
           this.maxTimeline = (x.Timeline! + x.EstimatedDuration!);
         }

@@ -1,12 +1,22 @@
-<div class="col-lg-8 col-md-8 col-sm-10 col-12">
-  <h2>Dashboard</h2>
-  <swiper [slidesPerView]="1"
-          [spaceBetween]="50">
-    <ng-template swiperSlide *ngFor="let project of projects">
-      <div>
-        {{ project.Name }}
-        {{ project.Address }}
-      </div>
+<div class="col-12">
+  <h2 class="fr-text mb-5">Dashboard</h2>
+  <swiper [breakpoints]="breakpoints">
+    <ng-template
+                 swiperSlide
+                 *ngFor="let project of projects">
+      <mat-card
+                (click)="goToProject(project)"
+                class="card">
+        <div class="p-2">
+          <h4 class="fr-text text-alpha">{{ project.Name }}</h4>
+          <p class="mb-0">{{ project.Address }}</p>
+          <p class="fr-text mb-3">{{ project.Client.Name }}</p>
+          <button
+                  class="default-button">
+            Go to
+          </button>
+        </div>
+      </mat-card>
     </ng-template>
   </swiper>
 </div>

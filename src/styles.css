@@ -8,6 +8,7 @@ html, body {
   height: 100%;
   background-color: #3E3E3E;
   color:white;
+  min-width:768px;
 }
 
 mat-dialog-container {

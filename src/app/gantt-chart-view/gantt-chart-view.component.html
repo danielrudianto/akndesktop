@@ -1,1 +1,46 @@
-<p>gantt-chart-view works!</p>
+<div class="table-responsive">
+  <table class="table table-dark">
+    <thead>
+      <tr>
+        <th scope="col">
+          Task
+        </th>
+        <th *ngFor="let date of dateArray">
+          {{ date }}
+        </th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let task of tasks">
+      <tr>
+        <td>
+          <p class="d-inline-block text-alpha fr-text">{{ task.Name }}</p>
+          <div class="d-inline-block float-end">
+            <button mat-icon-button
+                    class="d-block"
+                    type="button"
+                    (click)="openGroupDetail(task)">
+              <mat-icon>info</mat-icon>
+            </button>
+          </div>
+        </td>
+        <td *ngFor="let date of dateArray">
+        </td>
+      </tr>
+      <tr *ngFor="let item of task.Tasks">
+        <td class="ps-3">
+          {{ item.Name }}
+          <div class="d-inline-block float-end">
+            <button mat-icon-button
+                    class="d-block"
+                    type="button"
+                    (click)="openDetail(item)">
+              <mat-icon>info</mat-icon>
+            </button>
+          </div>
+        </td>
+        <td *ngFor="let date of dateArray" [ngStyle]="{'background-color': (date >= item.Timeline && date <= (item.Timeline + item.EstimatedDuration))? item.Color: '#242424' }">
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

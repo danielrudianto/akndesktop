@@ -11,6 +11,15 @@ export interface User {
   UserPosition?: UserPosition[];
 }
 
+export interface UserForm {
+  Id?: number;
+  FirstName: string;
+  LastName: string;
+  Email: string;
+  IsActive: boolean;
+  Position: number;
+}
+
 export interface UserContact {
   Id?: number;
   PhoneNumber: string;
@@ -23,6 +32,7 @@ export interface UserPosition {
   Position: number;
   EffectiveDate: Date;
   CreatedDate: Date;
-  CreatedBy: number | string;
+  CreatedBy?: number | string;
   UserId?: number;
+  UserEmail?: string;
 }
