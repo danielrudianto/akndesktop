@@ -53,4 +53,8 @@ export class ProjectService {
       id: id
     })
   }
+
+  deleteProject(id: number) {
+    return this.http.delete(global.url + '/project/' + id);
+  }
 }

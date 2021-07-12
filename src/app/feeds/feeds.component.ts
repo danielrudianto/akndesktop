@@ -1,5 +1,4 @@
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { Location } from '@angular/common'; 
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
@@ -9,15 +8,14 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class FeedsComponent implements OnInit, OnDestroy {
   menuOpened: boolean = false;
+  selectedReport: any = null;
   @ViewChild('drawer', { static: false }) drawer: any;
 
   constructor(
-    private location: Location,
-    private router: ActivatedRoute
+    private router: ActivatedRoute,
   ) { }
 
   ngOnInit(): void {
-    console.log(this.router.snapshot);
   }
 
   ngOnDestroy(): void {
@@ -28,8 +26,42 @@ export class FeedsComponent implements OnInit, OnDestroy {
     this.menuOpened = !this.menuOpened;
   }
 
+  closeMenu() {
+    this.menuOpened = false;
+    this.selectedReport = null;
+  }
+
   openReport(reportType: string) {
-    this.location.go("Feeds/" + this.router.snapshot.params.projectId + "/Create/" + reportType);
+    switch (reportType) {
+      case 'Attendance':
+        this.selectedReport = reportType;
+        this.openMenu();
+        break;
+      case 'Daily':
+        this.selectedReport = reportType;
+        this.openMenu();
+        break;
+      case 'Weather':
+        this.selectedReport = reportType;
+        this.openMenu();
+        break;
+      case 'Progress':
+        this.selectedReport = reportType;
+        this.openMenu();
+        break;
+      case 'Tool':
+        this.selectedReport = reportType;
+        this.openMenu();
+        break;
+      case 'Material':
+        this.selectedReport = reportType;
+        this.openMenu();
+        break;
+      case 'RFI':
+        this.selectedReport = reportType;
+        this.openMenu();
+        break;
+    }
   }
 
 }

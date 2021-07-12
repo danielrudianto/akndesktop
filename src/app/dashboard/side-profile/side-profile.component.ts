@@ -31,13 +31,10 @@ export class SideProfileComponent implements OnInit {
   }
 
   uploadProfilePicture(event: any) {
-    const fileName = event.target.files[0].name;
-    
-    console.log(event.target.files[0].name = uuid.v1());
-    //this.userService.updateProfilePicture(event.target.files[0]).subscribe(data => {
-    //}, error => {
-    //    this.snackBar.open(error.message, "Close");
-    //});;
+    this.userService.updateProfilePicture(event.target.files[0]).subscribe(data => {
+    }, error => {
+        this.snackBar.open(error.message, "Close");
+    });;
   }
 
 }

@@ -3,14 +3,14 @@
     "",
     "\\src",
     "\\src\\app",
-    "\\src\\app\\dashboard",
-    "\\src\\app\\dashboard\\side-profile",
-    "\\src\\app\\feeds",
-    "\\src\\assets",
-    "\\src\\assets\\fonts",
-    "\\src\\assets\\icons",
-    "\\src\\assets\\images"
+    "\\src\\app\\clients",
+    "\\src\\app\\interfaces",
+    "\\src\\app\\services",
+    "\\src\\app\\settings",
+    "\\src\\app\\settings\\tasks",
+    "\\src\\app\\settings\\users",
+    "\\src\\app\\settings\\users\\users-main"
   ],
-  "SelectedNode": "\\src\\app\\dashboard\\side-profile\\side-profile.component.ts",
+  "SelectedNode": "\\src\\app\\settings\\tasks\\tasks.component.ts",
   "PreviewInSolutionExplorer": false
 }

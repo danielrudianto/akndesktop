@@ -13,12 +13,11 @@
     height:100vh!important;
 }
 
-.report-drawer{
-    width:500px;
-    padding:2rem;
-    border-top-left-radius:2rem;
-    border-bottom-left-radius:2rem;
-    background-color:white;
+.report-drawer {
+  width: calc(50vw - 8rem);
+  min-width:500px;
+  padding: 2rem;
+  background-color: white;
 }
 
 .menu-wrapper {

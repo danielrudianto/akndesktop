@@ -1,0 +1,31 @@
+<form
+      (ngSubmit)="onSubmit()"
+      [formGroup]="tasksAddForm">
+  <mat-dialog-content>
+    <mat-form-field class="w-100">
+      <mat-label>Name</mat-label>
+      <input style="color:white"
+             matInput
+             formControlName="Name" />
+    </mat-form-field>
+    <mat-form-field class="w-100">
+      <mat-label>Description</mat-label>
+      <input style="color:white"
+             matInput
+             formControlName="Description" />
+    </mat-form-field>
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button type="button"
+            [disabled]="isSubmitting"
+            (click)="onClose()"
+            mat-button>
+      Close
+    </button>
+    <button type="submit"
+            [disabled]="isSubmitting || !tasksAddForm.valid"
+            mat-button>
+      Submit
+    </button>
+  </mat-dialog-actions>
+</form>

@@ -1,30 +1,31 @@
-<h3 class="text-white fr-text">Profile</h3>
+<mat-card
+          class="w-100">
+  <h3 class="text-alpha fr-text">Profile</h3>
 
-<div class="text-center">
-  <input
-         id="file"
-         type="file"
-         accept="image/png, image/gif, image/jpeg" 
-         class="d-none"
-         (change)="uploadProfilePicture($event)"/>
-  <label for="file">
-    <img
-         [src]="imageUrl == null ? '/assets/images/Profile.png' : imageUrl"
-         class="profileImage" />
-  </label>
-  
-</div>
+  <div class="text-center">
+    <input id="file"
+           type="file"
+           accept="image/png, image/gif, image/jpeg"
+           class="d-none"
+           (change)="uploadProfilePicture($event)" />
+    <label for="file">
+      <img [ngStyle]="{'background-image': imageUrl == null ? '/assets/images/Profile.png' : 'url(' + imageUrl + ')'}"
+           class="profileImage" />
+    </label>
 
-<mat-form-field class="w-100">
-  <mat-label>Name</mat-label>
-  <input readonly
-         [(ngModel)]="name"
-         matInput />
-</mat-form-field>
+  </div>
 
-<mat-form-field class="w-100">
-  <mat-label>Name</mat-label>
-  <input readonly
-         [(ngModel)]="email"
-         matInput />
-</mat-form-field>
+  <mat-form-field class="w-100">
+    <mat-label>Name</mat-label>
+    <input readonly
+           [(ngModel)]="name"
+           matInput />
+  </mat-form-field>
+
+  <mat-form-field class="w-100">
+    <mat-label>Name</mat-label>
+    <input readonly
+           [(ngModel)]="email"
+           matInput />
+  </mat-form-field>
+</mat-card>

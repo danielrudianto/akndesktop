@@ -94,11 +94,11 @@
 
       <button [disabled]="isSubmitting"
               type="button"
-              (click)="confirmProject()"
+              (click)="deleteProject()"
               class="default-button me-3">
         Delete
       </button>
-      <button [disabled]="isSubmitting"
+      <button [disabled]="isSubmitting || project.ConfirmedBy != null"
               type="button"
               (click)="confirmProject()"
               class="default-button">

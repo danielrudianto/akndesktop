@@ -15,7 +15,7 @@
                             style="margin:0 auto;"
                             mode="indeterminate">
       </mat-progress-spinner>
-      <table class="table table-dark"
+      <table class="mb-3 table table-dark"
              *ngIf="!isFetching">
         <thead>
           <tr>
@@ -81,6 +81,12 @@
           </tr>
         </tfoot>
       </table>
+      <a
+         routerLink="/Settings/Tasks"
+         role="button"
+         class="default-button text-decoration-none">
+        Set Tasks
+      </a>
     </div>
   </div>
 </div>

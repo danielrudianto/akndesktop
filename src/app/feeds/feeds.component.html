@@ -14,12 +14,26 @@
     </div>
   </div>
   <mat-drawer
+              [disableClose]="true"
               class="report-drawer"
-              [opened]="true"
+              [opened]="menuOpened"
               [position]="'end'"
               #drawer
-              mode="over">
-    <p>Test</p>
+              mode="push">
+    <button
+            (click)="openMenu()"
+            mat-icon-button>
+      <mat-icon>close</mat-icon>
+    </button>
+    <div [ngSwitch]="selectedReport">
+      <app-report-attendance *ngSwitchCase="'Attendance'" (onSubmit)="closeMenu()"></app-report-attendance>
+      <app-report-tool *ngSwitchCase="'Tool'" (onSubmit)="closeMenu()"></app-report-tool>
+      <app-report-material *ngSwitchCase="'Material'" (onSubmit)="closeMenu()"></app-report-material>
+      <app-report-daily *ngSwitchCase="'Daily'" (onSubmit)="closeMenu()"></app-report-daily>
+      <app-report-progress *ngSwitchCase="'Progress'" (onSubmit)="closeMenu()"></app-report-progress>
+      <app-report-weather *ngSwitchCase="'Weather'" (onSubmit)="closeMenu()"></app-report-weather>
+      <app-report-rfi *ngSwitchCase="'RFI'" (onSubmit)="closeMenu()"></app-report-rfi>
+    </div>
   </mat-drawer>
   <div [class.opened]="menuOpened"
        class="menu-wrapper">

@@ -1,1 +1,54 @@
-<p>tasks works!</p>
+<div class="container-fluid">
+  <div class="row justify-content-center p-5">
+    <div class="col-12 mb-3">
+      <h2 class="text-white fr-text mb-3">Tasks</h2>
+    </div>
+    <div class="col-12">
+      <table class="table table-dark">
+        <thead>
+          <tr>
+            <th>
+              Name
+              <button
+                      (click)="openAddTaskGroup()"
+                      style="float:right"
+                      mat-icon-button>
+                <mat-icon>add</mat-icon>
+              </button>
+            </th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody *ngIf="tasks.length == 0">
+          <tr>
+            <td colspan="2">There is no task found.</td>
+          </tr>
+        </tbody>
+        <tbody *ngIf="tasks.length > 0">
+          <tr *ngFor="let task of tasks">
+            <td>
+              {{ task.Name }}
+              <div style="float:right">
+                <button (click)="viewDetails(task)"
+                        mat-icon-button>
+                  <mat-icon>details</mat-icon>
+                </button>
+                <button (click)="viewDetails(task)"
+                        mat-icon-button>
+                  <mat-icon>edit</mat-icon>
+                </button>
+                <button
+                        class="text-alpha"
+                        (click)="viewDetails(task)"
+                        mat-icon-button>
+                  <mat-icon>delete</mat-icon>
+                </button>
+              </div>
+            </td>
+            <td>{{ task.Description }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

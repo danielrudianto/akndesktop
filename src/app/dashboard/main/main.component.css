@@ -2,16 +2,32 @@
     height:auto;
 }
 
-.card{
-    aspect-ratio:2;
-    position:relative;
-    background-color:white;
-    cursor:pointer;
-    padding:1rem;
+.card {
+  aspect-ratio: 2;
+  position: relative;
+  background-color: #ADA7A7;
+  color:black;
+  cursor: pointer;
+  padding: 1rem;
+}
+
+.card img{
+    position:absolute;
+    right:0;
+    bottom:0;
+    width:20%;
+    height:30%;
 }
 
 .card > div{
     position:absolute;
     top:50%;
     transform:translateY(-50%);
+}
+
+.image-empty{
+    width:300px;
+    left:50%;
+    transform:translateX(-50%);
+    position:relative;
 }

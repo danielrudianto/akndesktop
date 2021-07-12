@@ -1,21 +1,28 @@
 <div class="col-12">
   <h2 class="fr-text mb-5">Dashboard</h2>
-  <swiper [breakpoints]="breakpoints">
-    <ng-template
-                 swiperSlide
+  <mat-progress-spinner *ngIf="isFetching"
+                        style="margin:0 auto;"
+                        mode="indeterminate">
+  </mat-progress-spinner>
+
+  <img src="/assets/images/Empty.png" *ngIf="projects.length == 0 && !isFetching" class="image-empty" />
+  <p class="fr-text text-white text-center">There is no active project found.</p>
+
+  <swiper *ngIf="projects.length > 0 && !isFetching"
+          [breakpoints]="breakpoints">
+    <ng-template swiperSlide
                  *ngFor="let project of projects">
-      <mat-card
-                (click)="goToProject(project)"
+      <mat-card (click)="goToProject(project)"
                 class="card">
         <div class="p-2">
-          <h4 class="fr-text text-alpha">{{ project.Name }}</h4>
-          <p class="mb-0">{{ project.Address }}</p>
-          <p class="fr-text mb-3">{{ project.Client.Name }}</p>
-          <button
-                  class="default-button">
+          <h4 class="fr-text text-black">{{ project.Name }}</h4>
+          <p class="text-white mb-0">{{ project.Address }}</p>
+          <p class="text-white fr-text mb-3">{{ project.Client.Name }}</p>
+          <button class="default-button">
             Go to
           </button>
         </div>
+        <img src="assets/images/plus-light-pattern.png" />
       </mat-card>
     </ng-template>
   </swiper>

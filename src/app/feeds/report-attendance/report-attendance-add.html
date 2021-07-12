@@ -1,0 +1,38 @@
+<form
+      [formGroup]="attendanceForm"
+      (ngSubmit)="submitForm()">
+  <mat-dialog-content>
+    <mat-form-field class="w-100">
+      <mat-label>Name</mat-label>
+      <input
+             style="color:white"
+             formControlName="Name"
+             type="text"
+             matInput />
+    </mat-form-field>
+
+    <mat-form-field class="w-100">
+      <mat-label>Quantity</mat-label>
+      <input
+             style="color:white"
+             formControlName="Quantity"
+             type="number"
+             matInput />
+    </mat-form-field>
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button
+            (click)="closeDialog()"
+            type="button"
+            mat-button>
+      Close
+    </button>
+    <button
+            [disabled]="!attendanceForm.valid"
+            color="primary"
+            type="submit"
+            mat-button>
+      Submit
+    </button>
+  </mat-dialog-actions>
+</form>

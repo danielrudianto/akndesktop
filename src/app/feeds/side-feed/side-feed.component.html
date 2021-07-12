@@ -1,5 +1,20 @@
 <mat-card>
-  <h4 class="fr-text text-alpha">Project Information</h4>
-  <p></p>
-  <button class="default-button">Details</button>
+  <div *ngIf="project != null">
+    <h4 class="fr-text text-alpha">Project Information</h4>
+    <h5 class="fr-text mb-0">{{ project.Name }}</h5>
+    <p>{{ project.Address }}</p>
+    <p>{{ project.Client.Name }}</p>
+
+    <h4 class="fr-text text-alpha">Contributing Users</h4>
+    <div
+         [matTooltip]="user.User.FirstName"
+         matTooltipShowDelay="0"
+         matTooltipClass="custom-tooltip"
+         matTooltipPosition="below"
+         *ngFor="let user of project.CodeProjectUser"
+         class="user mb-3"
+         [ngStyle]="{'background-image': user.User.ImageUrl == null ? '/assets/images/Profile.png' : 'url(' + global.url + '/img/' + user.User.ImageUrl + ')'}">
+    </div>
+    <button class="default-button">Details</button>
+  </div>
 </mat-card>

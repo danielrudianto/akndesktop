@@ -1,0 +1,48 @@
+<form [formGroup]="materialForm" (ngSubmit)="onSubmit()">
+  <mat-dialog-content>
+    <mat-form-field class="w-100">
+      <mat-label>Name</mat-label>
+      <input style="color:white"
+             type="text"
+             matInput
+             formControlName="Name" />
+    </mat-form-field>
+
+    <mat-form-field class="w-100">
+      <mat-label>Description</mat-label>
+      <input style="color:white"
+             type="text"
+             matInput
+             formControlName="Description" />
+    </mat-form-field>
+
+    <mat-form-field class="w-100">
+      <mat-label>Quantity</mat-label>
+      <input style="color:white"
+             type="number"
+             matInput
+             formControlName="Quantity" />
+    </mat-form-field>
+
+    <mat-form-field class="w-100">
+      <mat-label>Unit</mat-label>
+      <input style="color:white"
+             type="text"
+             matInput
+             formControlName="Unit" />
+    </mat-form-field>
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button (click)="closeDialog()"
+            mat-button
+            type="button">
+      Close
+    </button>
+    <button mat-raised-button
+            color="primary"
+            [disabled]="!materialForm.valid"
+            type="submit">
+      Submit
+    </button>
+  </mat-dialog-actions>
+</form>

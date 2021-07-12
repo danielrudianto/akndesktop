@@ -43,7 +43,7 @@ import { SelectUserComponent } from './select-user/select-user.component';
 import { AuthInterceptorService } from './services/auth-interceptor.service';
 import { SettingsMainComponent } from './settings/settings-main/settings-main.component';
 import { SettingsComponent } from './settings/settings.component';
-import { TasksComponent } from './settings/tasks/tasks.component';
+import { TasksAddGroupComponent, TasksComponent } from './settings/tasks/tasks.component';
 import { ContactAddComponent, ContactComponent, ContactDeleteComponent, ContactEditComponent } from './settings/users/users-detail/contact/contact.component';
 import { PositionAddComponent, PositionComponent, PositionDeleteComponent, PositionDetailComponent } from './settings/users/users-detail/position/position.component';
 import { UsersDetailComponent } from './settings/users/users-detail/users-detail.component';
@@ -54,12 +54,15 @@ import { FeedsComponent } from './feeds/feeds.component';
 import { MainFeedComponent } from './feeds/main-feed/main-feed.component';
 import { SideFeedComponent } from './feeds/side-feed/side-feed.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
-import { ReportMaterialComponent } from './feeds/report-material/report-material.component';
-import { ReportToolComponent } from './feeds/report-tool/report-tool.component';
-import { ReportAttendanceComponent } from './feeds/report-attendance/report-attendance.component';
+import { ReportMaterialAddComponent, ReportMaterialComponent, ReportMaterialEditComponent } from './feeds/report-material/report-material.component';
+import { ReportToolAddComponent, ReportToolComponent, ReportToolEditComponent } from './feeds/report-tool/report-tool.component';
+import { ReportAttendanceAddComponent, ReportAttendanceComponent, ReportAttendanceEditComponent } from './feeds/report-attendance/report-attendance.component';
 import { ReportDailyComponent } from './feeds/report-daily/report-daily.component';
 import { ReportProgressComponent } from './feeds/report-progress/report-progress.component';
 import { ReportWeatherComponent } from './feeds/report-weather/report-weather.component';
+import { SocketService } from './services/socket.service';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { ReportRfiComponent } from './feeds/report-rfi/report-rfi.component';
 
 
 @NgModule({
@@ -117,7 +120,15 @@ import { ReportWeatherComponent } from './feeds/report-weather/report-weather.co
     ReportAttendanceComponent,
     ReportDailyComponent,
     ReportProgressComponent,
-    ReportWeatherComponent
+    ReportWeatherComponent,
+    ReportToolAddComponent,
+    ReportToolEditComponent,
+    ReportMaterialAddComponent,
+    ReportMaterialEditComponent,
+    ReportAttendanceAddComponent,
+    ReportAttendanceEditComponent,
+    ReportRfiComponent,
+    TasksAddGroupComponent
   ],
   imports: [
     BrowserModule,
@@ -127,8 +138,6 @@ import { ReportWeatherComponent } from './feeds/report-weather/report-weather.co
     FormsModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production,
-      // Register the ServiceWorker as soon as the app is stable
-      // or after 30 seconds (whichever comes first).
       registrationStrategy: 'registerWhenStable:30000'
     }),
     BrowserAnimationsModule,
@@ -150,7 +159,8 @@ import { ReportWeatherComponent } from './feeds/report-weather/report-weather.co
     MatCardModule,
     MatSelectModule,
     MatSidenavModule,
-    NgxMaskModule.forRoot(),
+    InfiniteScrollModule,
+    NgxMaskModule.forRoot()
     
   ],
   entryComponents: [
@@ -174,7 +184,8 @@ import { ReportWeatherComponent } from './feeds/report-weather/report-weather.co
     PositionDeleteComponent,
     PositionDetailComponent,
     GanttViewDetailComponent,
-    GanttViewDetailGroupComponent
+    GanttViewDetailGroupComponent,
+    TasksAddGroupComponent
   ],
   providers: [
     {
@@ -182,7 +193,8 @@ import { ReportWeatherComponent } from './feeds/report-weather/report-weather.co
       useClass: AuthInterceptorService,
       multi: true
     },
-    MatDatepickerModule
+    MatDatepickerModule,
+    SocketService
   ],
   bootstrap: [AppComponent]
 })

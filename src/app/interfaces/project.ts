@@ -89,3 +89,11 @@ export interface TaskFormGroup {
   Description: string;
   Tasks: TaskForm[];
 }
+
+export interface ProjectTask {
+  Id?: number | string;
+  Name: string;
+  Description: string;
+  ParentId?: number | string;
+  Tasks?: ProjectTask[];
+}

@@ -1,1 +1,75 @@
-<p>report-attendance works!</p>
+<h4 class="fr-text"><span class="text-alpha">Attendance</span> Report</h4>
+
+<div class="table-responsive-md">
+  <table class="table table-dark mt-3">
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">Time</th>
+      </tr>
+    </thead>
+    <tbody *ngIf="attendingWorkers.length == 0">
+      <tr>
+        <td colspan="3">There is no worker attended.</td>
+      </tr>
+    </tbody>
+    <tbody *ngIf="attendingWorkers.length > 0">
+      <tr *ngFor="let attendingWorker of attendingWorkers; index as i">
+        <td>{{ attendingWorker.Name }}</td>
+        <td>{{ attendingWorker.Quantity | number: '1.0-0' }}</td>
+        <td>{{ attendingWorker.Date | date: 'shortTime' }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<button
+        [disabled]="isSubmitting"
+        class="default-button"
+        (click)="openAddAttendanceForm()">
+  Add
+</button>
+
+<div class="table-responsive-md">
+  <table class="table table-dark mt-3">
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody *ngIf="workers.length == 0">
+      <tr>
+        <td colspan="3">There is no worker attended.</td>
+      </tr>
+    </tbody>
+    <tbody *ngIf="workers.length > 0">
+      <tr *ngFor="let worker of workers; index as i">
+        <td>{{ worker.Name }}</td>
+        <td>{{ worker.Quantity | number: '1.0-0' }}</td>
+        <td>
+          <button
+                  mat-icon-button
+                  (click)="openEditAttendanceForm(i)">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button
+                  mat-icon-button
+                  class="text-alpha"
+                  (click)="deleteAttendance(i)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<button
+        class="default-button"
+        [disabled]="workers.length == 0 || isSubmitting"
+        (click)="addAttendance()">
+  Submit
+</button>

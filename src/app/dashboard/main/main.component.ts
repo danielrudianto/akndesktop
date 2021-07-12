@@ -36,6 +36,7 @@ SwiperCore.use([
 })
 export class MainComponent implements OnInit {
   projects: CodeProject[] = [];
+  isFetching: boolean = false;
 
   constructor(
     private projectService: ProjectService,
@@ -47,15 +48,18 @@ export class MainComponent implements OnInit {
   }
 
   fetchProjects() {
+    this.isFetching = true;
     this.projectService.getProjectsByUser().subscribe((responseData: CodeProject[]) => {
       this.projects = responseData;
+      this.isFetching = false;
     })
   }
 
   breakpoints = {
-    640: { slidesPerView: 1, spaceBetween: 20 },
-    768: { slidesPerView: 2, spaceBetween: 40 },
-    1024: { slidesPerView: 2.2, spaceBetween: 50 }
+    768: { slidesPerView: 1, spaceBetween: 20 },
+    992: { slidesPerView: 1.5, spaceBetween: 20 },
+    1200: { slidesPerView: 1.8, spaceBetween: 40 },
+    1368: { slidesPerView: 2.1, spaceBetween: 40 }
   };
 
   goToProject(project: CodeProject) {

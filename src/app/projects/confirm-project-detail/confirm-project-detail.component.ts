@@ -44,4 +44,12 @@ export class ConfirmProjectDetailComponent implements OnInit {
     })
   }
 
+  deleteProject() {
+    this.projectService.deleteProject(this.project.Id!).subscribe(responseData => {
+      this.route.navigate(['/Projects'])
+    }, error => {
+      this.snackBar.open(error.message, "Close");
+    });
+  }
+
 }
