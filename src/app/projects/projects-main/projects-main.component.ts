@@ -35,6 +35,10 @@ export class ProjectsMainComponent implements OnInit {
     this.router.navigate(["/Projects/Confirm/" + project.Id]);
   }
 
+  goToEditProject(project: CodeProject) {
+    this.router.navigate(["/Projects/Edit/" + project.Id]);
+  }
+
   updatePage(event: any) {
     this.pageNumber = event.pageIndex + 1;
     this.fetchProjects();

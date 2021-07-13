@@ -1,0 +1,40 @@
+<form [formGroup]="generalProjectForm" (ngSubmit)="submitProject()">
+  <mat-form-field class="w-100">
+    <mat-label>Name</mat-label>
+    <input matInput
+           formControlName="name"
+           placeholder="Project name">
+  </mat-form-field>
+  <mat-form-field class="w-100">
+    <mat-label>Address</mat-label>
+    <input style="color:white"
+           matInput
+           formControlName="address"
+           placeholder="Project address">
+  </mat-form-field>
+
+  <mat-form-field (click)="openAddClient()"
+                  class="w-100">
+    <mat-label>Client</mat-label>
+    <input style="color:white"
+           readonly
+           matInput
+           formControlName="client"
+           placeholder="Project address">
+  </mat-form-field>
+
+  <mat-form-field class="w-100">
+    <mat-label>Contract Document</mat-label>
+    <input style="color:white"
+           matInput
+           formControlName="contractDocument"
+           placeholder="Contract Document">
+  </mat-form-field>
+
+  <button
+          [disabled]="!generalProjectForm.valid || isSubmitting"
+          type="submit"
+          class="default-button">
+    Submit
+  </button>
+</form>

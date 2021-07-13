@@ -6,6 +6,10 @@ import { FeedsComponent } from './feeds/feeds.component';
 import { LoginComponent } from './login/login.component';
 import { ConfirmProjectDetailComponent } from './projects/confirm-project-detail/confirm-project-detail.component';
 import { CreateProjectComponent } from './projects/create-project/create-project.component';
+import { EditProjectDocumentComponent } from './projects/edit-project/edit-project-document/edit-project-document.component';
+import { EditProjectGeneralComponent } from './projects/edit-project/edit-project-general/edit-project-general.component';
+import { EditProjectTaskComponent } from './projects/edit-project/edit-project-task/edit-project-task.component';
+import { EditProjectUserComponent } from './projects/edit-project/edit-project-user/edit-project-user.component';
 import { EditProjectComponent } from './projects/edit-project/edit-project.component';
 import { ProjectDetailComponent } from './projects/project-detail/project-detail.component';
 import { ProjectsMainComponent } from './projects/projects-main/projects-main.component';
@@ -83,9 +87,28 @@ const routes: Routes = [
         canActivate: [AuthGuardService]
       },
       {
-        path: "Edit",
+        path: "Edit/:projectId",
         component: EditProjectComponent,
-        canActivate: [AuthGuardService]
+        canActivate: [AuthGuardService],
+        children: [
+          {
+            path: "",
+            pathMatch: "full",
+            component: EditProjectGeneralComponent,
+          },
+          {
+            path: "Document",
+            component: EditProjectDocumentComponent,
+          },
+          {
+            path: "User",
+            component: EditProjectUserComponent,
+          },
+          {
+            path: "Task",
+            component: EditProjectTaskComponent,
+          }
+        ]
       },
       {
         path: "Confirm/:projectId",

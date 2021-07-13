@@ -31,6 +31,14 @@ export class ProjectService {
     return this.http.post(global.url + "/projectDocument", formData);
   }
 
+  downloadDocument(url: string) {
+    return this.http.get(global.url + "/download/" + url);
+  }
+
+  deleteDocument(id: number) {
+    return this.http.delete(global.url + "/projectDocument/" + id);
+  }
+
   getActiveProjects(offset: number, limit: number = 25) {
     return this.http.get(global.url + "/project/active", {
       params: {

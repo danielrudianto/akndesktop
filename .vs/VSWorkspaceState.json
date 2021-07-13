@@ -3,14 +3,10 @@
     "",
     "\\src",
     "\\src\\app",
-    "\\src\\app\\clients",
-    "\\src\\app\\interfaces",
-    "\\src\\app\\services",
-    "\\src\\app\\settings",
-    "\\src\\app\\settings\\tasks",
-    "\\src\\app\\settings\\users",
-    "\\src\\app\\settings\\users\\users-main"
+    "\\src\\app\\feeds",
+    "\\src\\app\\feeds\\main-feed",
+    "\\src\\app\\services"
   ],
-  "SelectedNode": "\\src\\app\\settings\\tasks\\tasks.component.ts",
+  "SelectedNode": "\\src\\app\\services\\feed.service.ts",
   "PreviewInSolutionExplorer": false
 }

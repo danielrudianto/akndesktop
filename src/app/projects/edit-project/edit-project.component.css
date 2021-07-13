@@ -1,0 +1,15 @@
+.nav-link {
+  color: #ED811E;
+  cursor:pointer;
+}
+
+.nav-link.disabled{
+    color:white;
+    background-color:#ccc!important;
+    cursor:not-allowed;
+}
+
+.nav-link.active {
+  color: white;
+  background-color: #ED811E;
+}

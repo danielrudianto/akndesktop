@@ -36,6 +36,13 @@ export class ReportService {
     });
   }
 
+  submitRFI(formData: FormData) {
+    return this.http.post(global.url + "/rfi", formData, {
+      reportProgress: true,
+      responseType: 'json'
+    })
+  }
+
   fetchTodayWorker(projectId: number) {
     return this.http.get(global.url + "/reportWorker/getToday/" + projectId.toString());
   }

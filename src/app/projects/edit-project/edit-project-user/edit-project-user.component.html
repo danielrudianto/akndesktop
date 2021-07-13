@@ -1,0 +1,47 @@
+<button [disabled]="isSubmitting"
+        type="button"
+        (click)="openAddUser()"
+        class="default-button mb-3">
+  Add user
+</button>
+<table class="table table-dark">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Position</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody *ngIf="users.length == 0">
+    <tr>
+      <td colspan="3">There is no user found.</td>
+    </tr>
+  </tbody>
+  <tbody *ngIf="users.length > 0">
+    <tr *ngFor="let user of users">
+      <td>{{ user.FirstName }} {{ user.LastName }}</td>
+      <td>
+        <div [ngSwitch]="user.UserPosition[0].Position">
+          <span *ngSwitchCase="1">Site Engineer</span>
+          <span *ngSwitchCase="2">Site Manager</span>
+          <span *ngSwitchCase="3">Project Manager</span>
+          <span *ngSwitchCase="4">Director</span>
+        </div>
+      </td>
+      <td>
+        <button type="button"
+                (click)="deleteUser(user)"
+                mat-icon-button>
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<button
+        (click)="submitForm()"
+        [disabled]="users.length == 0 || isSubmitting"
+        class="default-button">
+  Submit
+</button>

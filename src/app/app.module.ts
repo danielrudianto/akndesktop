@@ -14,12 +14,17 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSelectModule } from '@angular/material/select';
+import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ServiceWorkerModule } from '@angular/service-worker';
+import { ClickOutsideModule } from 'ng-click-outside';
+import { NgxDocViewerModule } from 'ngx-doc-viewer';
+import { FileSaverModule } from 'ngx-filesaver';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { NgxMaskModule } from 'ngx-mask';
 import { SwiperModule } from 'swiper/angular';
 import { environment } from '../environments/environment';
@@ -29,11 +34,27 @@ import { ClientsAddComponent, ClientsComponent, ClientsDeleteComponent, ClientsE
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { MainComponent } from './dashboard/main/main.component';
 import { SideProfileComponent } from './dashboard/side-profile/side-profile.component';
+import { FeedsComponent } from './feeds/feeds.component';
+import { MainFeedComponent } from './feeds/main-feed/main-feed.component';
+import { ReportAttendanceAddComponent, ReportAttendanceComponent, ReportAttendanceEditComponent } from './feeds/report-attendance/report-attendance.component';
+import { ReportDailyComponent } from './feeds/report-daily/report-daily.component';
+import { ReportMaterialAddComponent, ReportMaterialComponent, ReportMaterialEditComponent } from './feeds/report-material/report-material.component';
+import { ReportProgressComponent } from './feeds/report-progress/report-progress.component';
+import { ReportRfiComponent } from './feeds/report-rfi/report-rfi.component';
+import { ReportToolAddComponent, ReportToolComponent, ReportToolEditComponent } from './feeds/report-tool/report-tool.component';
+import { ReportWeatherComponent } from './feeds/report-weather/report-weather.component';
+import { SideFeedComponent } from './feeds/side-feed/side-feed.component';
 import { GanttChartViewComponent, GanttViewDetailComponent, GanttViewDetailGroupComponent } from './gantt-chart-view/gantt-chart-view.component';
 import { GanttAddComponent, GanttAddGroupComponent, GanttChartComponent, GanttDetailComponent, GanttDetailGroupComponent, GanttEditComponent, GanttEditGroupComponent } from './gantt-chart/gantt-chart.component';
+import { ImageViewWrapperDirective } from './image-view-wrapper/image-view-wrapper.directive';
+import { ImageViewComponent } from './image-view/image-view.component';
 import { LoginComponent } from './login/login.component';
 import { ConfirmProjectDetailComponent } from './projects/confirm-project-detail/confirm-project-detail.component';
 import { CreateProjectComponent } from './projects/create-project/create-project.component';
+import { EditProjectDocumentComponent } from './projects/edit-project/edit-project-document/edit-project-document.component';
+import { EditProjectGeneralComponent } from './projects/edit-project/edit-project-general/edit-project-general.component';
+import { EditProjectTaskComponent } from './projects/edit-project/edit-project-task/edit-project-task.component';
+import { EditProjectUserComponent } from './projects/edit-project/edit-project-user/edit-project-user.component';
 import { EditProjectComponent } from './projects/edit-project/edit-project.component';
 import { ProjectDetailComponent } from './projects/project-detail/project-detail.component';
 import { ProjectsMainComponent } from './projects/projects-main/projects-main.component';
@@ -41,6 +62,7 @@ import { ProjectsComponent } from './projects/projects.component';
 import { SelectClientComponent } from './select-client/select-client.component';
 import { SelectUserComponent } from './select-user/select-user.component';
 import { AuthInterceptorService } from './services/auth-interceptor.service';
+import { SocketService } from './services/socket.service';
 import { SettingsMainComponent } from './settings/settings-main/settings-main.component';
 import { SettingsComponent } from './settings/settings.component';
 import { TasksAddGroupComponent, TasksComponent } from './settings/tasks/tasks.component';
@@ -50,19 +72,6 @@ import { UsersDetailComponent } from './settings/users/users-detail/users-detail
 import { UsersAddComponent, UsersDeleteComponent, UsersEditComponent, UsersMainComponent } from './settings/users/users-main/users-main.component';
 import { UsersComponent } from './settings/users/users.component';
 import { SidenavComponent } from './sidenav/sidenav.component';
-import { FeedsComponent } from './feeds/feeds.component';
-import { MainFeedComponent } from './feeds/main-feed/main-feed.component';
-import { SideFeedComponent } from './feeds/side-feed/side-feed.component';
-import { MatSidenavModule } from '@angular/material/sidenav';
-import { ReportMaterialAddComponent, ReportMaterialComponent, ReportMaterialEditComponent } from './feeds/report-material/report-material.component';
-import { ReportToolAddComponent, ReportToolComponent, ReportToolEditComponent } from './feeds/report-tool/report-tool.component';
-import { ReportAttendanceAddComponent, ReportAttendanceComponent, ReportAttendanceEditComponent } from './feeds/report-attendance/report-attendance.component';
-import { ReportDailyComponent } from './feeds/report-daily/report-daily.component';
-import { ReportProgressComponent } from './feeds/report-progress/report-progress.component';
-import { ReportWeatherComponent } from './feeds/report-weather/report-weather.component';
-import { SocketService } from './services/socket.service';
-import { InfiniteScrollModule } from 'ngx-infinite-scroll';
-import { ReportRfiComponent } from './feeds/report-rfi/report-rfi.component';
 
 
 @NgModule({
@@ -128,7 +137,13 @@ import { ReportRfiComponent } from './feeds/report-rfi/report-rfi.component';
     ReportAttendanceAddComponent,
     ReportAttendanceEditComponent,
     ReportRfiComponent,
-    TasksAddGroupComponent
+    TasksAddGroupComponent,
+    ImageViewComponent,
+    ImageViewWrapperDirective,
+    EditProjectGeneralComponent,
+    EditProjectUserComponent,
+    EditProjectDocumentComponent,
+    EditProjectTaskComponent
   ],
   imports: [
     BrowserModule,
@@ -160,6 +175,9 @@ import { ReportRfiComponent } from './feeds/report-rfi/report-rfi.component';
     MatSelectModule,
     MatSidenavModule,
     InfiniteScrollModule,
+    NgxDocViewerModule,
+    ClickOutsideModule,
+    FileSaverModule,
     NgxMaskModule.forRoot()
     
   ],
@@ -185,7 +203,8 @@ import { ReportRfiComponent } from './feeds/report-rfi/report-rfi.component';
     PositionDetailComponent,
     GanttViewDetailComponent,
     GanttViewDetailGroupComponent,
-    TasksAddGroupComponent
+    TasksAddGroupComponent,
+    ImageViewComponent
   ],
   providers: [
     {
