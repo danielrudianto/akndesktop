@@ -49,6 +49,17 @@ body {
   cursor:pointer;
 }
 
+.transparent-button{
+    background-color:transparent;
+    border-radius:0.5rem;
+    padding:0.25rem 0rem;
+    color:black;
+    font-family:'Francois One';
+    border:none;
+    outline:none!important;
+    cursor:pointer;
+}
+
 .default-button.disabled {
   cursor: not-allowed;
   background-color: #ccc;

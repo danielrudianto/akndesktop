@@ -35,7 +35,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { MainComponent } from './dashboard/main/main.component';
 import { SideProfileComponent } from './dashboard/side-profile/side-profile.component';
 import { FeedsComponent } from './feeds/feeds.component';
-import { MainFeedComponent } from './feeds/main-feed/main-feed.component';
+import { MainFeedComponent, MainFeedDeleteComponent } from './feeds/main-feed/main-feed.component';
 import { ReportAttendanceAddComponent, ReportAttendanceComponent, ReportAttendanceEditComponent } from './feeds/report-attendance/report-attendance.component';
 import { ReportDailyComponent } from './feeds/report-daily/report-daily.component';
 import { ReportMaterialAddComponent, ReportMaterialComponent, ReportMaterialEditComponent } from './feeds/report-material/report-material.component';
@@ -53,7 +53,6 @@ import { ConfirmProjectDetailComponent } from './projects/confirm-project-detail
 import { CreateProjectComponent } from './projects/create-project/create-project.component';
 import { EditProjectDocumentComponent } from './projects/edit-project/edit-project-document/edit-project-document.component';
 import { EditProjectGeneralComponent } from './projects/edit-project/edit-project-general/edit-project-general.component';
-import { EditProjectTaskComponent } from './projects/edit-project/edit-project-task/edit-project-task.component';
 import { EditProjectUserComponent } from './projects/edit-project/edit-project-user/edit-project-user.component';
 import { EditProjectComponent } from './projects/edit-project/edit-project.component';
 import { ProjectDetailComponent } from './projects/project-detail/project-detail.component';
@@ -61,7 +60,6 @@ import { ProjectsMainComponent } from './projects/projects-main/projects-main.co
 import { ProjectsComponent } from './projects/projects.component';
 import { SelectClientComponent } from './select-client/select-client.component';
 import { SelectUserComponent } from './select-user/select-user.component';
-import { AuthInterceptorService } from './services/auth-interceptor.service';
 import { SocketService } from './services/socket.service';
 import { SettingsMainComponent } from './settings/settings-main/settings-main.component';
 import { SettingsComponent } from './settings/settings.component';
@@ -72,7 +70,17 @@ import { UsersDetailComponent } from './settings/users/users-detail/users-detail
 import { UsersAddComponent, UsersDeleteComponent, UsersEditComponent, UsersMainComponent } from './settings/users/users-main/users-main.component';
 import { UsersComponent } from './settings/users/users.component';
 import { SidenavComponent } from './sidenav/sidenav.component';
-
+import { ProjectUsersComponent } from './project-users/project-users.component';
+import { ReportApprovalComponent, ReportApprovalListComponent, ReportCommentListComponent } from './report-approval/report-approval.component';
+import { ReportCommentComponent } from './report-comment/report-comment.component';
+import { RfiAnswerComponent, RfiAnswerListComponent } from './rfi-answer/rfi-answer.component';
+import { ReportApprovalCountPipe } from './pipes/report-approval-count.pipe';
+import { ReportApprovalSignedPipe } from './pipes/report-approval-signed.pipe ';
+import { ReportApprovalColorPipe } from './pipes/report-approval-color.pipe';
+import { ReportTableComponent, ReportTableDetailComponent } from './projects/project-detail/report-table/report-table.component';
+import { RenameFileComponent } from './rename-file/rename-file.component';
+import { AuthInterceptor } from './auth/auth-interceptor';
+import { JwtInterceptor } from './auth/jwt-interceptor';
 
 @NgModule({
   declarations: [
@@ -143,7 +151,21 @@ import { SidenavComponent } from './sidenav/sidenav.component';
     EditProjectGeneralComponent,
     EditProjectUserComponent,
     EditProjectDocumentComponent,
-    EditProjectTaskComponent
+    ProjectUsersComponent,
+    ReportApprovalComponent,
+    ReportCommentComponent,
+    RfiAnswerComponent,
+    ReportApprovalCountPipe,
+    ReportApprovalSignedPipe,
+    ReportApprovalColorPipe,
+    ReportApprovalListComponent,
+    ReportCommentListComponent,
+    MainFeedDeleteComponent,
+    ReportTableComponent,
+    RenameFileComponent,
+    ReportTableDetailComponent,
+    RfiAnswerListComponent,
+    ReportDailyComponent,
   ],
   imports: [
     BrowserModule,
@@ -204,12 +226,24 @@ import { SidenavComponent } from './sidenav/sidenav.component';
     GanttViewDetailComponent,
     GanttViewDetailGroupComponent,
     TasksAddGroupComponent,
-    ImageViewComponent
+    ImageViewComponent,
+    ReportApprovalListComponent,
+    ReportCommentListComponent,
+    MainFeedDeleteComponent,
+    RenameFileComponent,
+    ReportTableDetailComponent,
+    RfiAnswerListComponent,
+    ReportDailyComponent
   ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
-      useClass: AuthInterceptorService,
+      useClass: AuthInterceptor,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: JwtInterceptor,
       multi: true
     },
     MatDatepickerModule,

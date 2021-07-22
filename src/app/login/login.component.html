@@ -1,16 +1,110 @@
-<div class="jumbotron h-100">
-  <div class="container h-100">
-    <div class="row justify-content-center h-100">
-      <div class="col-lg-3 col-md-4 col-sm-6 col-10">
-        <img src="assets/images/background.png" class="w-100" />
+<div class="form-body without-side">
+  <div class="website-logo">
+    <a href="index.html">
+      <div class="logo">
+        <img class="logo-size" src="assets/images/logoAlphaLight.png" alt="">
       </div>
-      <div class="col-lg-3 col-md-4 col-sm-6 col-10 d-sm-block d-none h-100">
+    </a>
+  </div>
+  <div class="row">
+    <div class="img-holder">
+      <div class="bg"></div>
+      <div class="info-holder">
+        <img src="assets/images/graphic3.svg" alt="">
+      </div>
+    </div>
+    <div class="form-holder">
+      <div class="form-content">
+        <div
+             class="form-items"
+             *ngIf="form == 0">
+          <h3>Login to account</h3>
+          <p>Access to alpha smart report application at the tip of your hand.</p>
+          <form
+                (ngSubmit)="login()"
+                [formGroup]="loginForm">
+            <input
+                   formControlName="email"
+                   class="form-control"
+                   type="email" name="name"
+                   placeholder="Email"
+                   required>
+            <input
+                   class="form-control"
+                   type="password"
+                   name="password"
+                   formControlName="password"
+                   placeholder="Password" required>
+            <div class="form-button">
+              <button
+                      id="submit"
+                      type="submit"
+                      class="ibtn">Login</button>
+            </div>
+          </form>
+          <div class="page-links mt-3">
+            <a (click)="goToRegister()">Register account</a>
+          </div>
+        </div>
+        <div class="form-items"
+             *ngIf="form == 1">
+          <h3>Register new account</h3>
+          <p>Access to alpha smart report application at the tip of your hand.</p>
+          <form
+                (ngSubmit)="register()"
+                [formGroup]="registerForm">
+            <input
+                   class="form-control"
+                   type="email" name="email"
+                   placeholder="Email"
+                   formControlName="email"
+                   required>
+            <input class="form-control"
+                   type="password"
+                   formControlName="password"
+                   placeholder="Password"
+                   required>
+            <input
+                   class="form-control"
+                   type="password"
+                   formControlName="confirmPassword"
+                   placeholder="Confirm Password"
+                   required>
+            <div class="form-button">
+              <button 
+                      id="submit"
+                      type="submit"
+                      class="ibtn">
+                Register
+              </button>
+            </div>
+          </form>
+          <div class="page-links mt-3">
+            <a (click)="goToLogin()">Login to account</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--<div class="jumbotron h-100">
+  <div class="container h-100">
+    <div class="row justify-content-start">
+      <div class="col-8 offset-lg-2">
+        <img src="/assets/images/logoAlpha.png" style="width:80px" />
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-lg-3 col-md-4 col-sm-6 col-8">
+        <img src="assets/images/Login.png" class="w-100" />
+      </div>
+      <div class="col-lg-5 col-md-8 col-sm-6 col-4 d-sm-block d-none h-100">
         <form [formGroup]="loginForm" (ngSubmit)="login()">
-          <mat-form-field class="w-100">
+          <mat-form-field class="d-block">
             <mat-label>Email</mat-label>
             <input type="email" formControlName="email" matInput />
           </mat-form-field>
-          <mat-form-field class="w-100">
+          <mat-form-field class="d-block">
             <mat-label>Password</mat-label>
             <input type="password" formControlName="password" matInput />
           </mat-form-field>
@@ -23,4 +117,4 @@
       </div>
     </div>
   </div>
-</div>
+</div>-->

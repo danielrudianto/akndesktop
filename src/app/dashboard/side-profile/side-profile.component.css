@@ -6,3 +6,30 @@
     background-position:center;
     border-radius:50%;
 }
+
+.position-container{
+    width:100%;
+    background-color:#eee;
+}
+
+.position {
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius:0.25rem;
+}
+
+.site-engineer {
+  background-color: #FFACAC;
+}
+
+.site-manager {
+  background-color: #FF8C8C;
+}
+
+.project-manager {
+  background-color: #FF5E5E;
+}
+
+.director {
+  background-color: #8F3030;
+}

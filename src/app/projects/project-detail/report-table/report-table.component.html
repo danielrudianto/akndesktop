@@ -1,0 +1,52 @@
+<h5 [ngSwitch]="type">
+  <span *ngSwitchCase="1">Attendance Report</span>
+  <span *ngSwitchCase="2">Tool Report</span>
+  <span *ngSwitchCase="3">Material Report</span>
+  <span *ngSwitchCase="4">Weather Report</span>
+  <span *ngSwitchCase="5">Request For Information</span>
+  <span *ngSwitchCase="7">Progress Report</span>
+</h5>
+
+<table class="table table-dark">
+  <thead>
+    <tr>
+      <th>Created on</th>
+      <th>Created by</th>
+      <th>Status</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody *ngIf="reports.length == 0">
+    <tr>
+      <td colspan="4">There is no report found.</td>
+    </tr>
+  </tbody>
+  <tbody *ngIf="reports.length > 0">
+    <tr *ngFor="let report of reports">
+      <td>{{ report.CreatedDate | date: 'dd MMM YY' }}</td>
+      <td>{{ report.User.FirstName }} {{ report.User.LastName }}</td>
+      <td>
+        <span *ngIf="report.IsDelete">Deleted</span>
+        <span *ngIf="!report.IsDelete">Active</span>
+      </td>
+      <td>
+        <button (click)="openReport(report.Id)"
+                mat-icon-button>
+          <mat-icon>view_headline</mat-icon>
+        </button>
+      </td>
+    </tr>
+  </tbody>
+  <tfoot>
+    <tr>
+      <td colspan="5">
+        <mat-paginator [length]="records"
+                       style="color:white;background-color:transparent"
+                       pageSize="10"
+                       [pageIndex]="pageNumber - 1"
+                       (page)="updatePage($event)">
+        </mat-paginator>
+      </td>
+    </tr>
+  </tfoot>
+</table>

@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { FileSaverService } from 'ngx-filesaver';
 import { CodeProjectDocument } from '../../../interfaces/project';
+import { RenameFileComponent } from '../../../rename-file/rename-file.component';
 import { AuthService } from '../../../services/auth.service';
 import { EditProjectService } from '../../../services/edit-project.service';
 import { ProjectService } from '../../../services/project.service';
@@ -11,6 +13,7 @@ import { ProjectService } from '../../../services/project.service';
   templateUrl: './edit-project-document.component.html',
   styleUrls: ['./edit-project-document.component.css']
 })
+
 export class EditProjectDocumentComponent implements OnInit {
   newDocuments: File[] = [];
   documents: CodeProjectDocument[] = [];
@@ -24,7 +27,8 @@ export class EditProjectDocumentComponent implements OnInit {
     private authService: AuthService,
     private snackBar: MatSnackBar,
     private projectService: ProjectService,
-    private _FileSaverService: FileSaverService
+    private _FileSaverService: FileSaverService,
+    private dialog: MatDialog
   ) { }
 
   ngOnInit(): void {
@@ -53,14 +57,19 @@ export class EditProjectDocumentComponent implements OnInit {
 
     formData.append("fileLength", this.newDocuments.length.toString());
     formData.append("createdBy", this.authService.getEmail());
-    this.editProjectService.uploadDocuments(formData).subscribe((data: CodeProjectDocument[]) => {
+    this.editProjectService.uploadDocuments(formData).subscribe((data: any) => {
       this.isSubmitting = false;
       this.newDocuments = [];
-      this.editProjectService.codeProject.CodeProjectDocument = data;
-      this.documents = data;
+      this.fetchDocuments();
     }, error => {
         this.isSubmitting = false;
         this.snackBar.open(error.message, "Close");
+    })
+  }
+
+  fetchDocuments() {
+    this.projectService.getDocuments(this.editProjectService.codeProject.Id!).subscribe((data: any) => {
+      this.documents = data;
     })
   }
 
@@ -78,9 +87,21 @@ export class EditProjectDocumentComponent implements OnInit {
   downloadDocument(i: number) {
     this.isDownloading = true;
     this.projectService.downloadDocument(this.documents[i].Url).subscribe(data => {
-      this._FileSaverService.save((<any>data)._body, this.documents[i].Name);
+      this._FileSaverService.save((<any>data), this.documents[i].Name);
       this.isDownloading = false;
+    }, error => {
+        console.log(error);
+        this.snackBar.open(error.message, "Close");
+        this.isDownloading = false;
     })
   }
 
+  renameDocument(i: number) {
+    const dialog = this.dialog.open(RenameFileComponent, {
+      data: {
+        Id: this.documents[i].Id,
+        Name: this.documents[i].Name
+      }
+    });
+  }
 }

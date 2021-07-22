@@ -7,14 +7,17 @@
 
     <h4 class="fr-text text-alpha">Contributing Users</h4>
     <div
-         [matTooltip]="user.User.FirstName"
+         [matTooltip]="user.User.FirstName + ' ' + user.User.LastName"
          matTooltipShowDelay="0"
          matTooltipClass="custom-tooltip"
          matTooltipPosition="below"
          *ngFor="let user of project.CodeProjectUser"
-         class="user mb-3"
-         [ngStyle]="{'background-image': user.User.ImageUrl == null ? '/assets/images/Profile.png' : 'url(' + global.url + '/img/' + user.User.ImageUrl + ')'}">
+         class="user mb-5 ms-3"
+         [ngStyle]="{'background-image': user.User.ImageUrl == null ? 'url(../assets/images/Profile.png)' : 'url(' + global.url + '/img/' + user.User.ImageUrl + ')'}">
     </div>
-    <button class="default-button">Details</button>
+    <div class="d-block w-100">
+      <button class="default-button">Details</button>
+    </div>
+    
   </div>
 </mat-card>

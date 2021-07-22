@@ -86,7 +86,10 @@
           <tr *ngFor="let document of project.CodeProjectDocument">
             <td>{{ document.Name }}</td>
             <td>
-              
+              <button (click)="downloadFile(document)"
+                      mat-icon-button>
+                <mat-icon>download</mat-icon>
+              </button>
             </td>
           </tr>
         </tbody>

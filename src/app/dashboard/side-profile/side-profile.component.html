@@ -9,7 +9,7 @@
            class="d-none"
            (change)="uploadProfilePicture($event)" />
     <label for="file">
-      <img [ngStyle]="{'background-image': imageUrl == null ? '/assets/images/Profile.png' : 'url(' + imageUrl + ')'}"
+      <img [ngStyle]="{'background-image': imageUrl == null ? 'url(../../assets/images/Profile.png)' : 'url(' + imageUrl + ')'}"
            class="profileImage" />
     </label>
 
@@ -28,4 +28,34 @@
            [(ngModel)]="email"
            matInput />
   </mat-form-field>
+
+  <div class="position-container">
+    <div
+         class="position"
+         [class.site-engineer] = "userPosition.Position === 1"
+         [class.site-manager] = "userPosition.Position === 2"
+         [class.project-manager] = "userPosition.Position === 3"
+         [class.director] = "userPosition.Position === 4"
+         *ngFor="let userPosition of userPositions; index as i">
+      <div [ngSwitch]="userPosition.Position">
+        <span class="fr-text" *ngSwitchCase="1">Site Engineer</span>
+        <span class="fr-text" *ngSwitchCase="2">Site Manager</span>
+        <span class="fr-text" *ngSwitchCase="3">Project Manager</span>
+        <span class="fr-text" *ngSwitchCase="4">Director</span>
+
+        <span class="fr-text ms-2" *ngIf="i == 0">( Current )</span>
+        <p class="fr-text text-white mb-0">Since {{ userPosition.EffectiveDate | date: 'dd MMM YY' }}</p>
+      </div>
+    </div>
+  </div>
+
+  <button
+     class="default-button text-decoration-none mb-5"
+     (click)="openProjectUsers()">
+    Project Participated
+  </button>
+  <hr />
+  <button
+          (click)="logout()"
+          class="default-button">Logout</button>
 </mat-card>

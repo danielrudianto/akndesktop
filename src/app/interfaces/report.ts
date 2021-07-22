@@ -1,3 +1,5 @@
+import { User } from './user';
+
 export interface CodeReport {
   Id?: number;
   CreatedBy?: number | string;
@@ -63,5 +65,25 @@ export interface MaterialReportForm {
   CreatedBy: string;
   CodeProjectId: number;
   Materials: Material[];
+}
+
+export interface Approvals {
+  Id?: number;
+  Approval: number;
+  Comment: string;
+  CreatedBy?: number | string;
+  User?: User;
+  CodeReportId: number;
+  CodeReport?: CodeReport;
+  CreatedDate?: Date;
+}
+
+export interface RFIAnswer {
+  Id?: number;
+  Answer: string;
+  User?: User;
+  CreatedBy?: number | string;
+  RequestForInformationId?: number;
+  CreatedDate: Date;
 }
 

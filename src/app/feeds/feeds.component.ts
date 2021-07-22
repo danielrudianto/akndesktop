@@ -61,6 +61,10 @@ export class FeedsComponent implements OnInit, OnDestroy {
         this.selectedReport = reportType;
         this.openMenu();
         break;
+      case 'Approval':
+        this.selectedReport = reportType;
+        this.openMenu();
+        break;
     }
   }
 

@@ -1,7 +1,7 @@
-<div class="container">
+<div class="container-fluid">
   <div class="row">
     <div class="col-12">
-      <ul class="nav nav-pills mb-3">
+      <ul class="nav nav-tabs mb-3">
         <li class="nav-item">
           <a
              [class.disabled]="isFetching"
@@ -18,13 +18,6 @@
              [routerLink]="userUrl"
              routerLinkActive="active"
              class="nav-link">User</a>
-        </li>
-        <li class="nav-item">
-          <a
-             [class.disabled]="isFetching"
-             [routerLink]="taskUrl"
-             routerLinkActive="active"
-             class="nav-link">Tasks</a>
         </li>
         <li class="nav-item">
           <a

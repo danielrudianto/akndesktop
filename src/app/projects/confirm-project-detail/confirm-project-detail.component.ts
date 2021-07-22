@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
+import { FileSaverService } from 'ngx-filesaver';
 import { CodeProject, TaskFormGroup } from '../../interfaces/project';
 import { User } from '../../interfaces/user';
 import { ProjectService } from '../../services/project.service';
@@ -19,7 +20,8 @@ export class ConfirmProjectDetailComponent implements OnInit {
     private projectService: ProjectService,
     private router: ActivatedRoute,
     private route: Router,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private _FileSaverService: FileSaverService
   ) { }
 
   ngOnInit(): void {
@@ -50,6 +52,14 @@ export class ConfirmProjectDetailComponent implements OnInit {
     }, error => {
       this.snackBar.open(error.message, "Close");
     });
+  }
+
+  downloadFile(document: any) {
+    this.projectService.downloadDocument(document.Url).subscribe(data => {
+      this._FileSaverService.save((<any>data), document.Name);
+    }, error => {
+      this.snackBar.open(error.message, "Close");
+    })
   }
 
 }

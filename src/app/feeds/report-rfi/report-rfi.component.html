@@ -1,5 +1,7 @@
-<form
-      [formGroup]="rfiForm"
+<h4 class="fr-text"><span class="text-alpha">Request For</span> Information</h4>
+
+
+<form [formGroup]="rfiForm"
       (ngSubmit)="submitForm()">
   <mat-form-field class="w-100">
     <mat-label>Addressed to</mat-label>
@@ -16,8 +18,8 @@
   <mat-form-field class="w-100">
     <mat-label>Description</mat-label>
     <textarea matInput
-           formControlName="Description"
-           placeholder="Description"></textarea>
+              formControlName="Description"
+              placeholder="Description"></textarea>
   </mat-form-field>
   <label for="cameraInput"
          class="default-button mb-3">
@@ -40,8 +42,7 @@
       <tr *ngFor="let documentation of documentations;index as i">
         <td>{{ documentation.name }}</td>
         <td>
-          <button
-                  type="button"
+          <button type="button"
                   (click)="removeDocumentation(i)"
                   class="text-alpha"
                   mat-icon-button>
@@ -56,8 +57,7 @@
       </tr>
     </tbody>
   </table>
-  <button
-          class="default-button"
+  <button class="default-button"
           type="submit"
           [disabled]="isSubmitting || !rfiForm.valid">
     Submit

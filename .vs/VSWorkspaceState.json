@@ -3,10 +3,12 @@
     "",
     "\\src",
     "\\src\\app",
-    "\\src\\app\\feeds",
-    "\\src\\app\\feeds\\main-feed",
-    "\\src\\app\\services"
+    "\\src\\app\\projects",
+    "\\src\\app\\projects\\projects-main",
+    "\\src\\app\\services",
+    "\\src\\assets",
+    "\\src\\assets\\images"
   ],
-  "SelectedNode": "\\src\\app\\services\\feed.service.ts",
+  "SelectedNode": "\\src\\app\\global.ts",
   "PreviewInSolutionExplorer": false
 }

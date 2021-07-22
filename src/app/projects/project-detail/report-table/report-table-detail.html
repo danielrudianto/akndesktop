@@ -1,0 +1,179 @@
+<style>
+  .user-thumbnail {
+    height: 50px;
+    width: 50px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius:50%;
+  }
+
+  .user-text{
+    color:white;
+    position:absolute;
+    top:0;
+    right:0;
+    width:calc(100% - 60px);
+  }
+
+  .subtitle{
+    margin-bottom:0;
+    font-size:0.8rem;
+    color:rgba(0, 0, 0, 0.54);
+    color:white;
+  }
+
+  .documentation-wrapper {
+    aspect-ratio: 2;
+    background-position: center;
+    background-size: cover;
+  }
+</style>
+
+<ng-template imageView></ng-template>
+<div *ngIf="report != null">
+  <h5 class="fr-text text-alpha" [ngSwitch]="report.Type">
+    <span *ngSwitchCase="1">Attendance Report</span>
+    <span *ngSwitchCase="2">Tool Report</span>
+    <span *ngSwitchCase="3">Material Report</span>
+    <span *ngSwitchCase="4">Weather Report</span>
+    <span *ngSwitchCase="5">Request For Information</span>
+    <span *ngSwitchCase="7">Progress Report</span>
+  </h5>
+
+  <mat-dialog-content>
+    <div class="block position-relative">
+      <div [ngStyle]="{'background-image': report.User.ImageUrl == null ? 'url(../assets/images/Profile.png)' : 'url(' + global.url + '/img/' + report.User.ImageUrl + ')'}"
+           class="user-thumbnail d-inline-block"></div>
+      <div class="user-text">
+        <h6>{{ report.User.FirstName }} {{ report.User.LastName }}</h6>
+        <p class="subtitle">{{ report.CreatedDate | date: 'dd MMM YY' }}</p>
+      </div>
+    </div>
+
+
+    <div [ngSwitch]="report.Type">
+      <div *ngSwitchCase="1">
+        <table class=" table table-dark">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Quantity</th>
+              <th>Time</th>
+            </tr>
+          </thead>
+          <tbody *ngIf="report.Worker.length == 0">
+            <tr>
+              <td colspan="3">There is no worker found.</td>
+            </tr>
+          </tbody>
+          <tbody *ngIf="report.Worker.length > 0">
+            <tr *ngFor="let worker of report.Worker">
+              <td>{{ worker.Name }}</td>
+              <td>{{ worker.Quantity | number:'1.0-0' }}</td>
+              <td>{{ report.CreatedDate | date:'HH:mm:ss' }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div *ngSwitchCase="2">
+        <table class=" table table-dark">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Description</th>
+              <th>Quantity</th>
+            </tr>
+          </thead>
+          <tbody *ngIf="report.Tool.length == 0">
+            <tr>
+              <td colspan="3">There is no tool found.</td>
+            </tr>
+          </tbody>
+          <tbody *ngIf="report.Tool.length > 0">
+            <tr *ngFor="let tool of report.Tool">
+              <td>{{ tool.Name }}</td>
+              <td>{{ tool.Description }}</td>
+              <td>{{ tool.Quantity | number:'1.0-0' }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div *ngSwitchCase="3">
+        <table class=" table table-dark">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Description</th>
+              <th>Quantity</th>
+            </tr>
+          </thead>
+          <tbody *ngIf="report.Material.length == 0">
+            <tr>
+              <td colspan="3">There is no material found.</td>
+            </tr>
+          </tbody>
+          <tbody *ngIf="report.Material.length > 0">
+            <tr *ngFor="let material of report.Material">
+              <td>{{ material.Name }}</td>
+              <td>{{ material.Description }}</td>
+              <td>{{ material.Quantity | number:'1.0-2' }} {{ material.Unit }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div *ngSwitchCase="4">
+        <p class="text-white">reported <span class="text-alpha" *ngIf="report.Weather.WeatherId == 0">Sunny</span><span class="text-alpha" *ngIf="report.Weather.WeatherId == 1">Raining</span></p>
+      </div>
+      <div *ngSwitchCase="5">
+        <mat-form-field class="w-100">
+          <mat-label>Addressed To</mat-label>
+          <input style="color:white"
+                 matInput
+                 disabled
+                 [value]="report.RequestForInformation.AddressedFor" />
+        </mat-form-field>
+
+        <mat-form-field class="w-100">
+          <mat-label>Header</mat-label>
+          <input style="color:white"
+                 matInput
+                 disabled
+                 [value]="report.RequestForInformation.Header" />
+        </mat-form-field>
+
+        <mat-form-field class="w-100">
+          <mat-label>Description</mat-label>
+          <textarea style="color:white"
+                    matInput
+                    disabled
+                    [value]="report.RequestForInformation.Description"></textarea>
+        </mat-form-field>
+      </div>
+      <div *ngSwitchCase="7">
+        <mat-form-field class="w-100">
+          <mat-label>Progress</mat-label>
+          <textarea style="color:white"
+                    matInput
+                    disabled
+                    [value]="report.StatusReport.Status"></textarea>
+        </mat-form-field>
+        <swiper [navigation]="true"
+                [slidesPerView]="1"
+                [spaceBetween]="50"
+                *ngIf="report.StatusReport.StatusReportImage.length > 0">
+          <ng-template swiperSlide
+                       *ngFor="let image of report.StatusReport.StatusReportImage">
+            <div [ngStyle]="{'background-image': 'url(' + global.url + '/img/' + image.ImageUrl + ')'}"
+                 (click)="viewImage(image.ImageUrl)"
+                 class="documentation-wrapper"></div>
+            <p class="fr-text text-center text-white">{{ image.Name }}</p>
+          </ng-template>
+        </swiper>
+      </div>
+    </div>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <button mat-button mat-dialog-close>Close</button>
+  </mat-dialog-actions>
+</div>

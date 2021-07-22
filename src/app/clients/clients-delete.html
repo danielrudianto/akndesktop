@@ -3,7 +3,9 @@
   <p class="text-white">Please type in <span class="text-alpha">{{ data.Name }}</span> to delete this data permanently.</p>
   <mat-form-field class="w-100">
     <mat-label>Name</mat-label>
-    <input matInput
+    <input
+           style="color:white"
+           matInput
            type="text"
            [(ngModel)]="confirmation" />
   </mat-form-field>

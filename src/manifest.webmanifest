@@ -1,7 +1,7 @@
 {
-  "name": "akndesktop",
-  "short_name": "akndesktop",
-  "theme_color": "#1976d2",
+  "name": "Alpha Smart Report",
+  "short_name": "aknsmartreport",
+  "theme_color": "#feaa2d",
   "background_color": "#fafafa",
   "display": "standalone",
   "scope": "./",

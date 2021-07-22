@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ComponentFactoryResolver, OnInit, ViewChild } from '@angular/core';
 import { CodeProject } from '../../interfaces/project';
 import { ProjectService } from '../../services/project.service';
 import { SwiperComponent } from "swiper/angular";
+import * as global from '../../global';
 
 import SwiperCore, {
   Navigation,
@@ -15,6 +16,11 @@ import SwiperCore, {
   Controller
 } from "swiper/core";
 import { Router } from '@angular/router';
+import { ImageViewWrapperDirective } from '../../image-view-wrapper/image-view-wrapper.directive';
+import { FeedService } from '../../services/feed.service';
+import { SocketService } from '../../services/socket.service';
+import { ImageViewComponent } from '../../image-view/image-view.component';
+import { Subscription } from 'rxjs';
 
 // install Swiper components
 SwiperCore.use([
@@ -35,16 +41,87 @@ SwiperCore.use([
   styleUrls: ['./main.component.css']
 })
 export class MainComponent implements OnInit {
+  feeds: any[] = [];
+  global: any = global;
   projects: CodeProject[] = [];
   isFetching: boolean = false;
+  closeImageView: Subscription;
+
+  projectsSubscribed: number[] = [];
+
+  @ViewChild(ImageViewWrapperDirective, { static: false }) imageViewHost: ImageViewWrapperDirective;
 
   constructor(
     private projectService: ProjectService,
-    private router: Router
+    private router: Router,
+    private feedService: FeedService,
+    private socketService: SocketService,
+    private componentFactoryResolver: ComponentFactoryResolver
   ) { }
 
   ngOnInit(): void {
     this.fetchProjects();
+
+    this.socketService.socket.on("newToolReport", (data: any) => {
+      if (this.projectsSubscribed.includes(data.projectId)) {
+        this.feedService.getFeed(data.reportId).subscribe(response => {
+          response.ProjectName = this.projects.filter(y => y.Id == response.CodeProjectId)[0].Name;
+          this.feeds.unshift(response);
+        })
+      }
+    })
+
+    this.socketService.socket.on("newMaterialReport", (data: any) => {
+      if (this.projectsSubscribed.includes(data.projectId)) {
+        this.feedService.getFeed(data.reportId).subscribe(response => {
+          response.ProjectName = this.projects.filter(y => y.Id == response.CodeProjectId)[0].Name;
+          this.feeds.unshift(response);
+        })
+      }
+    })
+
+    this.socketService.socket.on("newProgressReport", (data: any) => {
+      if (this.projectsSubscribed.includes(data.projectId)) {
+        this.feedService.getFeed(data.reportId).subscribe(response => {
+          response.ProjectName = this.projects.filter(y => y.Id == response.CodeProjectId)[0].Name;
+          this.feeds.unshift(response);
+        })
+      }
+    })
+
+    this.socketService.socket.on("newWeatherReport", (data: any) => {
+      if (this.projectsSubscribed.includes(data.projectId)) {
+        this.feedService.getFeed(data.reportId).subscribe(response => {
+          response.ProjectName = this.projects.filter(y => y.Id == response.CodeProjectId)[0].Name;
+          this.feeds.unshift(response);
+        })
+      }
+    })
+
+    this.socketService.socket.on("newAttendanceReport", (data: any) => {
+      if (this.projectsSubscribed.includes(data.projectId)) {
+        this.feedService.getFeed(data.reportId).subscribe(response => {
+          response.ProjectName = this.projects.filter(y => y.Id == response.CodeProjectId)[0].Name;
+          this.feeds.unshift(response);
+        })
+      };
+    })
+
+    this.socketService.socket.on("newRFI", (data: any) => {
+      if (this.projectsSubscribed.includes(data.projectId)) {
+        this.feedService.getFeed(data.reportId).subscribe(response => {
+          response.ProjectName = this.projects.filter(y => y.Id == response.CodeProjectId)[0].Name;
+          this.feeds.unshift(response);
+        })
+      }
+    })
+
+    this.socketService.socket.on("deleteFeed", (data: any) => {
+      if (this.projectsSubscribed.includes(data.projectId)) {
+        const index = this.feeds.findIndex(x => x.Id == data.reportId);
+        this.feeds.splice(index, 1);
+      }
+    })
   }
 
   fetchProjects() {
@@ -52,6 +129,21 @@ export class MainComponent implements OnInit {
     this.projectService.getProjectsByUser().subscribe((responseData: CodeProject[]) => {
       this.projects = responseData;
       this.isFetching = false;
+
+      responseData.forEach(x => {
+        this.projectsSubscribed.push(x.Id!);
+      })
+
+      this.fetchFeeds();
+    })
+  }
+
+  fetchFeeds() {
+    this.feedService.getFeedsByUser().subscribe((responseData: any[]) => {
+      responseData.forEach(x => {
+        x.ProjectName = this.projects.filter(y => y.Id == x.CodeProjectId)[0].Name;
+      })
+      this.feeds = responseData;
     })
   }
 
@@ -66,4 +158,16 @@ export class MainComponent implements OnInit {
     this.router.navigate(["/Feeds/" + project.Id]);
   }
 
+  viewImage(imageUrl: string) {
+    const imageComponentFactory = this.componentFactoryResolver.resolveComponentFactory(ImageViewComponent);
+    const imageContainerRef = this.imageViewHost.viewContainerRef;
+    imageContainerRef.clear();
+
+    const componentRef = imageContainerRef.createComponent(imageComponentFactory);
+    componentRef.instance.imageUrl = global.url + "/img/" + imageUrl;
+    this.closeImageView = componentRef.instance.close.subscribe(() => {
+      this.closeImageView.unsubscribe();
+      imageContainerRef.clear();
+    })
+  }
 }

@@ -26,7 +26,6 @@ export class ProjectsMainComponent implements OnInit {
   fetchProjects() {
     this.projectService.getActiveProjects((this.pageNumber - 1) * 25).subscribe((responseData: any) => {
       this.projects = responseData.data;
-      console.log(this.projects);
       this.records = responseData.count;
     })
   }
@@ -46,6 +45,10 @@ export class ProjectsMainComponent implements OnInit {
 
   goToCreateProject() {
     this.router.navigate(["/Projects/Create"]);
+  }
+
+  goToProjectDetail(project: CodeProject) {
+    this.router.navigate(["/Projects/Detail/" + project.Id])
   }
 
 }

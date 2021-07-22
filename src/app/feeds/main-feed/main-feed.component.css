@@ -46,6 +46,13 @@
     display:inline-block;
 }
 
+.menu-button{
+    position:absolute;
+    right:0;
+    top:0;
+    color:rgba(0, 0, 0, 0.54);
+}
+
 .user-text{
     height:50px;
     margin-left:10px;

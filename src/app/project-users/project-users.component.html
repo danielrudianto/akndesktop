@@ -1,0 +1,24 @@
+<h5 class="fr-text text-alpha">Projects Participated</h5>
+<p class="text-white" *ngIf="projects.length == 0">There is no project found.</p>
+<div class="reportApprovalContainer" *ngIf="projects.length > 0">
+  <div infiniteScroll
+       class="scroll"
+       [infiniteScrollDistance]="2"
+       [infiniteScrollThrottle]="50"
+       [infiniteScrollContainer]="selector"
+       [fromRoot]="true">
+    <mat-card *ngFor="let project of projects" class="mb-2">
+      <div class="comment-wrapper">
+        <div class="user-text">
+          <h5 class="fr-text text-alpha">{{ project.Name }}</h5>
+          <p>{{ project.Address }}</p>
+          <p [ngSwitch]="project">
+            <span *ngSwitchCase="project.IsCompleted == 1">Completed</span>
+            <span *ngSwitchCase="project.IsDelete == 1">Deleted</span>
+            <span *ngSwitchDefault>Active</span>
+          </p>
+        </div>
+      </div>
+    </mat-card>
+  </div>
+</div>

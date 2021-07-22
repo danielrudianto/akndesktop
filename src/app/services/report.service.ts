@@ -46,4 +46,18 @@ export class ReportService {
   fetchTodayWorker(projectId: number) {
     return this.http.get(global.url + "/reportWorker/getToday/" + projectId.toString());
   }
+
+  deleteReport(id: number) {
+    return this.http.delete(global.url + '/reportFeed/' + id);
+  }
+
+  downloadDailyReport(date: Date, projectId: number) {
+    return this.http.get(global.url + '/reportDaily', {
+      params: {
+        date: date.toISOString(),
+        projectId: projectId
+      },
+      responseType:'blob'
+    })
+  }
 }

@@ -68,6 +68,12 @@
                 mat-icon-button>
           <mat-icon>download</mat-icon>
         </button>
+        <button type="button"
+                [disabled]="isDownloading"
+                (click)="renameDocument(i)"
+                mat-icon-button>
+          <mat-icon>edit</mat-icon>
+        </button>
       </td>
     </tr>
   </tbody>

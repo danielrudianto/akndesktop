@@ -1,0 +1,11 @@
+<mat-form-field class="w-100">
+  <mat-label>File name</mat-label>
+  <input matInput
+         style="color:white"
+         [formControl]="fileName" />
+</mat-form-field>
+<mat-dialog-actions align="end">
+  <button
+          mat-button
+          [disabled]="!fileName.valid || isSubmitting">Edit</button>
+</mat-dialog-actions>

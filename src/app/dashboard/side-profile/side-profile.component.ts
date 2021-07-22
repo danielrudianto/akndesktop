@@ -4,6 +4,9 @@ import { AuthService } from '../../services/auth.service';
 import { UserService } from '../../services/user.service';
 import * as global from '../../global';
 import * as uuid from 'uuid';
+import { UserPosition } from '../../interfaces/user';
+import { MatDialog } from '@angular/material/dialog';
+import { ProjectUsersComponent } from '../../project-users/project-users.component';
 
 @Component({
   selector: 'app-side-profile',
@@ -13,17 +16,23 @@ import * as uuid from 'uuid';
 export class SideProfileComponent implements OnInit {
   name: string = "";
   email: string = "";
-  imageUrl: string = null;
+  imageUrl: string | null = null;
+  userPositions: UserPosition[] = [];
 
   constructor(
     private authService: AuthService,
     private userService: UserService,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private dialog: MatDialog
   ) {
     this.authService.getProfile().subscribe((data: any) => {
       this.name = data.FirstName + " " + data.LastName;
       this.email = data.Email;
-      this.imageUrl = global.url + "/img/" + data.ImageUrl;
+      this.imageUrl = (data.ImageUrl == null) ? null : global.url + "/img/" + data.ImageUrl;
+    })
+
+    this.authService.getProfile().subscribe((data: any) => {
+      this.userPositions = data.UserPosition;
     })
   }
 
@@ -35,6 +44,16 @@ export class SideProfileComponent implements OnInit {
     }, error => {
         this.snackBar.open(error.message, "Close");
     });;
+  }
+
+  logout() {
+    this.authService.logout();
+  }
+
+  openProjectUsers() {
+    this.dialog.open(ProjectUsersComponent, {
+      minWidth: 400
+    });
   }
 
 }

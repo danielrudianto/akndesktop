@@ -43,9 +43,7 @@ export class EditProjectGeneralComponent implements OnInit {
   }
 
   openAddClient() {
-    const dialog = this.dialog.open(SelectClientComponent, {
-      disableClose: true
-    })
+    const dialog = this.dialog.open(SelectClientComponent)
 
     dialog.afterClosed().subscribe(data => {
       if (data != null) {

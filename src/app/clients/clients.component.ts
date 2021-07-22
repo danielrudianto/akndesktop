@@ -128,7 +128,7 @@ export class ClientsAddComponent {
         Address: this.clientForm.controls.address.value,
         City: this.clientForm.controls.city.value,
         PhoneNumber: this.clientForm.controls.phoneNumber.value,
-        TaxIdentificationNumber: (this.clientForm.controls.taxIdentificationNumber.value.length < 15) ? null : this.clientForm.controls.taxIdentificationNumber.value.length,
+        TaxIdentificationNumber: (this.clientForm.controls.taxIdentificationNumber.value.length < 15) ? null : this.clientForm.controls.taxIdentificationNumber.value,
         CreatedBy: this.authService.getEmail()
       }).subscribe(responseData => {
         this.dialogRef.close({ error: false });
@@ -177,7 +177,7 @@ export class ClientsEditComponent {
         Address: this.clientForm.controls.address.value,
         City: this.clientForm.controls.city.value,
         PhoneNumber: this.clientForm.controls.phoneNumber.value,
-        TaxIdentificationNumber: (this.clientForm.controls.taxIdentificationNumber.value.length < 15) ? null : this.clientForm.controls.taxIdentificationNumber.value.length,
+        TaxIdentificationNumber: (this.clientForm.controls.taxIdentificationNumber.value.length < 15) ? null : this.clientForm.controls.taxIdentificationNumber.value,
         CreatedBy: this.authService.getEmail()
       }).subscribe(responseData => {
         this.dialogRef.close({ error: false });

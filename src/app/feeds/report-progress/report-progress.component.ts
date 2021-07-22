@@ -44,10 +44,10 @@ export class ReportProgressComponent implements OnInit {
       uploadData.append("file[" + index + "]", documentation, documentation.name);
     })
 
-    uploadData.append("progress", this.progress);
-    uploadData.append("projectId", this.router.snapshot.params.projectId);
-    uploadData.append("files", this.documentations.length.toString());
-    uploadData.append("createdBy", this.authService.getEmail());
+    uploadData.append("Progress", this.progress);
+    uploadData.append("ProjectId", this.router.snapshot.params.projectId);
+    uploadData.append("Files", this.documentations.length.toString());
+    uploadData.append("CreatedBy", this.authService.getEmail());
 
     this.reportService.submitProgressReport(uploadData).subscribe(response => {
       this.onSubmit.emit();

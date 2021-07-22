@@ -32,7 +32,9 @@ export class ProjectService {
   }
 
   downloadDocument(url: string) {
-    return this.http.get(global.url + "/download/" + url);
+    return this.http.get(global.url + "/download/" + url, {
+      responseType:'blob'
+    });
   }
 
   deleteDocument(id: number) {
@@ -64,5 +66,16 @@ export class ProjectService {
 
   deleteProject(id: number) {
     return this.http.delete(global.url + '/project/' + id);
+  }
+
+  getDocuments(id: number) {
+    return this.http.get(global.url + '/projectDocument/' + id);
+  }
+
+  renameDocument(id: number, name: string) {
+    return this.http.post("/projectDocument/Rename", {
+      Id: id,
+      Name: name
+    })
   }
 }

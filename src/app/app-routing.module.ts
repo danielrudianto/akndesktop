@@ -4,11 +4,11 @@ import { ClientsComponent } from './clients/clients.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { FeedsComponent } from './feeds/feeds.component';
 import { LoginComponent } from './login/login.component';
+import { ProjectUsersComponent } from './project-users/project-users.component';
 import { ConfirmProjectDetailComponent } from './projects/confirm-project-detail/confirm-project-detail.component';
 import { CreateProjectComponent } from './projects/create-project/create-project.component';
 import { EditProjectDocumentComponent } from './projects/edit-project/edit-project-document/edit-project-document.component';
 import { EditProjectGeneralComponent } from './projects/edit-project/edit-project-general/edit-project-general.component';
-import { EditProjectTaskComponent } from './projects/edit-project/edit-project-task/edit-project-task.component';
 import { EditProjectUserComponent } from './projects/edit-project/edit-project-user/edit-project-user.component';
 import { EditProjectComponent } from './projects/edit-project/edit-project.component';
 import { ProjectDetailComponent } from './projects/project-detail/project-detail.component';
@@ -87,6 +87,11 @@ const routes: Routes = [
         canActivate: [AuthGuardService]
       },
       {
+        path: "User",
+        component: ProjectUsersComponent,
+        canActivate: [AuthGuardService]
+      },
+      {
         path: "Edit/:projectId",
         component: EditProjectComponent,
         canActivate: [AuthGuardService],
@@ -104,10 +109,6 @@ const routes: Routes = [
             path: "User",
             component: EditProjectUserComponent,
           },
-          {
-            path: "Task",
-            component: EditProjectTaskComponent,
-          }
         ]
       },
       {
