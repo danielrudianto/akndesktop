@@ -1,0 +1,127 @@
+{
+  "configVersion": 1,
+  "timestamp": 1626969482519,
+  "index": "/index.html",
+  "assetGroups": [
+    {
+      "name": "app",
+      "installMode": "prefetch",
+      "updateMode": "prefetch",
+      "cacheQueryOptions": {
+        "ignoreVary": true
+      },
+      "urls": [
+        "/favicon.ico",
+        "/index.html",
+        "/main.f09de0becd3a9de1d477.js",
+        "/manifest.webmanifest",
+        "/polyfills.dd5decaf0042061e82f4.js",
+        "/runtime.7e2fcbce03de33a99432.js",
+        "/scripts.26e8d69e6673d77e4fb6.js",
+        "/styles.246314804434448f8536.css"
+      ],
+      "patterns": []
+    },
+    {
+      "name": "assets",
+      "installMode": "lazy",
+      "updateMode": "prefetch",
+      "cacheQueryOptions": {
+        "ignoreVary": true
+      },
+      "urls": [
+        "/assets/fonts/FrancoisOne.ttf",
+        "/assets/icons/Attendance.png",
+        "/assets/icons/Daily.png",
+        "/assets/icons/Material.png",
+        "/assets/icons/Progress.png",
+        "/assets/icons/RFI.png",
+        "/assets/icons/Tools.png",
+        "/assets/icons/Weather.png",
+        "/assets/icons/icon-128x128.png",
+        "/assets/icons/icon-144x144.png",
+        "/assets/icons/icon-152x152.png",
+        "/assets/icons/icon-192x192.png",
+        "/assets/icons/icon-384x384.png",
+        "/assets/icons/icon-512x512.png",
+        "/assets/icons/icon-72x72.png",
+        "/assets/icons/icon-96x96.png",
+        "/assets/images/Empty.jpg",
+        "/assets/images/Empty.png",
+        "/assets/images/Login.png",
+        "/assets/images/Profile.png",
+        "/assets/images/Raining.png",
+        "/assets/images/Sunny.png",
+        "/assets/images/background.png",
+        "/assets/images/graphic3.svg",
+        "/assets/images/logoAlpha.png",
+        "/assets/images/logoAlphaDark.png",
+        "/assets/images/logoAlphaLight.png",
+        "/assets/images/plus-light-pattern.png",
+        "/logoAlphaDark.dce84093991dccf3263c.png",
+        "/logoAlphaLight.dce84093991dccf3263c.png"
+      ],
+      "patterns": []
+    }
+  ],
+  "dataGroups": [],
+  "hashTable": {
+    "/assets/fonts/FrancoisOne.ttf": "6438d828d3476456935d5e6500aaf750fabc01ac",
+    "/assets/icons/Attendance.png": "7b742419835cba3c26915b84119db319427fe23c",
+    "/assets/icons/Daily.png": "e1498757e096c293454f390944fb965f8cfc99f0",
+    "/assets/icons/Material.png": "ab050ba5d01827b5f29c52b3739a52dfebc8afea",
+    "/assets/icons/Progress.png": "7ca6e8e2c5cddb204a50bc2c7ee552124096d47b",
+    "/assets/icons/RFI.png": "c12901a3e734143b6be6daf80fa709d57e3afb1c",
+    "/assets/icons/Tools.png": "16f0834c758fd65711aac39af8747e1c2344ac17",
+    "/assets/icons/Weather.png": "aa368371926f1c2ff22c169e0f2e537056cbd349",
+    "/assets/icons/icon-128x128.png": "dae3b6ed49bdaf4327b92531d4b5b4a5d30c7532",
+    "/assets/icons/icon-144x144.png": "b0bd89982e08f9bd2b642928f5391915b74799a7",
+    "/assets/icons/icon-152x152.png": "7479a9477815dfd9668d60f8b3b2fba709b91310",
+    "/assets/icons/icon-192x192.png": "1abd80d431a237a853ce38147d8c63752f10933b",
+    "/assets/icons/icon-384x384.png": "329749cd6393768d3131ed6304c136b1ca05f2fd",
+    "/assets/icons/icon-512x512.png": "559d9c4318b45a1f2b10596bbb4c960fe521dbcc",
+    "/assets/icons/icon-72x72.png": "c457e56089a36952cd67156f9996bc4ce54a5ed9",
+    "/assets/icons/icon-96x96.png": "3914125a4b445bf111c5627875fc190f560daa41",
+    "/assets/images/Empty.jpg": "5fc978ac7660597ad7e66eca01b92a31925bdb05",
+    "/assets/images/Empty.png": "1fa6ffca527fa9887526227f5a7ba5d1fca65c70",
+    "/assets/images/Login.png": "f0a2ccb0523876f2ba361e2916274030751747e6",
+    "/assets/images/Profile.png": "942edbf9cbca159549acbd1f04d7b810b1538475",
+    "/assets/images/Raining.png": "3372d4d849bebedbb8942298401938f18c396afc",
+    "/assets/images/Sunny.png": "fd677040b96800576840daed8ee1bbb6cf0ff1b7",
+    "/assets/images/background.png": "63b1f3dff50cf56f810725adf7078d270de4d704",
+    "/assets/images/graphic3.svg": "2dc0b8ebc26b1952fab5fadf24e63d0d90770e4b",
+    "/assets/images/logoAlpha.png": "b4d34eb3dfa0380744b7d6c133f614d13378dc04",
+    "/assets/images/logoAlphaDark.png": "b4d34eb3dfa0380744b7d6c133f614d13378dc04",
+    "/assets/images/logoAlphaLight.png": "b4d34eb3dfa0380744b7d6c133f614d13378dc04",
+    "/assets/images/plus-light-pattern.png": "45a7c39eada93e1257fd8c2024c9123b535e1bc8",
+    "/favicon.ico": "22f6a4a3bcaafafb0254e0f2fa4ceb89e505e8b2",
+    "/index.html": "79678ff5c05e7e1ac63b133ebecf2ffa7781e8ab",
+    "/logoAlphaDark.dce84093991dccf3263c.png": "b4d34eb3dfa0380744b7d6c133f614d13378dc04",
+    "/logoAlphaLight.dce84093991dccf3263c.png": "b4d34eb3dfa0380744b7d6c133f614d13378dc04",
+    "/main.f09de0becd3a9de1d477.js": "f81a7c1b01429eaf87dbdb9dcec730a840babe5b",
+    "/manifest.webmanifest": "895330d2a5889de022af2f94a04f2477a5d28bf1",
+    "/polyfills.dd5decaf0042061e82f4.js": "789c6c754319ec331f2c9c67c767a220d55ceb7e",
+    "/runtime.7e2fcbce03de33a99432.js": "8df5e35f70d0e386caa7aafa0cf9704af778a7cd",
+    "/scripts.26e8d69e6673d77e4fb6.js": "d47793b6d0c26e8172011c5e65224a55a4a6b847",
+    "/styles.246314804434448f8536.css": "18b5c3c489f1282b52eb8bfd12e2a771028321b1"
+  },
+  "navigationUrls": [
+    {
+      "positive": true,
+      "regex": "^\\/.*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*\\.[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*\\/.*$"
+    }
+  ],
+  "navigationRequestStrategy": "performance"
+}
