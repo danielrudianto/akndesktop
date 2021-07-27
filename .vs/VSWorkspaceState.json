@@ -4,11 +4,9 @@
     "\\src",
     "\\src\\app",
     "\\src\\app\\projects",
-    "\\src\\app\\projects\\projects-main",
-    "\\src\\app\\services",
-    "\\src\\assets",
-    "\\src\\assets\\images"
+    "\\src\\app\\projects\\create-project",
+    "\\src\\app\\services"
   ],
-  "SelectedNode": "\\src\\app\\global.ts",
+  "SelectedNode": "\\src\\app\\projects\\create-project\\create-project.component.ts",
   "PreviewInSolutionExplorer": false
 }
