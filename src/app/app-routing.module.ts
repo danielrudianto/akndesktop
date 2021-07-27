@@ -15,6 +15,7 @@ import { ProjectDetailComponent } from './projects/project-detail/project-detail
 import { ProjectsMainComponent } from './projects/projects-main/projects-main.component';
 import { ProjectsComponent } from './projects/projects.component';
 import { AuthGuardService } from './services/auth-guard.service';
+import { ProjectManagerGuardService } from './services/position-guard.service';
 import { SettingsComponent } from './settings/settings.component';
 import { TasksComponent } from './settings/tasks/tasks.component';
 import { UsersDetailComponent } from './settings/users/users-detail/users-detail.component';
@@ -35,12 +36,12 @@ const routes: Routes = [
   {
     path: "Clients",
     component: ClientsComponent,
-    canActivate: [AuthGuardService]
+    canActivate: [AuthGuardService, ProjectManagerGuardService]
   },
   {
     path: "Settings",
     component: SettingsComponent,
-    canActivate: [AuthGuardService],
+    canActivate: [AuthGuardService, ProjectManagerGuardService],
     children: [
       {
         path: "Users",
@@ -94,7 +95,7 @@ const routes: Routes = [
       {
         path: "Edit/:projectId",
         component: EditProjectComponent,
-        canActivate: [AuthGuardService],
+        canActivate: [AuthGuardService, ProjectManagerGuardService],
         children: [
           {
             path: "",

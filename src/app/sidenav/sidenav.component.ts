@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-sidenav',
@@ -6,10 +7,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./sidenav.component.css']
 })
 export class SidenavComponent implements OnInit {
-
-  constructor() { }
+  Position: number = 0;
+  constructor(
+    private authService: AuthService
+  ) { }
 
   ngOnInit(): void {
+    this.Position = this.authService.getInfo().Position;
   }
 
 }

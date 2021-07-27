@@ -1,0 +1,38 @@
+<form (ngSubmit)="onSubmit()"
+      [formGroup]="usersForm">
+  <mat-dialog-content>
+    <mat-form-field class="w-100">
+      <mat-label>First Name</mat-label>
+      <input style="color:white"
+             matInput
+             formControlName="FirstName" />
+    </mat-form-field>
+
+    <mat-form-field class="w-100">
+      <mat-label>Last Name</mat-label>
+      <input style="color:white"
+             matInput
+             formControlName="LastName" />
+    </mat-form-field>
+
+    <mat-form-field class="w-100">
+      <mat-label>Email</mat-label>
+      <input style="color:white"
+             matInput
+             formControlName="Email" />
+    </mat-form-field>
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button mat-button
+            (click)="closeDialog()"
+            type="button"
+            [disabled]="isSubmitting">
+      Cancel
+    </button>
+    <button type="submit"
+            mat-button
+            [disabled]="!usersForm.valid || isSubmitting">
+      Submit
+    </button>
+  </mat-dialog-actions>
+</form>

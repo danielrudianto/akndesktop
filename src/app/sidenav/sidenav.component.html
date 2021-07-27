@@ -12,6 +12,7 @@
       <mat-icon class="icon">dashboard</mat-icon>
     </a>
     <a
+       *ngIf="Position > 3"
        routerLink="/Clients"
        routerLinkActive="active"
        matTooltip="Clients"
@@ -21,6 +22,7 @@
       <mat-icon class="icon">supervised_user_circle</mat-icon>
     </a>
     <a
+       *ngIf="Position > 3"
        routerLink="/Projects"
        routerLinkActive="active"
        matTooltip="Projects"
@@ -30,6 +32,7 @@
       <mat-icon class="icon">list</mat-icon>
     </a>
     <a
+       *ngIf="Position > 3"
        routerLink="/Settings"
        routerLinkActive="active"
        matTooltip="Appplication Settings"

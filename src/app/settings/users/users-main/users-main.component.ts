@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { User, UserPosition } from '../../../interfaces/user';
@@ -55,11 +55,17 @@ export class UsersMainComponent implements OnInit {
   }
 
   openEditForm(user: User) {
-
+    this.dialog.open(UsersEditComponent, {
+      disableClose: true,
+      data: user
+    }) 
   }
 
   openDeleteForm(user: User) {
-
+    this.dialog.open(UsersDeleteComponent, {
+      disableClose: false,
+      data: user
+    })
   }
 
   openContact(user: User) {
@@ -138,8 +144,17 @@ export class UsersAddComponent {
   templateUrl: 'users-delete.html'
 })
 export class UsersDeleteComponent {
+  confirmation: string = "";
+  isSubmitting: boolean = false;
+
   constructor(
-  ) { }
+    @Inject(MAT_DIALOG_DATA) public data: User,
+    private dialogRef: MatDialogRef<UsersDeleteComponent>
+  ) {}
+
+  submit() {
+    this.isSubmitting = true;
+  }
 }
 
 @Component({
@@ -147,6 +162,39 @@ export class UsersDeleteComponent {
   templateUrl: 'users-edit.html'
 })
 export class UsersEditComponent {
+  isSubmitting: boolean = false;
+
   constructor(
+    @Inject(MAT_DIALOG_DATA) public data: User,
+    private dialogRef: MatDialogRef<UsersEditComponent>,
+    private userService: UserService
   ) { }
+
+  usersForm: FormGroup = new FormGroup({
+    FirstName: new FormControl(this.data.FirstName, Validators.required),
+    LastName: new FormControl(this.data.LastName, Validators.required),
+    Email: new FormControl(this.data.Email, [Validators.required, Validators.email]),
+  });
+
+  closeDialog() {
+    this.dialogRef.close(null);
+  }
+
+  onSubmit() {
+    this.isSubmitting = true;
+    const user = {
+      FirstName: this.usersForm.controls.FirstName.value,
+      LastName: this.usersForm.controls.LastName.value,
+      Email: this.usersForm.controls.Email.value,
+      IsActive: true,
+      Position: this.data.UserPosition![0].Position,
+      Id: this.data.Id
+    }
+    this.userService.updateData(user).subscribe(() => {
+      this.isSubmitting = false;
+      this.dialogRef.close();
+    }, error => {
+       this.isSubmitting = false;
+    })
+  }
 }

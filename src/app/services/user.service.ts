@@ -63,6 +63,10 @@ export class UserService {
     return this.http.post(global.url + "/user/profilePicture", formData)
   }
 
+  updateData(user: UserForm) {
+    return this.http.put(global.url + "/user", user);
+  }
+
   getProfilePicture(email: string) {
     return this.http.get(global.url + "/user/profilePicture", {
       params: {
