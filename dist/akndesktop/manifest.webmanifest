@@ -3,7 +3,7 @@
   "short_name": "aknsmartreport",
   "theme_color": "#feaa2d",
   "background_color": "#fafafa",
-  "display": "fullscreen",
+  "display": "standalone",
   "scope": "./",
   "start_url": "./",
   "icons": [
