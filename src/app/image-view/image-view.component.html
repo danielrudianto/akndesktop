@@ -1,16 +1,6 @@
-<div
-     (click)="onClose()"
+<div (click)="onClose()"
      class="image-viewer-wrapper">
-  <div class="container">
-    <div class="row justify-content-center p-5">
-      <div
-           (click)="doNothing()"
-           class="col-lg-8 col-md-10 col-sm-12 col-12">
-        <ngx-doc-viewer
-                        [url]="imageUrl"
-                        viewer="url"
-                        style="width:100%;height:auto"></ngx-doc-viewer>
-      </div>
-    </div>
-  </div>
+  <ng-image-fullscreen-view [images]="imageUrls"
+                            [show]="true"
+                            (close)="onClose()"></ng-image-fullscreen-view>
 </div>

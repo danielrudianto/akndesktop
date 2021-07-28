@@ -18,6 +18,11 @@
         </th>
       </tr>
     </thead>
+    <tbody *ngIf="tasks.length == 0">
+      <tr>
+        <td colspan="1">There is no data found</td>
+      </tr>
+    </tbody>
     <tbody *ngFor="let task of tasks">
       <tr>
         <td>

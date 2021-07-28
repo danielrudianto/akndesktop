@@ -4,13 +4,10 @@
     "\\src",
     "\\src\\app",
     "\\src\\app\\feeds",
-    "\\src\\app\\feeds\\main-feed",
-    "\\src\\app\\feeds\\report-daily",
-    "\\src\\app\\feeds\\side-feed",
-    "\\src\\app\\image-view",
-    "\\src\\app\\image-view-wrapper",
+    "\\src\\app\\report-approval",
+    "\\src\\app\\select-user",
     "\\src\\app\\services"
   ],
-  "SelectedNode": "\\src\\app\\services\\report.service.ts",
+  "SelectedNode": "\\src\\app\\feeds\\report-daily",
   "PreviewInSolutionExplorer": false
 }

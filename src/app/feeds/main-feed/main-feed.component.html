@@ -32,7 +32,7 @@
             <span>Delete feed</span>
           </button>
           <button
-                  (click)="deleteApprovals(feed.Id)"
+                  (click)="openApprovals(feed.Id)"
                   mat-menu-item>
             <mat-icon>edit_attributes</mat-icon>
             <span>Edit approvals</span>
@@ -131,7 +131,7 @@
                    [(ngModel)]="feed.RequestForInformation.AddressedFor" />
           </mat-form-field>
           <mat-form-field class="w-100">
-            <mat-label>Header</mat-label>
+            <mat-label>Subject</mat-label>
             <input readonly
                    matInput
                    [(ngModel)]="feed.RequestForInformation.Header" />
@@ -150,7 +150,7 @@
             <ng-template swiperSlide
                          *ngFor="let image of feed.RequestForInformation.RequestForInformationDocument">
               <div [ngStyle]="{'background-image': 'url(' + global.url + '/img/' + image.ImageUrl + ')'}"
-                   (click)="viewImage(image.ImageUrl)"
+                   (click)="viewImage(image)"
                    class="documentation-wrapper"></div>
               <p class="fr-text text-center">{{ image.Name }}</p>
             </ng-template>
@@ -160,16 +160,14 @@
                           [reportId]="feed.Id"></app-rfi-answer>
         </div>
         <div *ngSwitchCase="7">
-          <p class="fr-text">
-            {{ feed.StatusReport.Status }}
-          </p>
+          <div style="white-space: pre-line;" [innerHtml]="feed.StatusReport.Status" class="fr-text"></div>
           <swiper [navigation]="true"
                   [slidesPerView]="1"
                   [spaceBetween]="50">
             <ng-template swiperSlide
                          *ngFor="let image of feed.StatusReport.StatusReportImage">
               <div [ngStyle]="{'background-image': 'url(' + global.url + '/img/' + image.ImageUrl + ')'}"
-                   (click)="viewImage(image.ImageUrl)"
+                   (click)="viewImage(image)"
                    class="documentation-wrapper"></div>
               <p class="fr-text text-center">{{ image.Name }}</p>
             </ng-template>

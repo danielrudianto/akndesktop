@@ -33,7 +33,7 @@ import { AppComponent } from './app.component';
 import { ClientsAddComponent, ClientsComponent, ClientsDeleteComponent, ClientsEditComponent } from './clients/clients.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { MainComponent } from './dashboard/main/main.component';
-import { SideProfileComponent } from './dashboard/side-profile/side-profile.component';
+import { ResetPasswordComponent, SideProfileComponent } from './dashboard/side-profile/side-profile.component';
 import { FeedsComponent } from './feeds/feeds.component';
 import { MainFeedComponent, MainFeedDeleteComponent } from './feeds/main-feed/main-feed.component';
 import { ReportAttendanceAddComponent, ReportAttendanceComponent, ReportAttendanceEditComponent } from './feeds/report-attendance/report-attendance.component';
@@ -81,6 +81,8 @@ import { ReportTableComponent, ReportTableDetailComponent } from './projects/pro
 import { RenameFileComponent } from './rename-file/rename-file.component';
 import { AuthInterceptor } from './auth/auth-interceptor';
 import { JwtInterceptor } from './auth/jwt-interceptor';
+
+import { NgImageFullscreenViewModule } from 'ng-image-fullscreen-view';
 
 @NgModule({
   declarations: [
@@ -166,6 +168,7 @@ import { JwtInterceptor } from './auth/jwt-interceptor';
     ReportTableDetailComponent,
     RfiAnswerListComponent,
     ReportDailyComponent,
+    ResetPasswordComponent
   ],
   imports: [
     BrowserModule,
@@ -200,8 +203,8 @@ import { JwtInterceptor } from './auth/jwt-interceptor';
     NgxDocViewerModule,
     ClickOutsideModule,
     FileSaverModule,
-    NgxMaskModule.forRoot()
-    
+    NgxMaskModule.forRoot(),
+    NgImageFullscreenViewModule
   ],
   entryComponents: [
     ClientsAddComponent,
@@ -233,7 +236,8 @@ import { JwtInterceptor } from './auth/jwt-interceptor';
     RenameFileComponent,
     ReportTableDetailComponent,
     RfiAnswerListComponent,
-    ReportDailyComponent
+    ReportDailyComponent,
+    ResetPasswordComponent
   ],
   providers: [
     {

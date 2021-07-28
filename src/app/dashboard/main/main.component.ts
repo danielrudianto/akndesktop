@@ -158,13 +158,16 @@ export class MainComponent implements OnInit {
     this.router.navigate(["/Feeds/" + project.Id]);
   }
 
-  viewImage(imageUrl: string) {
+  viewImage(imageUrl: any) {
     const imageComponentFactory = this.componentFactoryResolver.resolveComponentFactory(ImageViewComponent);
     const imageContainerRef = this.imageViewHost.viewContainerRef;
     imageContainerRef.clear();
 
     const componentRef = imageContainerRef.createComponent(imageComponentFactory);
-    componentRef.instance.imageUrl = global.url + "/img/" + imageUrl;
+    componentRef.instance.imageUrl = {
+      image: global.url + "/img/" + imageUrl.ImageUrl,
+      title: imageUrl.Name
+    }
     this.closeImageView = componentRef.instance.close.subscribe(() => {
       this.closeImageView.unsubscribe();
       imageContainerRef.clear();

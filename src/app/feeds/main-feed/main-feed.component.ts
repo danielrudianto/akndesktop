@@ -11,6 +11,7 @@ import { ApprovalService } from '../../services/approval.service';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Approvals } from '../../interfaces/report';
 import { ReportService } from '../../services/report.service';
+import { ReportApprovalListComponent } from '../../report-approval/report-approval.component';
 
 @Component({
   selector: 'app-main-feed',
@@ -51,13 +52,16 @@ export class MainFeedComponent implements OnInit {
     })
   }
 
-  viewImage(imageUrl: string) {
+  viewImage(imageUrl: any) {
     const imageComponentFactory = this.componentFactoryResolver.resolveComponentFactory(ImageViewComponent);
     const imageContainerRef = this.imageViewHost.viewContainerRef;
     imageContainerRef.clear();
 
     const componentRef = imageContainerRef.createComponent(imageComponentFactory);
-    componentRef.instance.imageUrl = global.url + "/img/" + imageUrl;
+    componentRef.instance.imageUrl = {
+      image: global.url + "/img/" + imageUrl.ImageUrl,
+      title: imageUrl.Name
+    }
     this.closeImageView = componentRef.instance.close.subscribe(() => {
       this.closeImageView.unsubscribe();
       imageContainerRef.clear();
@@ -179,6 +183,14 @@ export class MainFeedComponent implements OnInit {
 
   onScroll() {
     this.fetchFeeds();
+  }
+
+  openApprovals(id: number) {
+    this.dialog.open(ReportApprovalListComponent, {
+      data: id,
+      maxHeight: '100%',
+      minWidth: 400
+    })
   }
 
 }

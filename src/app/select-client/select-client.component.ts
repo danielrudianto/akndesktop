@@ -33,6 +33,10 @@ export class SelectClientComponent {
           })
         }
       });
+
+    this.clientService.getClientsAutocomplete("").subscribe((clients: Client[]) => {
+      this.clients = clients;
+    })
   }
 
   selectClient(client: Client) {

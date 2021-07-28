@@ -5,8 +5,9 @@ import { UserService } from '../../services/user.service';
 import * as global from '../../global';
 import * as uuid from 'uuid';
 import { UserPosition } from '../../interfaces/user';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ProjectUsersComponent } from '../../project-users/project-users.component';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-side-profile',
@@ -56,4 +57,41 @@ export class SideProfileComponent implements OnInit {
     });
   }
 
+  openResetPassword() {
+    this.dialog.open(ResetPasswordComponent, {
+      minWidth:400
+    })
+  }
+
+}
+@Component({
+  templateUrl: 'reset-password.html',
+  selector: 'reset-password'
+})
+
+export class ResetPasswordComponent {
+  resetPasswordForm: FormGroup = new FormGroup({
+    password: new FormControl("", [Validators.required, Validators.minLength(8)]),
+    confirmPassword: new FormControl("", [Validators.required, Validators.minLength(8)]),
+  })
+
+  constructor(
+    private dialogRef: MatDialogRef<ResetPasswordComponent>,
+    private userService: UserService,
+    private snackBar: MatSnackBar
+  ) {  }
+
+  closeDialog() {
+    this.dialogRef.close();
+  }
+
+  onSubmit() {
+    if (this.resetPasswordForm.valid && this.resetPasswordForm.controls.password.value == this.resetPasswordForm.controls.confirmPassword.value) {
+      this.userService.resetPassword(this.resetPasswordForm.controls.password.value).subscribe(() => {
+        this.dialogRef.close();
+      }, error => {
+          this.snackBar.open(error.message, "Close");
+      })
+    }
+  }
 }

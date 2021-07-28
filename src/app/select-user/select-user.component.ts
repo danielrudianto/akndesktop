@@ -34,6 +34,10 @@ export class SelectUserComponent implements OnInit {
           })
         }
       });
+
+    this.userService.getUsersAutocomplete("", this.data).subscribe((users: User[]) => {
+      this.users = users;
+    })
   }
 
   selectUser(user: User) {

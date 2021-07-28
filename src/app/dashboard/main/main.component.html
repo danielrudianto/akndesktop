@@ -143,9 +143,7 @@
             </swiper>
           </div>
           <div *ngSwitchCase="7">
-            <p class="fr-text">
-              {{ feed.StatusReport.Status }}
-            </p>
+            <div style="white-space: pre-line;" [innerHtml]="feed.StatusReport.Status" class="fr-text"></div>
             <swiper [navigation]="true"
                     [slidesPerView]="1"
                     [spaceBetween]="50">

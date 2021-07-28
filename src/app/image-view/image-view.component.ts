@@ -6,12 +6,16 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
   styleUrls: ['./image-view.component.css']
 })
 export class ImageViewComponent implements OnInit {
-  @Input() imageUrl: string;
+  @Input() imageUrl: object;
   @Output() close = new EventEmitter();
+
+  imageUrls: Array<object> = [];
 
   constructor() { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.imageUrls = [this.imageUrl];
+  }
 
   onClose() {
     this.close.emit();
