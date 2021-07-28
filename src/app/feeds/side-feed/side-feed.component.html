@@ -16,7 +16,9 @@
          [ngStyle]="{'background-image': user.User.ImageUrl == null ? 'url(../assets/images/Profile.png)' : 'url(' + global.url + '/img/' + user.User.ImageUrl + ')'}">
     </div>
     <div class="d-block w-100">
-      <button class="default-button">Details</button>
+      <button
+              (click)="goToDetails()"
+              class="default-button">Details</button>
     </div>
     
   </div>

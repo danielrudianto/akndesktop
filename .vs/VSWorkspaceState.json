@@ -3,10 +3,14 @@
     "",
     "\\src",
     "\\src\\app",
-    "\\src\\app\\projects",
-    "\\src\\app\\projects\\create-project",
+    "\\src\\app\\feeds",
+    "\\src\\app\\feeds\\main-feed",
+    "\\src\\app\\feeds\\report-daily",
+    "\\src\\app\\feeds\\side-feed",
+    "\\src\\app\\image-view",
+    "\\src\\app\\image-view-wrapper",
     "\\src\\app\\services"
   ],
-  "SelectedNode": "\\src\\app\\projects\\create-project\\create-project.component.ts",
+  "SelectedNode": "\\src\\app\\services\\report.service.ts",
   "PreviewInSolutionExplorer": false
 }

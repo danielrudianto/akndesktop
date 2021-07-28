@@ -4,6 +4,7 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dial
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { User, UserPosition } from '../../../interfaces/user';
+import { SocketService } from '../../../services/socket.service';
 import { UserService } from '../../../services/user.service';
 
 @Component({
@@ -21,11 +22,20 @@ export class UsersMainComponent implements OnInit {
     private userService: UserService,
     private snackBar: MatSnackBar,
     private router: Router,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private socketService: SocketService
   ) { }
 
   ngOnInit(): void {
     this.fetchUsers();
+
+    this.socketService.socket.on("userEdit", () => {
+      this.fetchUsers();
+    });
+
+    this.socketService.socket.on("userDelete", () => {
+      this.fetchUsers();
+    });
   }
 
   fetchUsers() {
@@ -149,11 +159,18 @@ export class UsersDeleteComponent {
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: User,
-    private dialogRef: MatDialogRef<UsersDeleteComponent>
+    private dialogRef: MatDialogRef<UsersDeleteComponent>,
+    private userService: UserService
   ) {}
 
   submit() {
     this.isSubmitting = true;
+    this.userService.deleteData(this.data.Id).subscribe(() => {
+      this.isSubmitting = false;
+      this.dialogRef.close();
+    }, error => {
+        this.isSubmitting = false;
+    })
   }
 }
 

@@ -29,4 +29,8 @@ export class SideFeedComponent implements OnInit {
     })
   }
 
+  goToDetails() {
+    this.route.navigate(['/Projects/Detail/' + this.router.snapshot.params.projectId]);
+  }
+
 }

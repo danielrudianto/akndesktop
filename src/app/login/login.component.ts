@@ -33,20 +33,28 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
+    this.isSubmitting = true;
     this.authService.login(this.loginForm.controls.email.value, this.loginForm.controls.password.value).subscribe(responseData => {
       this.authService.setSession(responseData);
       this.router.navigate(["/"])
     }, error => {
-        this.snackBar.open(error.message, "Close");
+        this.isSubmitting = false;
+        this.snackBar.open(error.message, "Close", {
+          duration: 2000
+        });
     })
   }
 
   register() {
+    this.isSubmitting = true;
     this.authService.register(this.registerForm.controls.email.value, this.registerForm.controls.password.value).subscribe(responseData => {
       this.authService.setSession(responseData);
       this.router.navigate(["/"])
     }, error => {
-      this.snackBar.open(error.message, "Close")
+        this.isSubmitting = false;
+        this.snackBar.open(error.message, "Close", {
+          duration: 2000
+        })
     });
   }
 

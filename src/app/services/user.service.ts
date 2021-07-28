@@ -67,6 +67,10 @@ export class UserService {
     return this.http.put(global.url + "/user", user);
   }
 
+  deleteData(id: number) {
+    return this.http.delete(global.url + "/user/" + id);
+  }
+
   getProfilePicture(email: string) {
     return this.http.get(global.url + "/user/profilePicture", {
       params: {

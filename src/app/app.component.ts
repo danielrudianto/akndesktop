@@ -35,6 +35,12 @@ export class AppComponent implements OnInit {
         this.authService.updateToken(token);
       }
     });
+
+    this.socketService.socket.on('deleteToken', (data: any) => {
+      if (this.authService.getEmail() == data) {
+        this.authService.logout();
+      }
+    })
   }
   title = 'Alpha Smart Report';
 }

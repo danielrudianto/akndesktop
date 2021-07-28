@@ -2093,3 +2093,9 @@ input.sm-content {
     background-image: url("../../assets/images/logoAlphaLight.png");
   }
 }
+
+.ibtn:disabled {
+  background-color: #ccc !important;
+  cursor: not-allowed !important;
+  transition: 0.3s all ease;
+}
