@@ -1,5 +1,7 @@
+import { Route } from '@angular/compiler/src/core';
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { SocketService } from '../services/socket.service';
 
 @Component({
   selector: 'app-feeds',
@@ -13,9 +15,16 @@ export class FeedsComponent implements OnInit, OnDestroy {
 
   constructor(
     private router: ActivatedRoute,
+    private socketService: SocketService,
+    private route: Router
   ) { }
 
   ngOnInit(): void {
+    this.socketService.socket.on("deleteProject", (data: any) => {
+      if (this.router.snapshot.params.projectId == data.projectId) {
+        this.route.navigate(["/"]);
+      }
+    })
   }
 
   ngOnDestroy(): void {

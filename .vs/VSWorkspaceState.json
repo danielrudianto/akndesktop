@@ -3,11 +3,13 @@
     "",
     "\\src",
     "\\src\\app",
-    "\\src\\app\\feeds",
-    "\\src\\app\\report-approval",
-    "\\src\\app\\select-user",
-    "\\src\\app\\services"
+    "\\src\\app\\login",
+    "\\src\\app\\services",
+    "\\src\\app\\settings",
+    "\\src\\app\\settings\\users",
+    "\\src\\app\\settings\\users\\users-main",
+    "\\src\\assets"
   ],
-  "SelectedNode": "\\src\\app\\feeds\\report-daily",
+  "SelectedNode": "\\angular.json",
   "PreviewInSolutionExplorer": false
 }
