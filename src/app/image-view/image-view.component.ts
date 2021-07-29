@@ -19,6 +19,8 @@ export class ImageViewComponent implements OnInit {
 
   onClose() {
     this.close.emit();
+    let body = document.getElementsByTagName('body')[0];
+    body.style.overflowY = "auto";
   }
 
   doNothing() {}

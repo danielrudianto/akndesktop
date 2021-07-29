@@ -1,6 +1,8 @@
 <div (click)="onClose()"
      class="image-viewer-wrapper">
-  <ng-image-fullscreen-view [images]="imageUrls"
+  <ng-image-fullscreen-view
+                            style="width:100%"
+                            [images]="imageUrls"
                             [show]="true"
                             (close)="onClose()"></ng-image-fullscreen-view>
 </div>

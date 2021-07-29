@@ -1,3 +1,4 @@
+<ng-template imageView></ng-template>
 <div class="row" id="dashboard-wrapper">
   <div class="col-12">
     <h2 class="fr-text">Dashboard</h2>
@@ -136,7 +137,7 @@
               <ng-template swiperSlide
                            *ngFor="let image of feed.RequestForInformation.RequestForInformationDocument">
                 <div [ngStyle]="{'background-image': 'url(' + global.url + '/img/' + image.ImageUrl + ')'}"
-                     (click)="viewImage(image.ImageUrl)"
+                     (click)="viewImage(image)"
                      class="documentation-wrapper"></div>
                 <p class="fr-text text-center">{{ image.Name }}</p>
               </ng-template>
@@ -150,7 +151,7 @@
               <ng-template swiperSlide
                            *ngFor="let image of feed.StatusReport.StatusReportImage">
                 <div [ngStyle]="{'background-image': 'url(' + global.url + '/img/' + image.ImageUrl + ')'}"
-                     (click)="viewImage(image.ImageUrl)"
+                     (click)="viewImage(image)"
                      class="documentation-wrapper"></div>
                 <p class="fr-text text-center">{{ image.Name }}</p>
               </ng-template>
