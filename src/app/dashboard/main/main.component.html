@@ -11,7 +11,7 @@
     <p *ngIf="projects.length == 0 && !isFetching" class="fr-text text-white text-center">There is no active project found.</p>
 
     <swiper *ngIf="projects.length > 0 && !isFetching"
-            [breakpoints]="breakpoints">
+            [config]="swiperConfig">
       <ng-template swiperSlide
                    *ngFor="let project of projects">
         <mat-card (click)="goToProject(project)"

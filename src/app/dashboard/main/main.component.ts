@@ -147,12 +147,32 @@ export class MainComponent implements OnInit {
     })
   }
 
-  breakpoints = {
-    768: { slidesPerView: 1, spaceBetween: 20 },
-    992: { slidesPerView: 1.5, spaceBetween: 20 },
-    1200: { slidesPerView: 1.8, spaceBetween: 40 },
-    1368: { slidesPerView: 2.1, spaceBetween: 40 }
-  };
+  swiperConfig: any = {
+    slidesPerView: 'auto',
+    spaceBetween: 50,
+    breakpoints: {
+      768: {
+        slidesPerView: 1,
+        spaceBetween: 20
+      },
+      992: {
+        slidesPerView: 1.2,
+        spaceBetween: 20
+      },
+      1200: {
+        slidesPerView: 1.5,
+        spaceBetween: 40
+      },
+      1368: {
+        slidesPerView: 1.8,
+        spaceBetween: 40
+      },
+      1600: {
+        slidePerView: 2.1,
+        spaceBetween: 50
+      }
+    }
+  }
 
   goToProject(project: CodeProject) {
     this.router.navigate(["/Feeds/" + project.Id]);
