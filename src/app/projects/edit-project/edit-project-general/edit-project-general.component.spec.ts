@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { EditProjectGeneralComponent } from './edit-project-general.component';
@@ -8,7 +9,8 @@ describe('EditProjectGeneralComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ EditProjectGeneralComponent ]
+      declarations: [EditProjectGeneralComponent],
+      providers: [HttpClient]
     })
     .compileComponents();
   });

@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ProjectUsersComponent } from './project-users.component';
@@ -8,7 +9,8 @@ describe('ProjectUsersComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ProjectUsersComponent ]
+      providers: [HttpClient],
+      declarations: [ ProjectUsersComponent ],
     })
     .compileComponents();
   });

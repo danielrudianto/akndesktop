@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ConfirmProjectDetailComponent } from './confirm-project-detail.component';
@@ -8,7 +9,8 @@ describe('ConfirmProjectDetailComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ConfirmProjectDetailComponent ]
+      declarations: [ConfirmProjectDetailComponent],
+      providers: [HttpClient]
     })
     .compileComponents();
   });

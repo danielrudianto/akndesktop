@@ -1,4 +1,6 @@
+import { HttpClient } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { SocketService } from '../services/socket.service';
 
 import { ReportCommentComponent } from './report-comment.component';
 
@@ -8,7 +10,8 @@ describe('ReportCommentComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ReportCommentComponent ]
+      declarations: [ReportCommentComponent],
+      providers: [SocketService]
     })
     .compileComponents();
   });
