@@ -79,7 +79,9 @@ export class EditProjectDocumentComponent implements OnInit {
       this.documents.splice(i, 1);
       this.isDeleting = false;
     }, error => {
-        this.snackBar.open(error.message, "Close");
+        this.snackBar.open(error.message, "Close", {
+          duration: 2000
+        });
         this.isDeleting = false;
     })
   }
@@ -90,8 +92,9 @@ export class EditProjectDocumentComponent implements OnInit {
       this._FileSaverService.save((<any>data), this.documents[i].Name);
       this.isDownloading = false;
     }, error => {
-        console.log(error);
-        this.snackBar.open(error.message, "Close");
+        this.snackBar.open(error.message, "Close", {
+          duration: 2000
+        });
         this.isDownloading = false;
     })
   }

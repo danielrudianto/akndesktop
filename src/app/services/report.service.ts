@@ -60,4 +60,8 @@ export class ReportService {
       responseType:'blob'
     })
   }
+
+  editWorkerReport(workerReport: WorkerReportForm) {
+    return this.http.put(global.url + "/reportWorker", workerReport)
+  }
 }

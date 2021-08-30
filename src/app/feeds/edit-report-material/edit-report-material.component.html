@@ -1,0 +1,58 @@
+<h4 class="fr-text"><span class="text-alpha">Material</span> Report</h4>
+<button class="default-button" (click)="openAddMaterial()">
+  Add
+</button>
+
+<div class="table-responsive-md">
+  <table class="table table-dark mt-3">
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Description</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">Status</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody *ngIf="materials.length == 0">
+      <tr>
+        <td colspan="4">There is no material found.</td>
+      </tr>
+    </tbody>
+    <tbody *ngIf="materials.length > 0">
+      <tr *ngFor="let material of materials; index as i">
+        <td>{{ material.Name }}</td>
+        <td>{{ material.Description }}</td>
+        <td>{{ material.Quantity | number: '1.0-2' }} {{ material.Unit }}</td>
+        <td>
+          <mat-slide-toggle [checked]="material.Status == 1 ? true : false"
+                            (change)="material.Status == 1 ? material.Status = 0 : material.Status = 1"
+                            formControlName="Status">
+            <span *ngIf="material.Status == 0">OUT</span>
+            <span *ngIf="material.Status == 1">IN</span>
+          </mat-slide-toggle>
+        </td>
+        <td>
+          <button mat-icon-button
+                  (click)="openEditMaterial(i)"
+                  aria-label="Edit button">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-icon-button
+                  (click)="deleteMaterial(i)"
+                  aria-label="Delete button"
+                  class="text-alpha">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <button type="button"
+          (click)="submitMaterialReport()"
+          class="default-button"
+          [disabled]="isSubmitting || materials.length == 0">
+    Submit
+  </button>
+</div>

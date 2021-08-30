@@ -83,6 +83,9 @@ import { AuthInterceptor } from './auth/auth-interceptor';
 import { JwtInterceptor } from './auth/jwt-interceptor';
 
 import { NgImageFullscreenViewModule } from 'ng-image-fullscreen-view';
+import { EditFeedComponent } from './feeds/edit-feed/edit-feed.component';
+import { EditReportAttendanceComponent } from './feeds/edit-report-attendance/edit-report-attendance.component';
+import { EditReportMaterialComponent } from './feeds/edit-report-material/edit-report-material.component';
 
 @NgModule({
   declarations: [
@@ -168,7 +171,10 @@ import { NgImageFullscreenViewModule } from 'ng-image-fullscreen-view';
     ReportTableDetailComponent,
     RfiAnswerListComponent,
     ReportDailyComponent,
-    ResetPasswordComponent
+    ResetPasswordComponent,
+    EditFeedComponent,
+    EditReportAttendanceComponent,
+    EditReportMaterialComponent
   ],
   imports: [
     BrowserModule,

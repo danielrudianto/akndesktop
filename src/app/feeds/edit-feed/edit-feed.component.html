@@ -1,0 +1,18 @@
+  <div class="jumbotron h-100">
+    <div class="container-fluid">
+      <div class="row p-5 h-100">
+        <div style="position:relative"
+             class="col-lg-12 col-md-12">
+          <mat-progress-spinner *ngIf="report == null"
+                                color="primary"
+                                mode="indeterminate"></mat-progress-spinner>
+          <div *ngIf="report != null">
+            <app-edit-report-attendance [report]="report"
+                                        *ngIf="report.Type == 1"></app-edit-report-attendance>
+            <app-edit-report-attendance [report]="report"
+                                        *ngIf="report.Type == 1"></app-edit-report-attendance>
+          </div>
+      </div>
+    </div>
+  </div>
+  <app-sidenav></app-sidenav>

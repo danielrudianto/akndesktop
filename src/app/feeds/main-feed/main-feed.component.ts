@@ -167,6 +167,14 @@ export class MainFeedComponent implements OnInit {
         }
       }
     })
+
+    this.socketService.socket.on("editAttendanceReport", (data: any) => {
+      if (data.projectId == this.router.snapshot.params.projectId) {
+        this.feedService.getFeed(data.reportId).subscribe(response => {
+          this.feeds[this.feeds.findIndex(x => x.Id == data.reportId)] = response;
+        })
+      }
+    })
   }
 
   deleteFeed(feed: any) {
@@ -191,6 +199,10 @@ export class MainFeedComponent implements OnInit {
       maxHeight: '100%',
       minWidth: 400
     })
+  }
+
+  goToEditFeed(id: number) {
+    this.route.navigate(["/Feeds/Edit/" + id]);
   }
 
 }

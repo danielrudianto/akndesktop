@@ -3,13 +3,10 @@
     "",
     "\\src",
     "\\src\\app",
-    "\\src\\app\\feeds\\report-weather",
-    "\\src\\app\\projects",
-    "\\src\\app\\projects\\edit-project",
+    "\\src\\app\\feeds",
     "\\src\\app\\projects\\edit-project\\edit-project-document",
-    "\\src\\app\\report-comment",
     "\\src\\app\\services"
   ],
-  "SelectedNode": "\\src\\app\\services\\project.service.ts",
+  "SelectedNode": "\\src\\app\\app.module.ts",
   "PreviewInSolutionExplorer": false
 }

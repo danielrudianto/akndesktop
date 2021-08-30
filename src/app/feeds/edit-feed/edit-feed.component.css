@@ -1,0 +1,6 @@
+.jumbotron {
+  height: 100vh;
+  width: calc(100vw - 8rem);
+  margin-left: 8rem;
+  background-color: transparent;
+}

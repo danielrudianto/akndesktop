@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ClientsComponent } from './clients/clients.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { EditFeedComponent } from './feeds/edit-feed/edit-feed.component';
 import { FeedsComponent } from './feeds/feeds.component';
 import { LoginComponent } from './login/login.component';
 import { ProjectUsersComponent } from './project-users/project-users.component';
@@ -137,8 +138,13 @@ const routes: Routes = [
         path: "Create/:report",
         component: FeedsComponent,
         canActivate: [AuthGuardService]
-      }
+      },
     ]
+  },
+  {
+    path: "Feeds/Edit/:reportId",
+    component: EditFeedComponent,
+    canActivate: [AuthGuardService]
   }
 ];
 

@@ -32,10 +32,10 @@
             <span>Delete feed</span>
           </button>
           <button
-                  (click)="openApprovals(feed.Id)"
+                  (click)="goToEditFeed(feed.Id)"
                   mat-menu-item>
             <mat-icon>edit_attributes</mat-icon>
-            <span>Edit approvals</span>
+            <span>Edit feed</span>
           </button>
         </mat-menu>
         <mat-card-title class="fr-text mb-0">{{ feed.User.FirstName }} {{ feed.User.LastName }}</mat-card-title>
