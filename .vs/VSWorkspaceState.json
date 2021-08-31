@@ -3,14 +3,15 @@
     "",
     "\\src",
     "\\src\\app",
+    "\\src\\app\\dashboard",
+    "\\src\\app\\dashboard\\main",
     "\\src\\app\\feeds",
-    "\\src\\app\\feeds\\edit-report-rfi",
-    "\\src\\app\\feeds\\report-rfi",
+    "\\src\\app\\feeds\\main-feed",
     "\\src\\app\\projects",
     "\\src\\app\\projects\\create-project",
     "\\src\\app\\select-client",
     "\\src\\app\\services"
   ],
-  "SelectedNode": "\\src\\app\\feeds\\edit-report-rfi\\edit-report-rfi.component.ts",
+  "SelectedNode": "\\src\\app\\dashboard\\main\\main.component.ts",
   "PreviewInSolutionExplorer": false
 }
