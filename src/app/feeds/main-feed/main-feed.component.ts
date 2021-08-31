@@ -175,6 +175,46 @@ export class MainFeedComponent implements OnInit {
         })
       }
     })
+
+    this.socketService.socket.on("editToolReport", (data: any) => {
+      if (data.projectId == this.router.snapshot.params.projectId) {
+        this.feedService.getFeed(data.reportId).subscribe(response => {
+          this.feeds[this.feeds.findIndex(x => x.Id == data.reportId)] = response;
+        })
+      }
+    })
+
+    this.socketService.socket.on("editMaterialReport", (data: any) => {
+      if (data.projectId == this.router.snapshot.params.projectId) {
+        this.feedService.getFeed(data.reportId).subscribe(response => {
+          this.feeds[this.feeds.findIndex(x => x.Id == data.reportId)] = response;
+        })
+      }
+    })
+
+    this.socketService.socket.on("editAttendanceReport", (data: any) => {
+      if (data.projectId == this.router.snapshot.params.projectId) {
+        this.feedService.getFeed(data.reportId).subscribe(response => {
+          this.feeds[this.feeds.findIndex(x => x.Id == data.reportId)] = response;
+        })
+      }
+    })
+
+    this.socketService.socket.on("editProgressReport", (data: any) => {
+      if (data.projectId == this.router.snapshot.params.projectId) {
+        this.feedService.getFeed(data.reportId).subscribe(response => {
+          this.feeds[this.feeds.findIndex(x => x.Id == data.reportId)] = response;
+        })
+      }
+    })
+
+    this.socketService.socket.on("editRFI", (data: any) => {
+      if (data.projectId == this.router.snapshot.params.projectId) {
+        this.feedService.getFeed(data.reportId).subscribe(response => {
+          this.feeds[this.feeds.findIndex(x => x.Id == data.reportId)] = response;
+        })
+      }
+    })
   }
 
   deleteFeed(feed: any) {

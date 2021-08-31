@@ -86,6 +86,9 @@ import { NgImageFullscreenViewModule } from 'ng-image-fullscreen-view';
 import { EditFeedComponent } from './feeds/edit-feed/edit-feed.component';
 import { EditReportAttendanceComponent } from './feeds/edit-report-attendance/edit-report-attendance.component';
 import { EditReportMaterialComponent } from './feeds/edit-report-material/edit-report-material.component';
+import { EditReportToolComponent } from './feeds/edit-report-tool/edit-report-tool.component';
+import { EditReportRfiComponent } from './feeds/edit-report-rfi/edit-report-rfi.component';
+import { EditReportProgressComponent } from './feeds/edit-report-progress/edit-report-progress.component';
 
 @NgModule({
   declarations: [
@@ -174,7 +177,10 @@ import { EditReportMaterialComponent } from './feeds/edit-report-material/edit-r
     ResetPasswordComponent,
     EditFeedComponent,
     EditReportAttendanceComponent,
-    EditReportMaterialComponent
+    EditReportMaterialComponent,
+    EditReportToolComponent,
+    EditReportRfiComponent,
+    EditReportProgressComponent
   ],
   imports: [
     BrowserModule,

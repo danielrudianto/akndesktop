@@ -4,9 +4,13 @@
     "\\src",
     "\\src\\app",
     "\\src\\app\\feeds",
-    "\\src\\app\\projects\\edit-project\\edit-project-document",
+    "\\src\\app\\feeds\\edit-report-rfi",
+    "\\src\\app\\feeds\\report-rfi",
+    "\\src\\app\\projects",
+    "\\src\\app\\projects\\create-project",
+    "\\src\\app\\select-client",
     "\\src\\app\\services"
   ],
-  "SelectedNode": "\\src\\app\\app.module.ts",
+  "SelectedNode": "\\src\\app\\feeds\\edit-report-rfi\\edit-report-rfi.component.ts",
   "PreviewInSolutionExplorer": false
 }

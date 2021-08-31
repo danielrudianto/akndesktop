@@ -9,8 +9,14 @@
           <div *ngIf="report != null">
             <app-edit-report-attendance [report]="report"
                                         *ngIf="report.Type == 1"></app-edit-report-attendance>
-            <app-edit-report-attendance [report]="report"
-                                        *ngIf="report.Type == 1"></app-edit-report-attendance>
+            <app-edit-report-tool [report]="report"
+                                  *ngIf="report.Type == 2"></app-edit-report-tool>
+            <app-edit-report-material [report]="report"
+                                      *ngIf="report.Type == 3"></app-edit-report-material>
+            <app-edit-report-rfi [report]="report"
+                                      *ngIf="report.Type == 5"></app-edit-report-rfi>
+            <app-edit-report-progress [report]="report"
+                                      *ngIf="report.Type == 7"></app-edit-report-progress>
           </div>
       </div>
     </div>

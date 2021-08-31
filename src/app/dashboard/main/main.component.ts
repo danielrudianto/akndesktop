@@ -122,6 +122,58 @@ export class MainComponent implements OnInit {
         this.feeds.splice(index, 1);
       }
     })
+
+    this.socketService.socket.on("editAttendanceReport", (data: any) => {
+      if (this.projectsSubscribed.includes(data.projectId)) {
+        this.feedService.getFeed(data.reportId).subscribe(response => {
+          response.ProjectName = this.projects.filter(y => y.Id == response.CodeProjectId)[0].Name;
+          this.feeds[this.feeds.findIndex(x => x.Id == data.reportId)] = response;
+        })
+      }
+    })
+
+    this.socketService.socket.on("editToolReport", (data: any) => {
+      if (this.projectsSubscribed.includes(data.projectId)) {
+        this.feedService.getFeed(data.reportId).subscribe(response => {
+          response.ProjectName = this.projects.filter(y => y.Id == response.CodeProjectId)[0].Name;
+          this.feeds[this.feeds.findIndex(x => x.Id == data.reportId)] = response;
+        })
+      }
+    })
+
+    this.socketService.socket.on("editMaterialReport", (data: any) => {
+      if (this.projectsSubscribed.includes(data.projectId)) {
+        this.feedService.getFeed(data.reportId).subscribe(response => {
+          response.ProjectName = this.projects.filter(y => y.Id == response.CodeProjectId)[0].Name;
+          this.feeds[this.feeds.findIndex(x => x.Id == data.reportId)] = response;
+        })
+      }
+    })
+
+    this.socketService.socket.on("editAttendanceReport", (data: any) => {
+      if (this.projectsSubscribed.includes(data.projectId)) {
+        this.feedService.getFeed(data.reportId).subscribe(response => {
+          response.ProjectName = this.projects.filter(y => y.Id == response.CodeProjectId)[0].Name;
+          this.feeds[this.feeds.findIndex(x => x.Id == data.reportId)] = response;
+        })
+      }
+    })
+
+    this.socketService.socket.on("editProgressReport", (data: any) => {
+      if (this.projectsSubscribed.includes(data.projectId)) {
+        this.feedService.getFeed(data.reportId).subscribe(response => {
+          this.feeds[this.feeds.findIndex(x => x.Id == data.reportId)] = response;
+        })
+      }
+    })
+
+    this.socketService.socket.on("editRFI", (data: any) => {
+      if (this.projectsSubscribed.includes(data.projectId)) {
+        this.feedService.getFeed(data.reportId).subscribe(response => {
+          this.feeds[this.feeds.findIndex(x => x.Id == data.reportId)] = response;
+        })
+      }
+    })
   }
 
   fetchProjects() {

@@ -1,0 +1,76 @@
+<ng-template imageView></ng-template>
+<h4 class="fr-text"><span class="text-alpha">Progress</span> Report</h4>
+
+<div class="container-fluid">
+  <div class="row justify-content-center mb-3 h-100 d-flex">
+    <div class="col-12">
+      <mat-form-field class="w-100">
+        <mat-label>Progress</mat-label>
+        <textarea matInput
+                  rows="15"
+                  [(ngModel)]="progress"></textarea>
+      </mat-form-field>
+      <label for="cameraInput"
+             class="default-button mb-3">
+        <mat-icon>add_photo_alternate</mat-icon> Add Documentation
+      </label>
+      <input type="file"
+             capture="camera"
+             accept="image/*"
+             id="cameraInput"
+             class="d-none"
+             (change)="onFileSelected($event)" />
+      <table class="table table-dark">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody *ngIf="documentations.length > 0">
+          <tr *ngFor="let documentation of documentations;index as i">
+            <td>{{ documentation.name }}</td>
+            <td class="text-alpha">
+              <button (click)="viewImage(i)"
+                      mat-icon-button>
+                <mat-icon>zoom_in</mat-icon>
+              </button>
+              <button *ngIf="!documentation.IsDelete"
+                      mat-icon-button
+                      (click)="removeDocumentation(i)">
+                <mat-icon>delete</mat-icon>
+              </button>
+              <button *ngIf="documentation.IsDelete"
+                      mat-icon-button
+                      (click)="retrieveDocumentation(documentation)">
+                <mat-icon>undo</mat-icon>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+        <tbody *ngIf="newDocumentations.length > 0">
+          <tr *ngFor="let documentation of newDocumentations;index as i">
+            <td>{{ documentation.name }}</td>
+            <td class="text-alpha">
+              <button (click)="removeNewDocumentation(i)"
+                      mat-icon-button>
+                <mat-icon>delete</mat-icon>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+        <tbody *ngIf="documentations.length == 0 && newDocumentations.length == 0">
+          <tr>
+            <td colspan="2">There is no documentation found.</td>
+          </tr>
+        </tbody>
+      </table>
+      <button class="default-button"
+              (click)="submitForm()"
+              [disabled]="isSubmitting || progress == ''">
+        Submit
+      </button>
+    </div>
+  </div>
+
+</div>

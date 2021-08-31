@@ -52,7 +52,7 @@ export class ReportProgressComponent implements OnInit {
     this.reportService.submitProgressReport(uploadData).subscribe(response => {
       this.onSubmit.emit();
     }, error => {
-        this.snack.open("Open", error.message);
+        this.snack.open(error.message, "Close", );
         this.isSubmitting = false;
     });
   }

@@ -1,0 +1,92 @@
+<ng-template imageView></ng-template>
+<h4 class="fr-text"><span class="text-alpha">Request For</span> Information</h4>
+
+<form [formGroup]="rfiForm"
+      (ngSubmit)="submitForm()">
+  <mat-form-field class="w-100">
+    <mat-label>Addressed to</mat-label>
+    <input matInput
+           formControlName="AddressedFor"
+           placeholder="Addressed To" />
+  </mat-form-field>
+  <mat-form-field class="w-100">
+    <mat-label>Subject</mat-label>
+    <input matInput
+           formControlName="Header"
+           placeholder="Header" />
+  </mat-form-field>
+  <mat-form-field class="w-100">
+    <mat-label>Description</mat-label>
+    <textarea matInput
+              formControlName="Description"
+              placeholder="Description"></textarea>
+  </mat-form-field>
+  <label for="cameraInput"
+         class="default-button mb-3">
+    <mat-icon>add_photo_alternate</mat-icon> Add Documentation
+  </label>
+  <input type="file"
+         capture="camera"
+         accept="image/*"
+         id="cameraInput"
+         class="d-none"
+         (change)="onFileSelected($event)" />
+  <table class="table table-dark">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody *ngIf="documentations.length > 0">
+      <tr *ngFor="let documentation of documentations;index as i">
+        <td>{{ documentation.name }}</td>
+        <td class="text-alpha">
+          <button
+                  type="button"
+                  (click)="viewImage(i)"
+                  mat-icon-button>
+            <mat-icon>zoom_in</mat-icon>
+          </button>
+          <button
+                  type="button"
+                  *ngIf="!documentation.IsDelete"
+                  mat-icon-button
+                  (click)="removeDocumentation(i)">
+            <mat-icon>delete</mat-icon>
+          </button>
+          <button
+                  type="button"
+                  *ngIf="documentation.IsDelete"
+                  mat-icon-button
+                  (click)="retrieveDocumentation(documentation)">
+            <mat-icon>undo</mat-icon>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+    <tbody *ngIf="newDocumentations.length > 0">
+      <tr *ngFor="let documentation of newDocumentations;index as i">
+        <td>{{ documentation.name }}</td>
+        <td class="text-alpha">
+          <button
+                  type="button"
+                  (click)="removeNewDocumentation(i)"
+                  mat-icon-button>
+            <mat-icon>delete</mat-icon>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+    <tbody *ngIf="documentations.length == 0 && newDocumentations.length == 0">
+      <tr>
+        <td colspan="2">There is no documentation added.</td>
+      </tr>
+    </tbody>
+  </table>
+  <button class="default-button"
+          type="submit"
+          [disabled]="isSubmitting || !rfiForm.valid">
+    Submit
+  </button>
+</form>

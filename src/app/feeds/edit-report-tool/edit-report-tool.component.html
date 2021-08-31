@@ -1,0 +1,49 @@
+<h4 class="fr-text"><span class="text-alpha">Tool</span> Report</h4>
+<button class="default-button" (click)="openAddTool()">
+  Add
+</button>
+
+<div class="table-responsive-md">
+  <table class="table table-dark mt-3">
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Description</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody *ngIf="tools.length == 0">
+      <tr>
+        <td colspan="4">There is no tool found.</td>
+      </tr>
+    </tbody>
+    <tbody *ngIf="tools.length > 0">
+      <tr *ngFor="let tool of tools; index as i">
+        <td>{{ tool.Name }}</td>
+        <td>{{ tool.Description }}</td>
+        <td>{{ tool.Quantity | number: '1.0-0' }}</td>
+        <td>
+          <button mat-icon-button
+                  (click)="openEditTool(i)"
+                  aria-label="Edit button">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-icon-button
+                  (click)="deleteTool(i)"
+                  aria-label="Delete button"
+                  class="text-alpha">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<button type="button"
+        (click)="submitToolReport()"
+        class="default-button"
+        [disabled]="isSubmitting || tools.length == 0">
+  Submit
+</button>

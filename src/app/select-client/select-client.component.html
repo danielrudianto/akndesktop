@@ -12,7 +12,7 @@
   <div
        (click)="selectClient(client)"
        mat-list-item
-       class="text-white"
+       class="text-white mb-2 mt-2"
        *ngFor="let client of clients">
     <p class="mb-0" mat-line>{{ client.Name }}</p>
     <p mat-line *ngIf="client.City == '' || client.City == null"><i>Not available</i></p>

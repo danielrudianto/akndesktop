@@ -64,4 +64,20 @@ export class ReportService {
   editWorkerReport(workerReport: WorkerReportForm) {
     return this.http.put(global.url + "/reportWorker", workerReport)
   }
+
+  editMaterialReport(materialReport: MaterialReportForm) {
+    return this.http.put(global.url + "/reportMaterial", materialReport);
+  }
+
+  editToolReport(toolReport: ToolReportForm) {
+    return this.http.put(global.url + "/reportTool", toolReport);
+  }
+
+  editProgressReport(formData: FormData) {
+    return this.http.put(global.url + "/reportStatus", formData);
+  }
+
+  editRFI(formData: FormData) {
+    return this.http.put(global.url + "/RFI", formData);
+  }
 }

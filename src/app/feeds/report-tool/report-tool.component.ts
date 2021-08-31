@@ -72,7 +72,7 @@ export class ReportToolComponent implements OnInit {
         this.onSubmit.emit();
       }, error => {
         this.isSubmitting = false;
-        this.snackBar.open("Close", error.message, {
+          this.snackBar.open(error.message, "Close", {
           horizontalPosition: 'center',
           verticalPosition: 'bottom',
           duration: 2000

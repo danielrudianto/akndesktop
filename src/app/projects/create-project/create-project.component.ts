@@ -108,7 +108,7 @@ export class CreateProjectComponent implements OnInit {
       Name: this.generalProjectForm.controls.name.value,
       Address: this.generalProjectForm.controls.address.value,
       ClientId: this.selectedClient,
-      DocumentName: this.generalProjectForm.controls.contractDocument.value.toString(),
+      DocumentName: this.generalProjectForm.controls.contractDocument.value.toString() || "",
       IsCompleted: false,
       IsDelete: false,
       Tasks: this.tasks,
