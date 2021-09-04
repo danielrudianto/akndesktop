@@ -90,6 +90,10 @@ import { EditReportToolComponent } from './feeds/edit-report-tool/edit-report-to
 import { EditReportRfiComponent } from './feeds/edit-report-rfi/edit-report-rfi.component';
 import { EditReportProgressComponent } from './feeds/edit-report-progress/edit-report-progress.component';
 
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireMessagingModule } from '@angular/fire/compat/messaging';
+import { FeedDetailComponent } from './feeds/feed-detail/feed-detail.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -180,7 +184,8 @@ import { EditReportProgressComponent } from './feeds/edit-report-progress/edit-r
     EditReportMaterialComponent,
     EditReportToolComponent,
     EditReportRfiComponent,
-    EditReportProgressComponent
+    EditReportProgressComponent,
+    FeedDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -216,7 +221,8 @@ import { EditReportProgressComponent } from './feeds/edit-report-progress/edit-r
     ClickOutsideModule,
     FileSaverModule,
     NgxMaskModule.forRoot(),
-    NgImageFullscreenViewModule
+    NgImageFullscreenViewModule,
+    AngularFireModule.initializeApp(environment.firebase),
   ],
   entryComponents: [
     ClientsAddComponent,

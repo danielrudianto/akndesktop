@@ -1,0 +1,23 @@
+.drawer-container {
+  height: 100vh;
+  width: calc(100vw - 8rem);
+  margin-left: 8rem;
+  background-color: transparent;
+}
+
+.jumbotron {
+  min-height: 100vh;
+}
+
+  .jumbotron .container-fluid {
+    height: 100vh !important;
+  }
+
+.user-thumbnail {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-size: cover;
+  background-position: center;
+  display: inline-block;
+}

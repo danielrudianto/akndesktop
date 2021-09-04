@@ -1,17 +1,15 @@
 {
   "ExpandedNodes": [
     "",
+    "\\dist",
     "\\src",
     "\\src\\app",
-    "\\src\\app\\dashboard",
-    "\\src\\app\\dashboard\\main",
     "\\src\\app\\feeds",
-    "\\src\\app\\feeds\\main-feed",
-    "\\src\\app\\projects",
+    "\\src\\app\\feeds\\feed-detail",
+    "\\src\\app\\feeds\\report-attendance",
     "\\src\\app\\projects\\create-project",
-    "\\src\\app\\select-client",
-    "\\src\\app\\services"
+    "\\src\\environments"
   ],
-  "SelectedNode": "\\src\\app\\dashboard\\main\\main.component.ts",
+  "SelectedNode": "\\src\\app\\feeds\\report-attendance\\report-attendance.component.html",
   "PreviewInSolutionExplorer": false
 }

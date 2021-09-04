@@ -8,3 +8,10 @@
     z-index:200;
     background-color:rgba(0, 0, 0, 0.54);
 }
+
+.downloadButton{
+    position:fixed;
+    top:10px;
+    left:10px;
+    z-index:1500;
+}

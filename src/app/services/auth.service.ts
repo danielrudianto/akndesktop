@@ -86,4 +86,18 @@ export class AuthService {
   getUpdatedToken() {
     return this.http.get(global.url + "/auth");
   }
+
+  sendToken(token: string) {
+    return this.http.post(global.url + "/auth/sendCloudToken", {
+      token: token
+    });
+  }
+
+  sendDeleteToken(token: string) {
+    return this.http.delete(global.url + "/auth/sendCloudToken", {
+      params: {
+        token: token
+      }
+    });
+  }
 }

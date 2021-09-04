@@ -28,7 +28,9 @@
             "assets": [
               "src/favicon.ico",
               "src/assets",
-              "src/manifest.webmanifest"
+              "src/manifest.webmanifest",
+              "src/firebase-messaging-sw.js", // add this one
+              "src/manifest.json" // this one also 
             ],
             "styles": [
               "src/indigo-pink.css",
@@ -104,7 +106,9 @@
             "assets": [
               "src/favicon.ico",
               "src/assets",
-              "src/manifest.webmanifest"
+              "src/manifest.webmanifest",
+              "src/firebase-messaging-sw.js", // add this one
+              "src/manifest.json" // this one also 
             ],
             "styles": [
               "src/indigo-pink.css",

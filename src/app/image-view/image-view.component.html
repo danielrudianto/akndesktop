@@ -1,5 +1,12 @@
-<div (click)="onClose()"
+<div
      class="image-viewer-wrapper">
+  <button
+          mat-icon-button
+          color="primary"
+          class="downloadButton"
+          (click)="downloadImage()">
+    <mat-icon>download</mat-icon>
+  </button>
   <ng-image-fullscreen-view
                             style="width:100%"
                             [images]="imageUrls"
