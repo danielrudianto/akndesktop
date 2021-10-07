@@ -27,14 +27,14 @@
       </mat-form-field>
 
       <mat-form-field class="w-100">
-        <mat-label>Contract Documen Number</mat-label>
+        <mat-label>Contract Document Number</mat-label>
         <input style="color:white"
                matInput
                formControlName="contractDocument"
                placeholder="Contract Document">
       </mat-form-field>
 
-      <app-gantt-chart [isSubmitting]="isSubmitting" (onUpdateTask)="updateTask($event)"></app-gantt-chart>
+      <!--<app-gantt-chart [isSubmitting]="isSubmitting" (onUpdateTask)="updateTask($event)"></app-gantt-chart>-->
 
       <button
               [disabled]="isSubmitting"

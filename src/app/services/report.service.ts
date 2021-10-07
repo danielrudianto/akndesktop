@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import * as global from '../global';
 import { MaterialReportForm, ToolReportForm, WeatherReportForm, WorkerReportForm } from '../interfaces/report';
-import { Socket } from 'ngx-socket-io';
+import * as moment from 'moment';
 
 @Injectable({
   providedIn: 'root'
@@ -52,11 +52,7 @@ export class ReportService {
   }
 
   downloadDailyReport(date: Date, projectId: number) {
-    return this.http.get(global.url + '/reportDaily', {
-      params: {
-        date: date.toISOString(),
-        projectId: projectId
-      },
+    return this.http.get(`${global.url}/reportDaily/${projectId}/${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`, {
       responseType:'blob'
     })
   }
@@ -79,5 +75,25 @@ export class ReportService {
 
   editRFI(formData: FormData) {
     return this.http.put(global.url + "/RFI", formData);
+  }
+
+  getDailyReportImages(projectId: number, date: Date) {
+    return this.http.get<any[]>(global.url + "/reportDaily/getImages/" + projectId + "/" + date.getDate() + "/" + parseInt((date.getMonth() + 1).toString()) + "/" + date.getFullYear());
+  }
+
+  submitDailyReport(formData: FormData, projectId: number, date: Date) {
+    return this.http.post(`${global.url}/reportDaily/${projectId}/${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`, formData);
+  }
+
+  checkDailyReport(projectId: number, date: Date) {
+    return this.http.get<any>(global.url + "/reportDaily/check/" + projectId + "/" + date.getDate() + "/" + parseInt((date.getMonth() + 1).toString()) + "/" + date.getFullYear());
+  }
+
+  getDailyReportExistingImages(reportId: number) {
+    return this.http.get<any[]>(`${global.url}/reportDaily/images/${reportId}`);
+  }
+
+  editDailyReport(formData: FormData, reportId: number) {
+    return this.http.put(`${global.url}/reportDaily/${reportId}`, formData);
   }
 }

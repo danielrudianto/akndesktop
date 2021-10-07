@@ -37,7 +37,7 @@ import { ResetPasswordComponent, SideProfileComponent } from './dashboard/side-p
 import { FeedsComponent } from './feeds/feeds.component';
 import { MainFeedComponent, MainFeedDeleteComponent } from './feeds/main-feed/main-feed.component';
 import { ReportAttendanceAddComponent, ReportAttendanceComponent, ReportAttendanceEditComponent } from './feeds/report-attendance/report-attendance.component';
-import { ReportDailyComponent } from './feeds/report-daily/report-daily.component';
+import { AddImageComponent, ReportDailyComponent } from './feeds/report-daily/report-daily.component';
 import { ReportMaterialAddComponent, ReportMaterialComponent, ReportMaterialEditComponent } from './feeds/report-material/report-material.component';
 import { ReportProgressComponent } from './feeds/report-progress/report-progress.component';
 import { ReportRfiComponent } from './feeds/report-rfi/report-rfi.component';
@@ -93,6 +93,7 @@ import { EditReportProgressComponent } from './feeds/edit-report-progress/edit-r
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireMessagingModule } from '@angular/fire/compat/messaging';
 import { FeedDetailComponent } from './feeds/feed-detail/feed-detail.component';
+import { EditDailyReportComponent } from './feeds/edit-daily-report/edit-daily-report.component';
 
 @NgModule({
   declarations: [
@@ -185,7 +186,9 @@ import { FeedDetailComponent } from './feeds/feed-detail/feed-detail.component';
     EditReportToolComponent,
     EditReportRfiComponent,
     EditReportProgressComponent,
-    FeedDetailComponent
+    FeedDetailComponent,
+    AddImageComponent,
+    EditDailyReportComponent
   ],
   imports: [
     BrowserModule,
@@ -255,7 +258,8 @@ import { FeedDetailComponent } from './feeds/feed-detail/feed-detail.component';
     ReportTableDetailComponent,
     RfiAnswerListComponent,
     ReportDailyComponent,
-    ResetPasswordComponent
+    ResetPasswordComponent,
+    AddImageComponent
   ],
   providers: [
     {

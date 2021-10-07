@@ -17,6 +17,8 @@
                                       *ngIf="report.Type == 5"></app-edit-report-rfi>
             <app-edit-report-progress [report]="report"
                                       *ngIf="report.Type == 7"></app-edit-report-progress>
+            <app-edit-daily-report [report]="report"
+                                   *ngIf="report.Type == 6"></app-edit-daily-report>
           </div>
       </div>
     </div>

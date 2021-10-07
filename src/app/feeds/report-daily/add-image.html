@@ -1,0 +1,29 @@
+<h3 class="text-white text-center">Add Image to Daily Report</h3>
+<br />
+<mat-dialog-content class="mat-typography">
+  <label for="fileInput" class="dropImage">
+    <div id="actionGroup">
+      <h4>Drop your image here.</h4>
+      <p>Or</p>
+      <button class="default-button">Browse File</button>
+    </div>
+    <input type="file"
+           (change)="onFileChange($event)"
+           id="fileInput"
+           accept="image/*" />
+  </label>
+  <hr />
+  <swiper [slidesPerView]="2"
+          [spaceBetween]="20">
+    <ng-template swiperSlide
+                 *ngFor="let image of data">
+      <div [ngStyle]="{'background-image': 'url(' + global.url + '/img/' + image.ImageUrl + ')'}"
+           class="documentation-wrapper"></div>
+      <div class="documentation-cover"
+           (click)="selectImage(global.url + '/img/' + image.ImageUrl, image.Name)">
+        <p>+</p>
+      </div>
+      <p class="text-white text-center">{{ image.Name }}</p>
+    </ng-template>
+  </swiper>
+</mat-dialog-content>

@@ -1,0 +1,60 @@
+<h4 class="fr-text"><span class="text-alpha">Daily</span> Report</h4>
+<button class="default-button" (click)="openAddImage()">
+  Add Image
+</button>
+
+<div class="table-responsive-md" *ngIf="images.length > 0 || newImages.length > 0">
+  <table class="table table-dark mt-3">
+    <thead>
+      <tr>
+        <th>Image</th>
+        <th>Caption</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let image of images">
+        <td>
+          <div class="imageWrapper">
+            <div class="image" [ngStyle]="{'background-image': 'url(' + global.url + '/' + image.ImageUrl + ')'}"></div>
+          </div>
+        </td>
+        <td>
+          <mat-form-field class="w-100">
+            <textarea
+                      rows="5"
+                      style="resize:none"
+                      matInput
+                      [(ngModel)]="image.Caption"></textarea>
+          </mat-form-field>
+        </td>
+        <td>
+          <button class="default-button" (click)="removeExistingImage(image.Id)">Delete</button>
+        </td>
+      </tr>
+      <tr *ngFor="let image of newImages; index as i">
+        <td>
+          <div class="imageWrapper">
+            <div class="image" [ngStyle]="{'background-image': 'url(' + image.url + ')'}"></div>
+          </div>
+        </td>
+        <td>
+          <mat-form-field class="w-100">
+            <textarea rows="5"
+                      style="resize:none"
+                      matInput
+                      [(ngModel)]="image.description"></textarea>
+          </mat-form-field>
+        </td>
+        <td>
+          <button class="default-button" (click)="removeImage(i)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <button
+          (click)="submitEditDailyReport()"
+          class="default-button"
+          [disabled]="(newImages.length == 0 && images.length == 0) || isSubmitting">Submit</button>
+</div>

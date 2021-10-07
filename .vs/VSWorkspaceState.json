@@ -1,15 +1,16 @@
 {
   "ExpandedNodes": [
     "",
-    "\\dist",
     "\\src",
     "\\src\\app",
     "\\src\\app\\feeds",
-    "\\src\\app\\feeds\\feed-detail",
-    "\\src\\app\\feeds\\report-attendance",
-    "\\src\\app\\projects\\create-project",
-    "\\src\\environments"
+    "\\src\\app\\feeds\\edit-daily-report",
+    "\\src\\app\\feeds\\edit-feed",
+    "\\src\\app\\feeds\\edit-report-material",
+    "\\src\\app\\feeds\\main-feed",
+    "\\src\\app\\feeds\\report-daily",
+    "\\src\\app\\feeds\\side-feed"
   ],
-  "SelectedNode": "\\src\\app\\feeds\\report-attendance\\report-attendance.component.html",
+  "SelectedNode": "\\src\\app\\feeds\\edit-daily-report\\edit-daily-report.component.ts",
   "PreviewInSolutionExplorer": false
 }

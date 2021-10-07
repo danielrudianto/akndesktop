@@ -13,7 +13,7 @@ export class FeedService {
     private authService: AuthService
   ) { }
 
-  getFeeds(projectId: number, offset: number, limit: number = 10) {
+  getFeeds(projectId: number, offset: number, limit: number = 3) {
     return this.http.get<any[]>(global.url + "/reportFeed/" + projectId.toString(), {
       params: {
         offset: offset,

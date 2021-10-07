@@ -12,6 +12,9 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dial
 import { Approvals } from '../../interfaces/report';
 import { ReportService } from '../../services/report.service';
 import { ReportApprovalListComponent } from '../../report-approval/report-approval.component';
+import { FileSaverService } from 'ngx-filesaver';
+import { ProjectService } from '../../services/project.service';
+import { CodeProject } from '../../interfaces/project';
 
 @Component({
   selector: 'app-main-feed',
@@ -24,6 +27,7 @@ export class MainFeedComponent implements OnInit {
   closeImageView: Subscription;
   selector: string = '.feed-container';
   isFetching: boolean = false;
+  project: any;
 
   @ViewChild(ImageViewWrapperDirective, { static: false }) imageViewHost: ImageViewWrapperDirective;
 
@@ -35,7 +39,10 @@ export class MainFeedComponent implements OnInit {
     private route: Router,
     private componentFactoryResolver: ComponentFactoryResolver,
     private dialog: MatDialog,
-    private approvalService: ApprovalService
+    private approvalService: ApprovalService,
+    private reportService: ReportService,
+    private _FileSaverService: FileSaverService,
+    private projectService: ProjectService
   ) { }
 
   fetchFeeds() {
@@ -48,7 +55,9 @@ export class MainFeedComponent implements OnInit {
       this.isFetching = false;
     }, error => {
         this.isFetching = false;
-        this.snackBar.open(error.message, "Close");
+        this.snackBar.open(error.message, "Close", {
+          duration: 2000
+        });
     })
   }
 
@@ -70,6 +79,14 @@ export class MainFeedComponent implements OnInit {
 
   ngOnInit(): void {
     this.fetchFeeds();
+
+    this.projectService.getProjectById(this.router.snapshot.params.projectId).subscribe((data: CodeProject) => {
+      if (data.IsDelete) {
+        this.route.navigate(['/']);
+      } else {
+        this.project = data;
+      }
+    })
 
     this.socketService.socket.on("newToolReport", (data: any) => {
       if (data.projectId == this.router.snapshot.params.projectId) {
@@ -112,6 +129,14 @@ export class MainFeedComponent implements OnInit {
     })
 
     this.socketService.socket.on("newRFI", (data: any) => {
+      if (data.projectId == this.router.snapshot.params.projectId) {
+        this.feedService.getFeed(data.reportId).subscribe(response => {
+          this.feeds.unshift(response);
+        })
+      }
+    })
+
+    this.socketService.socket.on("newDailyReport", (data: any) => {
       if (data.projectId == this.router.snapshot.params.projectId) {
         this.feedService.getFeed(data.reportId).subscribe(response => {
           this.feeds.unshift(response);
@@ -245,6 +270,12 @@ export class MainFeedComponent implements OnInit {
     this.route.navigate(["/Feeds/Edit/" + id]);
   }
 
+  downloadReport(feed: any) {
+    const date = new Date(feed.Date);
+    this.reportService.downloadDailyReport(date, feed.CodeProjectId).subscribe(data => {
+      this._FileSaverService.save((<any>data), `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}-${this.project.Name}.pdf`);
+    });
+  }
 }
 
 @Component({
