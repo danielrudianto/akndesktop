@@ -114,7 +114,7 @@ export class ReportDailyComponent implements OnInit {
         imageCompression(image.file, {
           maxWidthOrHeight: 640
         }).then(compressed => {
-          formData.append(`File[${index}]`, compressed);
+          formData.append(`File[${index}]`, compressed, image.file.name);
           formData.append(`Caption[${index}]`, image.description);
           formData.append(`Type[${index}]`, image.type);
 
