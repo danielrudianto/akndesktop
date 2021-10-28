@@ -4,6 +4,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { ReportService } from '../../services/report.service';
+import imageCompression from 'browser-image-compression';
 
 @Component({
   selector: 'app-report-rfi',
@@ -44,24 +45,50 @@ export class ReportRfiComponent implements OnInit {
   submitForm() {
     this.isSubmitting = true;
     const uploadData = new FormData();
-    this.documentations.forEach((documentation, index) => {
-      uploadData.append("File[" + index + "]", documentation, documentation.name);
-    })
+    let processedItems = 0;
 
-    uploadData.append("Header", this.rfiForm.controls.Header.value);
-    uploadData.append("AddressedFor", this.rfiForm.controls.AddressedFor.value);
-    uploadData.append("Description", this.rfiForm.controls.Description.value);
+    if (this.documentations.length > 0) {
+      this.documentations.forEach((documentation, index) => {
+        imageCompression(documentation, {
+          maxWidthOrHeight: 640
+        }).then(compressed => {
+          uploadData.append("File[" + index + "]", compressed, documentation.name);
+          processedItems++;
 
-    uploadData.append("ProjectId", this.router.snapshot.params.projectId);
-    uploadData.append("Files", this.documentations.length.toString());
-    uploadData.append("CreatedBy", this.authService.getEmail());
+          if (this.documentations.length == processedItems) {
+            uploadData.append("Header", this.rfiForm.controls.Header.value);
+            uploadData.append("AddressedFor", this.rfiForm.controls.AddressedFor.value);
+            uploadData.append("Description", this.rfiForm.controls.Description.value);
 
-    this.reportService.submitRFI(uploadData).subscribe(response => {
-      this.onSubmit.emit();
-    }, error => {
+            uploadData.append("ProjectId", this.router.snapshot.params.projectId);
+            uploadData.append("Files", this.documentations.length.toString());
+            uploadData.append("CreatedBy", this.authService.getEmail());
+
+            this.reportService.submitRFI(uploadData).subscribe(response => {
+              this.onSubmit.emit();
+            }, error => {
+              this.snackBar.open(error.message, "Close");
+              this.isSubmitting = false;
+            });
+          }
+        })
+      })
+    } else {
+      uploadData.append("Header", this.rfiForm.controls.Header.value);
+      uploadData.append("AddressedFor", this.rfiForm.controls.AddressedFor.value);
+      uploadData.append("Description", this.rfiForm.controls.Description.value);
+
+      uploadData.append("ProjectId", this.router.snapshot.params.projectId);
+      uploadData.append("Files", this.documentations.length.toString());
+      uploadData.append("CreatedBy", this.authService.getEmail());
+
+      this.reportService.submitRFI(uploadData).subscribe(response => {
+        this.onSubmit.emit();
+      }, error => {
         this.snackBar.open(error.message, "Close");
-      this.isSubmitting = false;
-    });
+        this.isSubmitting = false;
+      });
+    }
   }
 
 }

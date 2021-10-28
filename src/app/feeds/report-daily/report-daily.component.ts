@@ -7,6 +7,7 @@ import * as global from '../../global';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { AuthService } from '../../services/auth.service';
+import imageCompression from 'browser-image-compression';
 
 @Component({
   selector: 'app-report-daily',
@@ -108,23 +109,31 @@ export class ReportDailyComponent implements OnInit {
     } else {
       this.isSubmitting = true;
       let formData: FormData = new FormData();
+      let proccessedItems = 0;
       this.images.forEach((image, index) => {
-        formData.append(`File[${index}]`, image.file);
-        formData.append(`Caption[${index}]`, image.description);
-        formData.append(`Type[${index}]`, image.type);
-      });
+        imageCompression(image.file, {
+          maxWidthOrHeight: 640
+        }).then(compressed => {
+          formData.append(`File[${index}]`, compressed);
+          formData.append(`Caption[${index}]`, image.description);
+          formData.append(`Type[${index}]`, image.type);
 
-      formData.append("CreatedBy", this.authService.getEmail());
-      formData.append("Files", this.images.length.toString());
+          proccessedItems++;
 
-      this.reportService.submitDailyReport(formData, this.router.snapshot.params.projectId, this.date.value).subscribe(result => {
-        this.isSubmitting = false;
-        this.onSubmit.emit();
-      }, error => {
-        this.snackBar.open(error.message, "Close", {
-          duration: 2000
+          if (this.images.length == proccessedItems) {
+            formData.append("CreatedBy", this.authService.getEmail());
+            formData.append("Files", this.images.length.toString());
+            this.reportService.submitDailyReport(formData, this.router.snapshot.params.projectId, this.date.value).subscribe(result => {
+              this.isSubmitting = false;
+              this.onSubmit.emit();
+            }, error => {
+              this.snackBar.open(error.message, "Close", {
+                duration: 2000
+              })
+            })
+          }
         })
-      })
+      });
     }
   }
 

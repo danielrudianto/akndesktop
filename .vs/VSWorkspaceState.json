@@ -1,16 +1,17 @@
 {
   "ExpandedNodes": [
     "",
+    "\\dist",
+    "\\dist\\akndesktop",
     "\\src",
     "\\src\\app",
+    "\\src\\app\\auth",
     "\\src\\app\\feeds",
-    "\\src\\app\\feeds\\edit-daily-report",
-    "\\src\\app\\feeds\\edit-feed",
-    "\\src\\app\\feeds\\edit-report-material",
     "\\src\\app\\feeds\\main-feed",
     "\\src\\app\\feeds\\report-daily",
-    "\\src\\app\\feeds\\side-feed"
+    "\\src\\app\\feeds\\side-feed",
+    "\\src\\app\\services"
   ],
-  "SelectedNode": "\\src\\app\\feeds\\edit-daily-report\\edit-daily-report.component.ts",
+  "SelectedNode": "\\src\\app\\auth\\jwt-interceptor.ts",
   "PreviewInSolutionExplorer": false
 }

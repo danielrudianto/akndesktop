@@ -3,6 +3,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { ReportService } from '../../services/report.service';
+import imageCompression from 'browser-image-compression';
 
 @Component({
   selector: 'app-report-progress',
@@ -25,6 +26,7 @@ export class ReportProgressComponent implements OnInit {
   ngOnInit(): void {
   }
 
+
   breakpoints = {
     640: { slidesPerView: 1, spaceBetween: 20 },
     768: { slidesPerView: 2, spaceBetween: 40 },
@@ -39,22 +41,46 @@ export class ReportProgressComponent implements OnInit {
 
   submitForm() {
     this.isSubmitting = true;
+    let processedItems = 0;
     const uploadData = new FormData();
-    this.documentations.forEach((documentation, index) => {
-      uploadData.append("file[" + index + "]", documentation, documentation.name);
-    })
 
-    uploadData.append("Progress", this.progress);
-    uploadData.append("ProjectId", this.router.snapshot.params.projectId);
-    uploadData.append("Files", this.documentations.length.toString());
-    uploadData.append("CreatedBy", this.authService.getEmail());
+    if (this.documentations.length > 0) {
+      this.documentations.forEach((documentation, index) => {
+        imageCompression(documentation, {
+          maxWidthOrHeight: 640
+        }).then(compressed => {
+          uploadData.append("file[" + index + "]", compressed, documentation.name);
+          processedItems++;
 
-    this.reportService.submitProgressReport(uploadData).subscribe(response => {
-      this.onSubmit.emit();
-    }, error => {
-        this.snack.open(error.message, "Close", );
+          if (this.documentations.length == processedItems) {
+            uploadData.append("Progress", this.progress);
+            uploadData.append("ProjectId", this.router.snapshot.params.projectId);
+            uploadData.append("Files", this.documentations.length.toString());
+            uploadData.append("CreatedBy", this.authService.getEmail());
+
+            this.reportService.submitProgressReport(uploadData).subscribe(response => {
+              this.onSubmit.emit();
+            }, error => {
+              this.snack.open(error.message, "Close",);
+              this.isSubmitting = false;
+            });
+          }
+        })
+      })
+    } else {
+      uploadData.append("Progress", this.progress);
+      uploadData.append("ProjectId", this.router.snapshot.params.projectId);
+      uploadData.append("Files", this.documentations.length.toString());
+      uploadData.append("CreatedBy", this.authService.getEmail());
+
+      this.reportService.submitProgressReport(uploadData).subscribe(response => {
+        this.onSubmit.emit();
+      }, error => {
+        this.snack.open(error.message, "Close",);
         this.isSubmitting = false;
-    });
+      });
+    }
+    
   }
 
   removeDocumentation(i: number) {

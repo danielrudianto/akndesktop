@@ -57,6 +57,7 @@
       </table>
       <p *ngIf="images.length == 0">No image found.</p>
       <button (click)="submitDailyReport()"
+              [disabled]="images.length == 0 || isSubmitting"
               class="default-button">Submit</button>
     </div>
   </div>
